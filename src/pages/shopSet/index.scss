@@ -1,0 +1,113 @@
+.shopSetup {
+	width: 750rpx;
+	min-height: 100vh;
+	background-color: #efefef;
+	&_start{
+		font-size: 26rpx;
+		color: #333;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 211rpx;
+		background-color: #fff;
+		button{
+			margin-top: 35rpx;
+			width:143rpx;
+			height:50rpx;
+			border:2px solid #FF0000;
+			border-radius:25px;
+			color: #FF0000;
+			font-size: 28rpx;
+			font-weight: 500;
+			line-height: 50rpx;
+			text-align: center;
+		}
+	}
+	&_hongbao{
+		text-align: center;
+		.tips{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 30rpx;
+			color: #6A6A6A;
+			
+			.pic{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				border-radius: 50%;
+				margin-right: 35rpx;
+				height: 104rpx;
+				width: 104rpx;
+				image{
+					width: 100%;
+					height: auto;
+				}
+			}
+			.tit{
+				text-align: left;
+			}
+		}
+		&__tit{
+			font-size: 28rpx;
+			color: #333;
+			text-align: center;
+			padding: 41rpx 0 26rpx;
+			font-weight: 500;
+		}
+		&__box{
+			background-color: #fff;
+			margin: 0 27rpx;
+			border-radius: 14rpx;
+			background-color: #fff;
+			padding: 45rpx 0 90rpx;
+			.inputcash{
+				width: 620rpx;
+				height: 90rpx;
+				background-color: #EFEFEF;
+				font-size: 30rpx;
+				color: #333;
+				font-weight: 500;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: normal;
+				border-radius: 10rpx;
+				margin: 45rpx auto;
+				
+				input{
+					width: 390rpx;
+					height: 60rpx;
+					line-height: 60rpx;
+					background-color: transparent;
+					border: none;
+					border-right: 2rpx solid #E02433;
+					box-sizing: border-box;
+					padding: 0 20rpx;
+					text-align: left;
+				}
+				view{
+					display: flex;
+					flex: 1;
+					align-items: center;
+					justify-content: center;
+					font-size: #FA3256;
+				}
+			}
+			.btn{
+				width: 620rpx;
+				height: 90rpx;
+				margin: 0 auto;
+				text-align: center;
+				line-height: 90rpx;
+				text-align: center;
+				background-color: #FA3256;
+				color: #fff;
+				border-radius: 45rpx;
+			}
+		}
+	}
+}

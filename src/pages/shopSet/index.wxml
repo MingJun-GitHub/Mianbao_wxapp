@@ -1,0 +1,36 @@
+<view class="shopSetup">
+  <shopbar wx:if="{{false}}"></shopbar>
+  <view wx:else class="shopSetup_start">
+    店主，开店请先设置您的店铺信息
+    <button>去设置</button>
+  </view>
+
+  <view class="shopSetup_hongbao">
+    <view class="shopSetup_hongbao__tit">
+      店铺红包
+    </view>
+    <view class="shopSetup_hongbao__box">
+      <view class="tips">
+        <view class="pic">
+          <image src="../../images/empty.png" mode="widthFix" />
+        </view>
+        <view class="tit">
+          <view>
+            Hi，亲爱的店主！
+          </view>
+          <view>
+            请设置用户到店红包金额吧~
+          </view>
+        </view>
+      </view>
+      <view class="inputcash">
+        <input type="text" />
+        <view>元</view>
+      </view>
+      <view class="btn">
+        确定红包设置
+      </view>
+    </view>
+  </view>
+
+</view>

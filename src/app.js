@@ -7,7 +7,7 @@ App({
 	async onLaunch() {
 		// 初始化数据
 		wx.utils.isIphoneHair = this.isIphoneHair()
-		await wx.utils.Login.initUserInfo()
+		// await wx.utils.Login.initUserInfo()
 	},
 	// 流海
 	isIphoneHair() {

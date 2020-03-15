@@ -1,0 +1,79 @@
+.recharge {
+	width: 750rpx;
+	min-height: 100vh;
+	background-color: #efefef;
+
+	&_item,
+	&_item2 {
+		height: 100rpx;
+		padding: 0 30rpx;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		line-height: normal;
+		// border-bottom: 1rpx solid #EAEAEA;
+		position: relative;
+		background-color: #fff;
+
+		label {
+			font-size: 28rpx;
+			font-weight: 500;
+			color: #333;
+			width: 100rpx;
+
+		}
+
+		input {
+			width: 500rpx;
+			border: none;
+			font-size: 26rpx;
+		}
+	}
+
+	&_item2 {
+		margin-top: 18rpx;
+		height: auto;
+		padding: 12rpx 30rpx 22rpx;
+		flex-direction: column;
+		align-items: flex-start;
+
+		label {
+			margin-top: 18rpx;
+			width: 100%;
+
+		}
+
+		view {
+			margin-top: 16rpx;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+		}
+
+		.yuan {
+			font-size: 46rpx;
+			font-weight: 500;
+			color: #000;
+		}
+
+		input {
+			font-size: 46rpx;
+			margin-left: 10rpx;
+		}
+	}
+
+	&_btn {
+		width: 492rpx;
+		height: 72rpx;
+		background: #E02433;
+		border-radius: 36rpx;
+		color: #fff;
+		font-size: 28rpx;
+		color: #fff;
+		font-weight: 500;
+		margin: 50rpx auto;
+		text-align: center;
+		line-height: 72rpx;
+	}
+}

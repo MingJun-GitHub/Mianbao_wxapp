@@ -1,0 +1,20 @@
+<view class="setup">
+  <view class="setup_item">
+    <label for="">店铺头像:</label>
+    <view class="pic">
+      <image src="../../images/empty.png" mode="widthFix" />
+    </view>
+  </view>
+  <view class="setup_item">
+    <label for="">店铺名:</label>
+    <input type="text" placeholder="请输入店铺店" />
+  </view>
+  <view class="setup_item">
+    <label for="">店铺地址:</label>
+    <input type="text" placeholder="请输入店铺店" />
+  </view>
+  <view class="setup_item">
+    <label for="">店主微信:</label>
+    <input type="text" placeholder="请输入店铺店" />
+  </view>
+</view>

@@ -1,0 +1,97 @@
+.shopbar {
+    height: 211rpx;
+    background-color: #fff;
+    box-shadow: 0rpx 0rpx 29rpx 0rpx rgba(150, 150, 150, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30rpx 24rpx;
+
+    &_pic {
+        display: flex;
+        justify-content: center;
+        align-items: cernter;
+        width: 163rpx;
+        height: 150rpx;
+        border-radius: 6rpx;
+        overflow: hidden;
+
+        image {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &_num {
+        font-size: 18rpx;
+        color: #666;
+        line-height: 26rpx;
+        text-align: center;
+
+        .num {
+            white-space: nowrap;
+            font-size: 22rpx;
+            font-weight: 500;
+            color: #FF9000;
+            line-height: 26rpx;
+        }
+    }
+    &_info {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-left: 37rpx;
+        margin-right: 60rpx;
+
+        .name {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 32rpx;
+            font-weight: bold;
+            color: #333333;
+            line-height: 26rpx;
+
+            image {
+                margin-left: 20rpx;
+                width: 30rpx;
+                height: 30rpx;
+            }
+        }
+
+        .address {
+            width: 100%;
+            font-size: 22rpx;
+            font-weight: 500;
+            color: #666;
+            line-height: 24rpx;
+            margin-top: 22rpx;
+            margin-bottom: 15rpx;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .wechat {
+            font-size: 22rpx;
+            font-weight: 500;
+            color: #969696;
+            line-height: 24rpx;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            text {
+                color: #333;
+            }
+
+            image {
+                margin-left: 10rpx;
+                width: 22rpx;
+                height: 22rpx;
+            }
+        }
+    }
+}

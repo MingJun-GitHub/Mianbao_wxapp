@@ -1,0 +1,20 @@
+<view class="orderUser">
+  <view class="orderUser_item" wx:for="{{10}}" wx:key="index">
+    <view class="orderUser_item__details">
+      <view class="pic">
+        <image src="../../images/empty.png" mode="widthFix" />
+      </view>
+      <view class="info">
+        <view class="tit">
+          小可爱
+        </view>
+        <view>
+          20220-06-23 15:59:31
+        </view>
+      </view>
+    </view>
+    <view class="orderUser_item__other">
+      110
+    </view>
+  </view>
+</view>

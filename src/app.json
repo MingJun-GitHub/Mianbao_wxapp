@@ -3,7 +3,13 @@
     "pages/index/index",
     "pages/user/index",
     "pages/goods/index",
-    "pages/login/index"
+    "pages/orderUser/index",
+    "pages/setup/index",
+    "pages/postGoods/index",
+    "pages/shopSet/index",
+    "pages/login/index",
+    "pages/recharge/index",
+    "pages/capital/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

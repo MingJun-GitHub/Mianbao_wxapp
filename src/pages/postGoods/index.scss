@@ -1,0 +1,109 @@
+.postGoods {
+	width: 750rpx;
+	// min-height: 100vh;
+	background-color: #efefef;
+	padding-bottom: 100rpx;
+	
+	&_upload{
+		margin: 20rpx auto;
+		padding-bottom: 25rpx;
+		background-color: #fff;
+		&__tit{
+			text-align: center;
+			color: #333333;
+			font-weight:500;
+			font-size: 26rpx;
+			padding: 36rpx 0 30rpx;
+		}
+		&__box{
+			margin:0 24rpx;
+			height: 240rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			flex-direction: column;
+			font-size: 24rpx;
+			color: #bbb;
+			border-radius: 5rpx;
+			overflow: hidden;
+			background-color: #EFEFEF;
+			.icon{
+				width: 93rpx;
+				height: auto;
+				display: block;
+				margin-bottom: 30rpx;
+				
+			}
+		}
+	}
+	&_form{
+		background-color: #fff;
+		&__item{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			height: 88rpx;
+			margin: 0 20rpx;
+			line-height: normal;
+			border-bottom: 1rpx solid #efefef;
+			font-size: 26rpx;
+			label{
+				font-size: 26rpx;
+				color: #333;
+				font-weight: 500;
+				margin-right: 35rpx;
+				display: inline;
+			}
+			input{
+				border: none;
+				max-width: 500rpx;
+			}
+		}
+		&__imglist{
+			display: flex;
+			justify-content: flex-start;
+			margin: 25rpx 20rpx;
+			padding-bottom: 40rpx;
+			label{
+				font-size: 26rpx;
+				color: #333;
+				font-weight: 500;
+				margin-right: 35rpx;
+			}
+			.imglist{
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.pic{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				width: 118rpx;
+				height: 118rpx;
+				margin-right: 20rpx;
+				image{
+					width: 118rpx;
+					height: auto;
+				}
+			}
+		}
+	}
+	&_footer{
+		height: 88rpx;
+		width: 750rpx;
+		background-color: #E02433;
+		color: #fff;
+		font-size: 26rpx;
+		font-weight: 500;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		z-index: 10;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

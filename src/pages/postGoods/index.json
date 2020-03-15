@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "发布商品",
+	"navigationBarTextStyle": "white",
+	"navigationBarBackgroundColor": "#FF4E00",
+	"usingComponents": {
+		"shopbar": "../../components/shopbar/index"
+	  }
+}
