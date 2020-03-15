@@ -1,0 +1,60 @@
+<view class="user">
+  <view class="user_top">
+    <image class="user_top__bg" src="../../images/user/top.png" mode="widthFix" />
+
+    <view class="user_info">
+      <view class="user_info__header">
+        <image src="../../images/empty.png" mode="widthFix" />
+      </view>
+      <view>我的名称</view>
+      <view class="hongbao">
+        <image src="../../images/user/hongbao.png" mode="widthFix" />
+        <view>红包记录</view>
+      </view>
+    </view>
+
+    <view class="user_money">
+      <image class="user_money__bg" src="../../images/user/money_bg.png" mode="widthFix" />
+      <view class="user_money__box">
+        <view class="price">
+          <view class="price_tit">金额:</view>
+          <view class="price_num">￥0.00</view>
+        </view>
+        <button class="btn btntx">提现</button>
+        <button class="btn btnhf">充话费</button>
+      </view>
+    </view>
+  </view>
+  <view class="user_myshop">
+
+    <view class="user_myshop__top">
+      <image class="myshop" src="../../images/user/dianpu.png" mode="widthFix" />
+      我的店铺
+      <image class="righticon" src="../../images/user/right.png" mode="widthFix" />
+    </view>
+    <view class="user_myshop__content">
+      <view class="pic">
+        <image src="../../images/empty.png" mode="widthFix" />
+      </view>
+      <view class="info">
+        <view class="title">美心西饼天河店</view>
+        <view class="address">
+          <image src="../../images/user/address.png" mode="widthFix" />广州市天河区群线路群贤酒店旁</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="user_server">
+    <view class="user_server__tit">我的服务</view>
+    <view class="user_server__item">
+      <image class="icon" src="../../images/user/msg.png" mode="widthFix" />
+      我的留言
+     <image class="righticon" src="../../images/user/right.png" mode="widthFix" />
+    </view>
+    <view class="user_server__item">
+      <image class="icon" src="../../images/user/kf.png" mode="widthFix" />
+      售后服务
+      <image class="righticon" src="../../images/user/right.png" mode="widthFix" />
+    </view>
+  </view>
+</view>

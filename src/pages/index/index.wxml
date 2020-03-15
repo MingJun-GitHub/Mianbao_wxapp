@@ -1,0 +1,81 @@
+<view class="shop">
+  <view class="shop_top">
+    <view class="shop_top__pic">
+      <image src="../../images/empty.png" mode="widthFix" />
+    </view>
+    <view class="shop_top__info">
+      <view class="name">美心西饼广州番禺店
+        <image src="../../images/shop/code.png" />
+      </view>
+      <view class="address">广州市白云去小北广州市白云市白云...</view>
+      <view class="wechat">微信号：<text>12355962</text>
+        <image src="../../images/shop/copy.png" />
+      </view>
+    </view>
+    <view class="shop_top__num">
+      <view>总人数</view>
+      <view class="num">3659人</view>
+    </view>
+  </view>
+  <view class="shop_goods">
+    <view class="shop_goods__item">
+      <view class="tops">
+        <image src="../../images/shop/topbg.png" class="tops_bg" mode="widthFix" />
+        <view class="tops_tit">
+          <image src="../../images/shop/icon.png" class="tops_icon" mode="widthFix" />
+          <text>特价商品</text></view>
+        <button>领红包 ></button>
+      </view>
+      <view class="info">
+        <view class="thumb">
+          <image />
+        </view>
+        <view class="detail">
+          <view class="name">法式芝士花生面包花生面包
+          </view>
+          <view class="price">
+            ￥12.00
+            <view class="price_del">
+              ￥15.00
+            </view>
+            <view class="time">
+              <view class="time_tips">
+                截止时间
+              </view>
+              <view class="time_box">
+                03.26 23：00
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="shop_goods__item">
+      <view class="info info2">
+        <view class="thumb">
+          <image />
+        </view>
+        <view class="detail">
+          <view class="name">法式芝士花生面包花生面包
+          </view>
+          <view class="price">
+            ￥12.00
+            <view class="price_del">
+              ￥15.00
+            </view>
+            <view class="time">
+              <view class="time_tips">
+                截止时间
+              </view>
+              <view class="time_box">
+                03.26 23：00
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

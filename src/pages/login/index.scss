@@ -1,0 +1,29 @@
+.login{
+	width: 750rpx;
+	// height: 100vh;
+	box-sizing: border-box;
+	background-color: #fff;
+	image{
+		width: 580rpx;
+		height: auto;
+		margin: 150rpx auto 40rpx;
+		display: block;
+		// margin: 150rpx auto 40rpx;
+	}
+	button{
+		background-color: #f12a5f;
+		color: #fff;
+		font-size: 32rpx;
+		height: 80rpx;
+		line-height: 80rpx;
+		border-radius: 40rpx;
+		width: 650rpx;
+		margin: 0 auto;
+		margin-bottom: 20rpx;
+	}
+	.tips{
+		font-size: 22rpx;
+		color: #999;
+		text-align: center;
+	}
+}

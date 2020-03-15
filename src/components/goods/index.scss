@@ -1,0 +1,79 @@
+.goods_item {
+	width: 350rpx;
+    background-color: #fff;
+    box-shadow: 0rpx 10rpx 10rpx rgba(0, 0 , 0 ,.1);
+    margin-bottom: 15rpx;
+    padding-bottom: 20rpx;
+	&__pic {
+		display: flex;
+		justify-content: center;
+		width: 350rpx;
+		height: 350rpx;
+		background-color: #efefef;
+		align-items: center;
+		overflow: hidden;
+
+		image {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__name {
+		color: #333;
+        font-size: 28rpx;
+        box-sizing: border-box;
+        padding: 10rpx 10rpx 10rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &__desc{
+        font-size: 20rpx;
+        color: #999;
+        height: 30rpx;
+        line-height: 30rpx;
+        padding: 0 10rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &__price {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 23rpx;
+        color: rgba(153, 153, 153, 1);
+        position: relative;
+        height: 60rpx;
+        .price_o{
+            margin-left: 10rpx;
+            font-size: 28rpx;
+            color: #f12b5f;
+            margin-right: 10rpx;
+        }
+        .price_del{
+            text-decoration: line-through;
+        }
+    }
+    .tools{
+        overflow: hidden;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 10rpx;
+        position: absolute;
+        line-height: normal;
+        image{
+            width: 38rpx;
+            height: 38rpx;
+            display: block;
+            margin-left: 22rpx;
+        }
+        &_collection{
+            width: 45rpx !important;
+            height: 45rpx !important;
+        }
+    }
+}

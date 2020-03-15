@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user/index",
+    "pages/goods/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "店铺",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#FF5E41",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "店铺",
+      "iconPath": "images/tab/index.png",
+      "selectedIconPath": "images/tab/index-on.png"
+    },
+    {
+      "pagePath": "pages/user/index",
+      "text": "我的",
+      "iconPath": "images/tab/my.png",
+      "selectedIconPath": "images/tab/my-on.png"
+    }]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "面包"
+    }
+  }
+}

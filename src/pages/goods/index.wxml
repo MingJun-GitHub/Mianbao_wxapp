@@ -1,0 +1,20 @@
+<view class="goods">
+  <view class="goods_swiper">
+    <swiper indicator-dots="{{false}}" autoplay="{{true}}">
+      <!-- <block  wx:key="*this"> -->
+        <swiper-item>
+          <view class="goods_swiper__item">
+            <image src="" />
+          </view>
+        </swiper-item>
+      <!-- </block> -->
+    </swiper>
+  </view>
+  <view class="goods_info">
+    
+  </view>
+  <view class="goods_detailt">商品详情</view>
+  <view class="goods_imglist">
+
+  </view>
+</view>

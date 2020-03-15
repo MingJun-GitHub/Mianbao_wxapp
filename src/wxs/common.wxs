@@ -1,0 +1,9 @@
+module.exports.getSkuMsg = function (str) {
+    if (str) {
+        return JSON.parse(str)
+    } else {
+        return ''
+    }
+}
+
+

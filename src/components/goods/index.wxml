@@ -1,0 +1,19 @@
+<view class="goods_item" bindtap="goGoods" data-item="{{data}}">
+  <view class="goods_item__pic">
+    <image src="{{data.thumb?data.thumb:'../../images/goods/default.png'}}" mode="widthFix" />
+  </view>
+  <view class="goods_item__name">
+    {{data.title}}
+  </view>
+  <view class="goods_item__desc">
+    {{data.productDescription || ''}}
+  </view>
+  <view class="goods_item__price">
+    <text class="price_o">￥{{data.price}}</text>
+    <text class="price_del">￥{{data.deleted}}</text>
+    <view class="tools">
+        <image class="tools_collection" data-item="{{data}}" catchtap="addCollection" src="../../images/tab/collection-on.png" mode="widthFix" />
+        <image class="tools_addcart" src="../../images/buy.png" mode="widthFix" />
+    </view>
+  </view>
+</view>

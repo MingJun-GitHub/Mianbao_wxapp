@@ -1,0 +1,23 @@
+// 全局
+$padding: 200rpx;
+button{
+	border: none;
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+	&::after{
+		display: none;
+	}
+}
+.phoneStyle{
+	padding-bottom: 60rpx;		
+}
+.container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: $padding 0;
+	box-sizing: border-box;
+}
