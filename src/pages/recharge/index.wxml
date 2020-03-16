@@ -1,4 +1,22 @@
 <view class="recharge">
+  <view class="recharge_money">
+    <image src="../../images/shop/money.png" mode="widthFix" /> 红包余额：<view class="price">￥26.00</view>
+  </view>
+  <view class="recharge_money">
+    可提现余额(余额)：<view class="price">￥26.00</view>
+    <view class="more">
+      资金明细
+    </view>
+  </view>
+
+  <view class="recharge_pay">
+    充值方式
+    <view class="wechat">
+      <image src="../../images/shop/wechat.png" mode="widthFix" />
+      微信
+    </view>
+  </view>
+
   <view class="recharge_item">
     <label for="">手机号</label>
     <input type="text" placeholder="请输入手机号码" />
@@ -6,11 +24,21 @@
   <view class="recharge_item2">
     <label for="">充值金额</label>
     <view>
-     <text class="yuan">￥</text> <input type="number" placeholder="" />
+      <text class="yuan">￥</text> <input type="number" placeholder="" />
     </view>
   </view>
+  <view class="recharge_tips">
+    提现到账时间预计2小时
+  </view>
+    
   <view class="recharge_btn">
     确定提交
   </view>
-    
+  <view class="recharge_btn">
+    确定提现
+  </view>
+  <view class="recharge_btn">
+    确定充值
+  </view>
+
 </view>

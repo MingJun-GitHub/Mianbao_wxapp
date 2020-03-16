@@ -1,0 +1,24 @@
+<view class="myMessage">
+  <view class="myMessage_item" wx:for="{{3}}">
+    <view class="myMessage_item__top">
+      <image src="../../images/empty.png" mode="widthFix" />
+      我的留言称呼
+      <view class="time">2020.03.11 23:12:03</view>
+    </view>
+    <view class="myMessage_item__content">
+      <view class="pic">
+        <image src="" mode="widthFix" />
+        <view class="gname">我的商品名</view>
+      </view>
+      <view class="msg">
+        <view class="tit">留言:</view>
+        <view class="content">老板我要两个这个面包，帮我预留，我下班去拿,我下 班去拿。请问我领的红包可以抵扣使用吗？</view>
+      </view>
+    </view>
+    <view class="myMessage_item__contact">
+        <view class="phone">
+          <image src="../../images/shop/phone.png" />1889947362</view>
+        <view class="copy">复制号码</view>
+      </view>
+  </view>
+</view>

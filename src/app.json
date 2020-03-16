@@ -9,7 +9,9 @@
     "pages/shopSet/index",
     "pages/login/index",
     "pages/recharge/index",
-    "pages/capital/index"
+    "pages/capital/index",
+    "pages/myMessage/index",
+    "pages/myGoods/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

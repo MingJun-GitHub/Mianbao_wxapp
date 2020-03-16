@@ -1,16 +1,8 @@
-<view class="recharge">
-  <view class="recharge_item">
-    <label for="">手机号</label>
-    <input type="text" placeholder="请输入手机号码" />
-  </view>
-  <view class="recharge_item2">
-    <label for="">充值金额</label>
-    <view>
-     <text class="yuan">￥</text> <input type="number" placeholder="" />
-    </view>
-  </view>
-  <view class="recharge_btn">
-    确定提交
-  </view>
+<view class="capital">
+  <view class="capital_item">
     
+  </view>
+  <!-- <view class="recharge_btn">
+    确定提交
+  </view> -->
 </view>
