@@ -4,48 +4,61 @@
     <view class="postGoods_upload__tit">
       今日特价商品
     </view>
-    <view class="postGoods_upload__box">
-      <image src="../../images/upload/upload.png" mode="widthFix" class="icon" />
-      <view>发布商品主题</view>
-      <!-- <image src="" mode="widthFix" class="uploadimg" /> -->
+    <view class="postGoods_upload__box" bindtap="uploadThumb">
+      <block wx:if="{{!thumb}}">
+        <image src="../../images/upload/upload.png" mode="widthFix" class="icon" />
+        <view>发布商品主题</view>
+      </block>
+      <image wx:else src="{{thumb}}" mode="widthFix" class="uploadimg" />
     </view>
   </view>
 
   <view class="postGoods_form">
     <view class="postGoods_form__item">
       <label for="">商品名称</label>
-      <input type="text" placeholder="请输入商品名称" />
+      <input type="text" value="{{productName}}" bindinput="inputInfo" data-tag="productName" placeholder="请输入商品名称" />
     </view>
     <view class="postGoods_form__item">
       <label for="">促销价</label>
-      <input type="text" placeholder="请输入促销价（单位元）" />
+      <input type="number" value="{{price}}" bindinput="inputInfo" data-tag="price" placeholder="请输入促销价（单位元）" />
     </view>
     <view class="postGoods_form__item">
       <label for="">划线价</label>
-      <input type="text" placeholder="请输入划线价（单位元）" />
+      <input type="number" value="{{deletePrice}}" bindinput="inputInfo" data-tag="deletePrice"
+        placeholder="请输入划线价（单位元）" />
     </view>
     <view class="postGoods_form__item">
       <label for="">库存</label>
-      <input type="text" placeholder="请输入库存" />
+      <input type="text" value="{{stockNum}}" bindinput="inputInfo" placeholder="请输入库存" data-tag="stockNum" />
       件
     </view>
     <view class="postGoods_form__item">
-      <label for="">截止日期</label>
-      <input type="text" placeholder="请选择" />
+      <label for="">截止时间</label>
+      <picker mode="date" value="{{date}}" start="2020-01-01" end="2050-01-01" bindchange="bindDateChange">
+        <view class="picker">
+          {{date || '请选择'}}
+        </view>
+      </picker>
+      <picker style="margin-left: 12rpx" wx:if="{{date}}" mode="time" value="{{time}}" start="00:00" end="00:59"
+        bindchange="bindTimeChange">
+        <view class="picker">
+          {{time || '请选择时间'}}
+        </view>
+      </picker>
     </view>
     <view class="postGoods_form__imglist">
       <label for="">上传详情图</label>
       <view class="imglist">
-        <view class="pic">
-          <image src="../../images/empty.png" mode="widthFix" />
+        <view class="pic" wx:for="{{productDetails}}" wx:key="index">
+          <image src="{{item.imgurl}}" mode="widthFix" />
         </view>
-        <view class="pic">
+        <view class="pic" bindtap="uploadList">
           <image src="../../images/upload/upload2.png" mode="widthFix" />
         </view>
       </view>
     </view>
   </view>
-  <view class="postGoods_footer">
-      发布商品
+  <view class="postGoods_footer" bindtap="saveGoods">
+    {{id?'编辑商品': '发布商品'}}
   </view>
 </view>

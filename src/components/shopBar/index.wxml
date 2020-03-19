@@ -1,18 +1,18 @@
 <view class="shopbar">
   <view class="shopbar_pic">
-    <image src="../../images/empty.png" mode="widthFix" />
+    <image src="{{shopInfo.shopLogo}}" mode="widthFix" />
   </view>
   <view class="shopbar_info">
-    <view class="name">美心西饼广州番禺店
+    <view class="name">{{shopInfo.shopName}}
       <image src="../../images/shop/code.png" />
     </view>
-    <view class="address">广州市白云去小北广州市白云市白云...</view>
-    <view class="wechat">微信号：<text>12355962</text>
+    <view class="address">{{shopInfo.shopAddress}}</view>
+    <view class="wechat">微信号：<text>{{shopInfo.userName}}</text>
       <image src="../../images/shop/copy.png" />
     </view>
   </view>
   <view class="shopbar_num">
     <view>总人数</view>
-    <view class="num">3659人</view>
+    <view class="num">{{10}}人</view>
   </view>
 </view>

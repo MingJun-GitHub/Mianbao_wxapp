@@ -1,7 +1,9 @@
-
 {
   "navigationBarTitleText": "店铺",
   "enablePullDownRefresh": true,
   "navigationBarTextStyle": "white",
-	"navigationBarBackgroundColor": "#FF4E00"
+  "navigationBarBackgroundColor": "#FF4E00",
+  "usingComponents": {
+    "shopbar": "../../components/shopbar/index"
+  }
 }
