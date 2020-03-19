@@ -1,20 +1,50 @@
-<view class="goods">
-  <view class="goods_swiper">
-    <swiper indicator-dots="{{false}}" autoplay="{{true}}">
-      <!-- <block  wx:key="*this"> -->
-        <swiper-item>
-          <view class="goods_swiper__item">
-            <image src="" />
-          </view>
-        </swiper-item>
-      <!-- </block> -->
-    </swiper>
+<view class="goods" wx:if="{{goodsDetails}}">
+  <!-- // "navigationStyle": "custom", -->
+  <!-- <navbar searchBar="{{false}}" bindback="goBack" bindhome="goHome" iconTheme="white"
+    background="{{backgroundColorTop}}" backgroundColorTop="{{backgroundColorTop}}" ext-class="index_bar"
+    back="{{true}}" home="{{true}}"></navbar> -->
+  <view class="goods_thumb">
+    <image src="{{goodsDetails.contentProduct.thumb}}" class="goods_thumb__img" mode="widthFix" />
+    <button class="goods_thumb__share">
+      <image src="../../images/goods/share.png" mode="widthFix" />分享好友
+    </button>
   </view>
   <view class="goods_info">
-    
+    <view class="goods_info__details">
+      <view class="name">
+        {{goodsDetails.contentProduct.productName}}
+      </view>
+      <view class="price">
+        <text class="yuan">￥</text>{{goodsDetails.contentProduct.price}}
+        <text class="price_del">原价￥{{goodsDetails.contentProduct.deletePrice}}</text>
+      </view>
+    </view>
+    <view class="goods_info__time">
+      活动截止时间: <text>{{goodsDetails.contentProduct.effectiveTime}}</text>
+    </view>
   </view>
-  <view class="goods_detailt">商品详情</view>
+  <!-- 商品详情 -->
+  <view class="goods_detailt">
+    <image src="../../images/goods/l.png" /> 商品详情
+    <image src="../../images/goods/r.png" />
+  </view>
   <view class="goods_imglist">
-
+    <image src="{{item.imgurl}}" wx:key="index" wx:for="{{goodsDetails.productDetail}}" mode="widthFix" />
+  </view>
+  <view class="goods_footer">
+    <view class="goods_footer__ly" bindtap="changeLeaveMsg">
+      <image src="../../images/goods/tongzhi.png" mode="widthFix" />通知老板预留</view>
+    <view class="goods_footer__hb">
+      <image src="../../images/goods/hongbao.png" mode="widthFix" />领红包</view>
+  </view>
+  <view class="goods_leavemsg" wx:if="{{showLeaveMsg}}">
+    <view class="goods_leavemsg__box">
+      <view class="tit">留言</view>
+      <textarea placeholder="请输入留言" value="{{leaveMsg}}" bindinput="inputLeaveMsg"></textarea>
+      <view class="btn" catchtap="saveMsg">确定</view>
+    </view>
+    <view class="goods_leavemsg__close" catchtap="changeLeaveMsg">
+      <image src="../../images/goods/close.png" mode="widthFix" />
+    </view>
   </view>
 </view>

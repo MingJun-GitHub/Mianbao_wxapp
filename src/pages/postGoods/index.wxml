@@ -9,10 +9,9 @@
         <image src="../../images/upload/upload.png" mode="widthFix" class="icon" />
         <view>发布商品主题</view>
       </block>
-      <image wx:else src="{{thumb}}" mode="widthFix" class="uploadimg" />
+      <image wx:else src="{{thumb}}" mode="aspectFill" class="thumb" />
     </view>
   </view>
-
   <view class="postGoods_form">
     <view class="postGoods_form__item">
       <label for="">商品名称</label>
@@ -29,8 +28,7 @@
     </view>
     <view class="postGoods_form__item">
       <label for="">库存</label>
-      <input type="text" value="{{stockNum}}" bindinput="inputInfo" placeholder="请输入库存" data-tag="stockNum" />
-      件
+      <input style="width: 160rpx;" type="number" value="{{stockNum}}" bindinput="inputInfo" placeholder="请输入库存(单位件)" data-tag="stockNum" />
     </view>
     <view class="postGoods_form__item">
       <label for="">截止时间</label>
@@ -50,7 +48,8 @@
       <label for="">上传详情图</label>
       <view class="imglist">
         <view class="pic" wx:for="{{productDetails}}" wx:key="index">
-          <image src="{{item.imgurl}}" mode="widthFix" />
+          <image src="{{item.imgurl}}" mode="widthFix" class="pic_img" />
+          <image src="../../images/delete.png" mode="widthFix" class="delete" bindtap="deletePic" data-index="{{index}}" />
         </view>
         <view class="pic" bindtap="uploadList">
           <image src="../../images/upload/upload2.png" mode="widthFix" />

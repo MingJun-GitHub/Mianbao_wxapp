@@ -1,0 +1,37 @@
+.shopCode {
+	width: 100vw;
+	height: 100vh;
+	// background: url(http://q77wqdcvr.bkt.clouddn.com/shopCode.png) no-repeat center;
+	background-size: auto 100%;
+	position: relative;
+
+	&_footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		bottom: 60rpx;
+		margin: 0 auto;
+		width: 100%;
+		left: 0;
+
+		button {
+			width: 246rpx;
+			height: 76rpx;
+			border-radius: 38rpx;
+			text-align: center;
+			line-height: 76rpx;
+			font-size: 30rpx;
+			font-weight: 500;
+			background-color: #fff;
+			color: #333;
+		}
+
+		&__share {
+			background-color: #E02433 !important;
+			color: #fff !important;
+			margin-left: 155rpx;
+		}
+
+	}
+}

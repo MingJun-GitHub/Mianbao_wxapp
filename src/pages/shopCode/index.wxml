@@ -1,0 +1,13 @@
+<view class="shopCode">
+  <!-- "navigationBarTitleText": "店铺二唯码",
+	"navigationBarTextStyle": "white",
+	"navigationBarBackgroundColor": "#FF4E00" -->
+   <!-- <view class="shopCode_pic">
+     <image src="" />
+   </view> -->
+   <canvas  canvas-id="shareFrends"></canvas>
+   <!-- <view class="shopCode_footer">
+     <button>保存图片</button>
+     <button class="shopCode_footer__share">分享店铺</button>
+   </view> -->
+</view>

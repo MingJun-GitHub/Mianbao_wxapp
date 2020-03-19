@@ -1,9 +1,12 @@
 const app = getApp()
 Page({
 	data: {
-		userInfo: null,
-		isLogin: false,
-		hasPhone: ''
+		id: '',
+		backgroundColorTop: 'transportant',
+		goodsDetails: '',
+		showLeaveMsg: false,
+		leavemsg: false,
+		leaveMsg: ''
 	},
 	goLogin() {
 		if (this.data.isLogin) {
@@ -13,63 +16,67 @@ Page({
 			url: '/pages/login/index'
 		})
 	},
-	goBindPhone() {
-		wx.navigateTo({
-			url: '/pages/login/index?opt=phone'
+	async getGoodsDetail(productId) {
+		const res = await wx.utils.Http.get({
+			url: `/productInfo/productDetail/${productId}`
 		})
-	},
-	goLoginCall(cb) {
-		if (this.data.isLogin) {
-			cb()
-		} else {
-			wx.navigateTo({
-				url: '/pages/login/index'
+		if (res.code == 0) {
+			this.setData({
+				goodsDetails: res.data
 			})
 		}
 	},
-	goAddressList() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/address/index'
-			})
+	goBack() {
+		const router = getCurrentPages()
+		if (router.length >= 2) {
+			wx.navigateBack()
+		} else {
+			this.goHome()
+		}
+	},
+	goHome() {
+		wx.switchTab({
+			url: '/pages/index/index'
 		})
 	},
-	goMyCollect() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/collection/index'
-			})
-		})	
-	},
-	goOrderList(e) {
-		const {
-			status
-		} = e.currentTarget.dataset
-
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: `/pages/order/index?status=${status}`
-			})
-		})
-
-	},
-	noOpen() {
-		wx.utils.Toast('暂无开通')
-	},
-	async init() {
-		wx.utils.showLoading()
-		await wx.utils.Login.initUserInfo()
+	changeLeaveMsg() {
 		this.setData({
-			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
+			showLeaveMsg: !this.data.showLeaveMsg
 		})
-		wx.utils.hideLoading()
 	},
-	onUnload() {
-		wx.utils.Bus.off('loginSuc')
+	saveMsg() {
+		
 	},
-	async onShow() {
-		await this.init()
+	inputLeaveMsg(e) {
+		const {
+			value 
+		} = e.detail
+		this.setData({
+			leaveMsg: value
+		})
+	},
+	// onPageScroll(e) {
+	// 	console.log('s', e)
+	// 	let {
+	// 		scrollTop
+	// 	} = e
+	// 	if (scrollTop >= 10) {
+	// 		this.setData({
+	// 			backgroundColorTop: '#FF4E00'
+	// 		})
+	// 	} else {
+	// 		this.setData({
+	// 			backgroundColorTop: 'transparent'
+	// 		})
+	// 	}
+	// },
+	async onLoad(query) {
+		this.setData({
+			id: query.id || ''
+		})
+		this.data.id && await this.getGoodsDetail(this.data.id)
+		wx.setNavigationBarTitle({
+			title: this.data.goodsDetails.contentProduct.productName || '商品详情'
+		})
 	}
 });

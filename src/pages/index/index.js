@@ -5,9 +5,12 @@ Page({
 		goodsList: [],
 		merId: 1
 	},
-	goSearch() {
+	goGoods(e) {
+		const {
+			id
+		} = e.currentTarget.dataset
 		wx.navigateTo({
-			url: '/pages/search/index',
+			url: `/pages/goods/index?id=${id}`,
 		});
 	},
 	async getShopGoodsList() {

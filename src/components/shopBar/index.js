@@ -9,14 +9,18 @@ Component({
 		shopInfo: ''
 	},
 	methods: {
-		goGoods(e) {
-			let {item} = e.currentTarget.dataset
-			wx.navigateTo({
-				url: `/pages/goods/index?id=${item.id}`
+		clipboardCode() {
+			wx.setClipboardData({
+				data: this.data.shopInfo.userName,
+				success: (res) => {
+					wx.utils.Toast('复制成功')
+				}
 			})
 		},
 		async addCollection(e) {
-			let {item} = e.currentTarget.dataset
+			let {
+				item
+			} = e.currentTarget.dataset
 			await wx.utils.addCollect(item.id)
 		},
 		async getShopInfo() {
@@ -24,7 +28,7 @@ Component({
 				url: '/merShop/findSaleMerByMerId/1'
 			})
 			console.log('店铺数据==>', res)
-			if (res.code==0) {
+			if (res.code == 0) {
 				this.setData({
 					shopInfo: res.data.data
 				})
@@ -34,7 +38,7 @@ Component({
 	lifetimes: {
 		async ready() {
 			// console.log('Ws', wx.utils)
-			await  this.getShopInfo()
+			await this.getShopInfo()
 		}
 	}
 });

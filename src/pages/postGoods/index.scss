@@ -25,7 +25,7 @@
 			flex-direction: column;
 			font-size: 24rpx;
 			color: #bbb;
-			border-radius: 5rpx;
+			border-radius: 15rpx;
 			overflow: hidden;
 			background-color: #EFEFEF;
 			.icon{
@@ -34,6 +34,10 @@
 				display: block;
 				margin-bottom: 30rpx;
 				
+			}
+			.thumb{
+			   width: 100%;
+			   display: block;
 			}
 		}
 	}
@@ -52,8 +56,9 @@
 				font-size: 26rpx;
 				color: #333;
 				font-weight: 500;
-				margin-right: 35rpx;
-				display: inline;
+				margin-right: 30rpx;
+				width: 130rpx;
+				text-align: right;
 			}
 			input{
 				border: none;
@@ -74,6 +79,7 @@
 			.imglist{
 				display: flex;
 				flex-wrap: wrap;
+				flex: 1;
 			}
 			.pic{
 				display: flex;
@@ -82,10 +88,21 @@
 				overflow: hidden;
 				width: 118rpx;
 				height: 118rpx;
-				margin-right: 20rpx;
-				image{
+				margin-right: 12rpx;
+				margin-bottom: 10rpx;
+				position: relative;
+				image.pic_img{
 					width: 118rpx;
 					height: auto;
+				}
+				.delete{
+					width: 36rpx;
+					height: 36rpx;
+					display: block;
+					position: absolute;
+					right: 0;
+					top: 0;
+					z-index: 2;
 				}
 			}
 		}

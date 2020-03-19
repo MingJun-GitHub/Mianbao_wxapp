@@ -8,7 +8,7 @@
     </view>
     <view class="address">{{shopInfo.shopAddress}}</view>
     <view class="wechat">微信号：<text>{{shopInfo.userName}}</text>
-      <image src="../../images/shop/copy.png" />
+      <image catchtap="clipboardCode" src="../../images/shop/copy.png" />
     </view>
   </view>
   <view class="shopbar_num">

@@ -11,7 +11,8 @@
     "pages/recharge/index",
     "pages/capital/index",
     "pages/myMessage/index",
-    "pages/myGoods/index"
+    "pages/myGoods/index",
+    "pages/shopCode/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -9,7 +9,7 @@
           <text>特价商品</text></view>
         <button>领红包 ></button>
       </view>
-      <view class="info {{index>0&&'info2'}}">
+      <view class="info {{index>0&&'info2'}}" bindtap="goGoods" data-id="{{item.id}}">
         <view class="thumb">
           <image src="{{item.thumb}}" mode="widthFix" />
         </view>
