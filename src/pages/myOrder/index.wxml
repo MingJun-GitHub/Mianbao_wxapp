@@ -1,0 +1,10 @@
+<view class="order">
+  <view class="order_tab">
+    <view class="order_tab__item {{orderStatus==0&& 'cur'}}" data-index="0" bindtap="changeTab">未处理</view>
+    <view class="order_tab__item {{orderStatus==1&& 'cur'}}" data-index="1" bindtap="changeTab">已处理</view>
+  </view>
+  <block wx:if="{{orderList && orderList.length}}">
+    <orderItem item="{{item}}" wx:key="index" wx:for="{{orderList}}"></orderItem>
+  </block>
+  <empty wx:else></empty>
+</view>

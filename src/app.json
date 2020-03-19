@@ -10,7 +10,8 @@
     "pages/login/index",
     "pages/recharge/index",
     "pages/capital/index",
-    "pages/myMessage/index",
+    "pages/myOrder/index",
+    "pages/orderList/index",
     "pages/myGoods/index"
   ],
   "window": {

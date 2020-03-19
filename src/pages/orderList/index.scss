@@ -1,0 +1,43 @@
+.order {
+	width: 750rpx;
+	min-height: 100vh;
+	background-color: #efefef;
+	&_tab{
+		height: 86rpx;
+		width: 100%;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		line-height: normal;
+		background-color: #fff;
+		margin-bottom: 16rpx;
+		&__item{
+			display: inline-block;
+			width: 50%;
+			font-size: 30rpx;
+			font-weight: bold;
+			color: #666666;
+			position: relative;
+			align-items: center;
+			text-align: center;
+		}
+		.cur{
+			color: #333 !important;
+			&::after{
+				display: block;
+				width: 64rpx;
+				height: 7rpx;
+				content: '';
+				display: block;
+				background-color: #E02433;
+				border-radius: 3.5rpx;
+				overflow: hidden;
+				position: absolute;
+				bottom: -10rpx;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+	}
+	
+}
