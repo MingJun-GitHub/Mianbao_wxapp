@@ -17,7 +17,7 @@ class Login {
 				} else {
 					const loginInifo = wx.getStorageSync('loginInfo')
 					if (loginInifo) {
-						this.token = loginInifo.token
+						this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sKwyAQRP9lnyOs95i_0XYD9pIE16SB0n-vFvoynDnMvOFWM0wwe4UhxiiM83OLJMUY0Akb8Jr0xeikJQzAe2pj5Rpm5oZ1vdMimMpBpctYYZJ2NFZ7tH4AOrcmHKq_KOuD-nHn32Gj8uz1RfnMC3y-AAAA__8.2Q7mVLloq_J43oLqlaCIjSwruvTHnws9m_3rKUslSyd6lmgrsQqW3-BGtF-PyQ5dl9tvCeN30nzqtxbW__8EEA'//loginInifo.token
 						this.sessionKey = loginInifo.sessionKey
 						await this.getUserInfo()
 						resolve(this.userInfo)

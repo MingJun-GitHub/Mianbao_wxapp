@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "客户订单",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#FF4E00",
+  "usingComponents": {
+    "orderItem": "../../components/orderItem/index",
+    "empty": "../../components/empty/index"
+  }
+}

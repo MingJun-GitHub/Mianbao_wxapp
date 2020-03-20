@@ -1,0 +1,34 @@
+<view class="order_item">
+  <view class="order_item__top">
+    <block wx:if="{{business}}">
+      <image src="{{item.userLogo || '../../images/empty.png'}}" mode="widthFix" /> {{item.nickName||'匿名用户'}}
+    </block>
+    <!-- 订单ID:{{item.orderId}} -->
+    <view class="time">{{item.createTime}}</view>
+  </view>
+  <view class="order_item__content">
+    <view class="pic">
+      <image src="{{item.thumb || '../../images/empty.png'}}" mode="widthFix" />
+      <view class="gname">{{item.productName}}</view>
+    </view>
+    <view class="msg">
+      <view class="tit">留言:</view>
+      <view class="content">{{item.msg}}</view>
+      <block wx:if="{{item.replymsg}}">
+        <view class="tit2">回复:</view>
+        <view class="content">{{item.replymsg}}</view>
+      </block>
+    </view>
+  </view>
+  <view class="order_item__contact">
+    <view class="phone">
+      <image src="../../images/shop/phone.png" />{{item.phone}}</view>
+    <view class="opt">
+      <view class="copy" bindtap="copyPhone" data-phone="{{item.phone}}">复制号码</view>
+      <block wx:if="{{business}}">
+        <view class="deal" wx:if="{{item.orderStatus==0}}" bindtap="dealOrder" data-item="{{item}}">立即处理</view>
+        <view class="isdeal" wx:if="{{item.orderStatus==1}}" bindtap="dealOrder" data-item="{{item}}">已处理</view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -18,6 +18,23 @@ Page({
 			url: '/pages/login/index?opt=phone'
 		})
 	},
+	goMyOrder() {
+		this.goLoginCall(() => {
+			wx.navigateTo({
+				url: '/pages/myOrder/index'
+			})
+		})
+	},
+	goPage(e) {
+		const {
+			name
+		} = e.currentTarget.dataset
+		this.goLoginCall(() => {
+			wx.navigateTo({
+				url: `/pages/${name}/index`
+			})
+		})
+	},
 	goLoginCall(cb) {
 		if (this.data.isLogin) {
 			cb()
@@ -26,20 +43,6 @@ Page({
 				url: '/pages/login/index'
 			})
 		}
-	},
-	goAddressList() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/address/index'
-			})
-		})
-	},
-	goMyCollect() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/collection/index'
-			})
-		})	
 	},
 	goOrderList(e) {
 		const {
@@ -51,7 +54,12 @@ Page({
 				url: `/pages/order/index?status=${status}`
 			})
 		})
-
+	},
+	async findUserInfo() {
+		const res = await wx.utils.Http.get({
+			url: '/myInfo/findUserInfo'
+		})
+		console.log('获取用户个人信息', res)
 	},
 	noOpen() {
 		wx.utils.Toast('暂无开通')
@@ -65,9 +73,6 @@ Page({
 			phone: wx.utils.Login.phone
 		})
 		wx.utils.hideLoading()
-	},
-	onUnload() {
-		wx.utils.Bus.off('loginSuc')
 	},
 	async onShow() {
 		await this.init()

@@ -10,14 +10,16 @@
     "pages/login/index",
     "pages/recharge/index",
     "pages/capital/index",
-    "pages/myMessage/index",
     "pages/myGoods/index",
-    "pages/shopCode/index"
+    "pages/shopCode/index",
+    "pages/myOrder/index",
+    "pages/orderList/index",
+    "pages/myGoods/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "店铺",
+    "navigationBarTitleText": "面包铺",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
