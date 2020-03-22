@@ -86,6 +86,7 @@
 			align-items: flex-end;
 			font-size: 20rpx;
 			flex-direction: column;
+
 			text {
 				font-size: 26rpx;
 			}
@@ -182,12 +183,14 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-end;
+
 		&__box {
 			background-color: #fff;
 			width: 678rpx;
 			margin: 0 auto;
 			border-radius: 20rpx;
 			padding-bottom: 20rpx;
+
 			.tit {
 				text-align: center;
 				font-size: 28rpx;
@@ -231,10 +234,77 @@
 			justify-content: center;
 			align-items: center;
 			margin: 25rpx auto 0;
+
 			image {
 				width: 48rpx;
 				height: 49rpx;
 				display: block;
+			}
+		}
+	}
+
+	&_hongbao {
+		position: fixed;
+		z-index: 20;
+		margin: 0 auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, .5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&__box {
+			display: block;
+			position: relative;
+			margin: 0 auto;
+			margin-top: -35%;
+
+			.close {
+				display: block;
+				position: absolute;
+				right: 5%;
+				top: 3%;
+				width: 60rpx;
+				z-index: 2;
+			}
+
+			.get, .look {
+				position: absolute;
+				width: 300rpx;
+				height: 60rpx;
+				background-color: transparent;
+				position: absolute;
+				bottom: 110rpx;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.noopen {
+				width: 655rpx;
+			}
+
+			.open {
+				width: 590rpx;
+			}
+
+			.price {
+				color: #EB4638;
+				font-size: 123rpx;
+				font-weight: 800;
+				position: absolute;
+				top: 21%;
+				left: 25%;
+				width: 200rpx;
+				// background-color:rgba(0, 0, 0, .5);
+				text-align: right;
+				padding-right: 20rpx;
+			}
+			.look{
+				bottom: 85rpx;
 			}
 		}
 	}

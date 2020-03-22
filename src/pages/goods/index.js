@@ -7,7 +7,10 @@ Page({
 		goodsDetails: '',
 		showLeaveMsg: false,
 		leavemsg: false,
-		leaveMsg: ''
+		leaveMsg: '',
+		money: 0,
+		showHongHao: false,
+		isGetHb: false
 	},
 	goLogin() {
 		if (this.data.isLogin) {
@@ -46,11 +49,11 @@ Page({
 		})
 	},
 	saveMsg() {
-		
+
 	},
 	inputLeaveMsg(e) {
 		const {
-			value 
+			value
 		} = e.detail
 		this.setData({
 			leaveMsg: value
@@ -62,18 +65,16 @@ Page({
 			wx.utils.Toast('请输入留言')
 		} else {
 			wx.utils.showLoading()
-			const res = await wx.utils.Http.post(
-				{
-					url: '/buyProduct/addProduct',
-					data: {
-						merId: this.data.merId,
-						msg: this.data.leaveMsg,
-						productId: this.data.id
-					}
+			const res = await wx.utils.Http.post({
+				url: '/buyProduct/addProduct',
+				data: {
+					merId: this.data.merId,
+					msg: this.data.leaveMsg,
+					productId: this.data.id
 				}
-			)
+			})
 			wx.utils.hideLoading()
-			if (res.code ==0) {
+			if (res.code == 0) {
 				wx.utils.Toast('已经留言给老板了')
 				this.setData({
 					leaveMsg: ''
@@ -83,6 +84,37 @@ Page({
 				wx.utils.Toast('提交失败，请稍后重试')
 			}
 			console.log('res', res)
+		}
+	},
+	// 领红包
+	async getHongBao() {
+		wx.utils.showLoading()
+		const res = await wx.utils.Http.get({
+			url: `/buyProduct/getRedBag/${this.data.merId}`
+		})
+		console.log('领取红包状态', res)
+		wx.utils.hideLoading()
+		if (res.code == 0) {
+			this.setData({
+				isGetHb: true
+			})
+		} else {
+			wx.utils.Toast('领取失败，新重新领取~')
+		}
+	},
+	changeHongBao() {
+		this.setData({
+			showHongHao: !this.data.showHongHao
+		})
+	},
+	async getHongBaoMoney() {
+		const res = await wx.utils.Http.get({
+			url: `/merShop/findSaleMerByMerId/${this.data.merId}`
+		})
+		if (res.code ==0) {
+			this.setData({
+				money: res.data.saleMer.redBagAmount
+			})
 		}
 	},
 	// onPageScroll(e) {
@@ -106,6 +138,7 @@ Page({
 			merId: query.merId || 1
 		})
 		this.data.id && await this.getGoodsDetail(this.data.id)
+		this.data.merId && await this.getHongBaoMoney()
 		wx.setNavigationBarTitle({
 			title: this.data.goodsDetails.contentProduct.productName || '商品详情'
 		})

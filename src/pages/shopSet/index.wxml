@@ -1,8 +1,8 @@
 <view class="shopSetup">
-  <shopbar wx:if="{{false}}"></shopbar>
+  <shopbar wx:if="{{true}}" openEdit></shopbar>
   <view wx:else class="shopSetup_start">
     店主，开店请先设置您的店铺信息
-    <button>去设置</button>
+    <button bindtap="goSetup">去设置</button>
   </view>
 
   <view class="shopSetup_hongbao">
@@ -32,5 +32,4 @@
       </view>
     </view>
   </view>
-
 </view>

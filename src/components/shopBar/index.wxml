@@ -9,7 +9,7 @@
     <view class="address">{{saleMer.shopAddress}}</view>
     <view class="wechat">微信号：<text>{{saleMer.userName}}</text>
       <image catchtap="clipboardCode" src="../../images/shop/copy.png" />
-      <view class="vist" wx:if="{{vistCount==''}}">
+      <view class="vist" wx:if="{{vistCount!==''}}">
       <text>总人数</text>
       <text class="num">{{vistCount}}人</text>
     </view>

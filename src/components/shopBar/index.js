@@ -43,17 +43,10 @@ Component({
 			})
 			console.log('店铺数据==>', res)
 			if (res.code == 0) {
-				if (this.data.merId) {
-					this.setData({
-						saleMer: res.data.saleMer,
-						vistCount: res.data.vistCount
-					})
-				} else {
-					this.setData({
-						saleMer: res.data
-					})
-				}
-				
+				this.setData({
+					saleMer: res.data.saleMer,
+					vistCount: res.data.vistCount
+				})				
 			}
 		}
 	},

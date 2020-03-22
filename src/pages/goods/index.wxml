@@ -5,7 +5,7 @@
     back="{{true}}" home="{{true}}"></navbar> -->
   <view class="goods_thumb">
     <image src="{{goodsDetails.contentProduct.thumb}}" class="goods_thumb__img" mode="widthFix" />
-    <button class="goods_thumb__share">
+    <button class="goods_thumb__share" open-type="share">
       <image src="../../images/goods/share.png" mode="widthFix" />分享好友
     </button>
   </view>
@@ -34,7 +34,7 @@
   <view class="goods_footer">
     <view class="goods_footer__ly" bindtap="changeLeaveMsg">
       <image src="../../images/goods/tongzhi.png" mode="widthFix" />通知老板预留</view>
-    <view class="goods_footer__hb">
+    <view class="goods_footer__hb" bindtap="changeHongBao">
       <image src="../../images/goods/hongbao.png" mode="widthFix" />领红包</view>
   </view>
   <view class="goods_leavemsg" wx:if="{{showLeaveMsg}}">
@@ -45,6 +45,20 @@
     </view>
     <view class="goods_leavemsg__close" catchtap="changeLeaveMsg">
       <image src="../../images/goods/close.png" mode="widthFix" />
+    </view>
+  </view>
+  <view class="goods_hongbao" wx:if="{{showHongHao}}">
+    <view class="goods_hongbao__box">
+      <image bindtap="changeHongBao" src="../../images/goods/delete.png" class="close" mode="widthFix" />
+      <block wx:if="{{!isGetHb}}">
+        <image src="../../images/goods/hb_noopen.png" class="noopen" mode="widthFix" />
+        <view class="get" bindtap="getHongBao"></view>
+      </block>
+      <block wx:else>
+        <image src="../../images/goods/hb_open.png" class="open" mode="widthFix" />
+        <view class="price">{{money}}</view>
+        <!-- <view class="look" bindtap=""></view> -->
+      </block>
     </view>
   </view>
 </view>
