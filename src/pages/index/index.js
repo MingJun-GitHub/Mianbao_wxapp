@@ -3,7 +3,7 @@ const app = getApp(); //  eslint-disable-line no-undef
 Page({
 	data: {
 		goodsList: [],
-		merId: 1
+		merId: ''
 	},
 	goGoods(e) {
 		const {
@@ -24,7 +24,10 @@ Page({
 			})
 		}
 	},
-	async onLoad() {
+	async onLoad(query) {
+		this.setData({
+			merId: query.merId
+		})
 		this.getShopGoodsList()
 	}
 });

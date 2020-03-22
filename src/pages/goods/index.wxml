@@ -20,7 +20,7 @@
       </view>
     </view>
     <view class="goods_info__time">
-      活动截止时间: <text>{{goodsDetails.contentProduct.effectiveTime}}</text>
+      <view>活动截止时间: </view><text>{{goodsDetails.contentProduct.effectiveTime}}</text>
     </view>
   </view>
   <!-- 商品详情 -->

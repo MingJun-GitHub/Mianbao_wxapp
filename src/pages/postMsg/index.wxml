@@ -1,0 +1,36 @@
+<view class="postMsg">
+  <textarea value="" placeholder="请输入短信内容" class="postMsg_area">
+ </textarea>
+  <view class="postMsg_tips">短信费0.1元/条</view>
+  <view class="postMsg_khlist">
+    <view class="postMsg_khlist__tit">
+      我的客户
+    </view>
+    <view class="postMsg_khlist__item" wx:for="{{20}}" wx:key="index">
+      <view class="radio">
+        <radio class="radio" checked="{{true}}" color="#FF4E00">
+        </radio>
+      </view>
+      <view class="pic">
+        <image src="../../images/empty.png" mode="widthFix" />
+      </view>
+      <view class="info">
+        <view class="nickname">
+          小可爱
+        </view>
+        <view class="time">
+          20220-06-23 15:59:31
+        </view>
+      </view>
+      <view class="orderid">
+        12345678954
+      </view>
+    </view>
+  </view>
+  <view class="postMsg_footer">
+      <radio class="radio" checked="{{true}}" color="#FF4E00">
+          <view>全选</view>
+      </radio>
+      <view class="postMsg_footer__btn">发送短信</view>
+  </view>
+</view>

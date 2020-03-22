@@ -1,75 +1,43 @@
 const app = getApp()
+// import behaviors from '../../behaviors/lazyImg'
+
 Page({
+	// behaviors: [behaviors],
 	data: {
-		userInfo: null,
-		isLogin: false,
-		hasPhone: ''
+		goodsList: []
 	},
-	goLogin() {
-		if (this.data.isLogin) {
-			return
-		}
-		wx.navigateTo({
-			url: '/pages/login/index'
+	async getMyGoods() {
+		const res = await wx.utils.Http.get({
+			url: '/productInfo/listProduct/1'
 		})
-	},
-	goBindPhone() {
-		wx.navigateTo({
-			url: '/pages/login/index?opt=phone'
-		})
-	},
-	goLoginCall(cb) {
-		if (this.data.isLogin) {
-			cb()
-		} else {
-			wx.navigateTo({
-				url: '/pages/login/index'
+		if (res.code ==0 ) {
+			this.setData({
+				goodsList: res.data
 			})
 		}
 	},
-	goAddressList() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/address/index'
-			})
+	goOrderList() {
+		wx.navigateTo({
+			url: `/pages/orderList/index`
 		})
 	},
-	goMyCollect() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/collection/index'
-			})
-		})	
-	},
-	goOrderList(e) {
+	postMsg(e) {
 		const {
-			status
+			id
 		} = e.currentTarget.dataset
-
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: `/pages/order/index?status=${status}`
-			})
+		wx.navigateTo({
+			url: `/pages/postMsg/index?id=${id}`
 		})
-
 	},
-	noOpen() {
-		wx.utils.Toast('暂无开通')
-	},
-	async init() {
-		wx.utils.showLoading()
-		await wx.utils.Login.initUserInfo()
-		this.setData({
-			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
+	goEditGoods(e) {	
+		const {
+			id
+		} = e.currentTarget.dataset
+		wx.navigateTo({
+			url: `/pages/postGoods/index?id=${id}`
 		})
-		wx.utils.hideLoading()
 	},
-	onUnload() {
-		wx.utils.Bus.off('loginSuc')
-	},
-	async onShow() {
-		// await this.init()
+	async onLoad(query) {
+		this.getMyGoods()
 	}
 });

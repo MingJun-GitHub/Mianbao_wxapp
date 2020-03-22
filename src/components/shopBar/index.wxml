@@ -1,18 +1,29 @@
 <view class="shopbar">
   <view class="shopbar_pic">
-    <image src="{{shopInfo.shopLogo}}" mode="widthFix" />
+    <image src="{{saleMer.shopLogo}}" mode="widthFix" />
   </view>
   <view class="shopbar_info">
-    <view class="name">{{shopInfo.shopName}}
-      <image src="../../images/shop/code.png" />
+    <view class="name">{{saleMer.shopName}}
+      <image src="../../images/shop/code.png" catchtap="goShopCode"/>
     </view>
-    <view class="address">{{shopInfo.shopAddress}}</view>
-    <view class="wechat">微信号：<text>{{shopInfo.userName}}</text>
+    <view class="address">{{saleMer.shopAddress}}</view>
+    <view class="wechat">微信号：<text>{{saleMer.userName}}</text>
       <image catchtap="clipboardCode" src="../../images/shop/copy.png" />
+      <view class="vist" wx:if="{{vistCount==''}}">
+      <text>总人数</text>
+      <text class="num">{{vistCount}}人</text>
+    </view>
     </view>
   </view>
-  <view class="shopbar_num">
-    <view>总人数</view>
-    <view class="num">{{10}}人</view>
+  <view class="shopbar_other">
+    <view wx:if="{{openEdit}}" class="shopbar_other__setup">
+      <image src="../../images/shop/setup.png" mode="widthFix" />
+      <view>设置</view>
+    </view>
+    <view wx:if="{{openShare}}" class="shopbar_other__share">
+      <button open-type="share"></button>
+      <image src="../../images/shop/share.png" mode="widthFix" />
+      <view>分享</view>
+    </view>
   </view>
 </view>

@@ -1,0 +1,121 @@
+.myShop {
+	width: 750rpx;
+	min-height: 100vh;
+	background-color: #efefef;
+
+	&_hongbao {
+		margin: 16rpx auto;
+		height: 190rpx;
+		width: 100%;
+		background-color: #fff;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: center;
+
+		&__tit {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			font-weight: 500;
+			font-size: 28rpx;
+			color: #666;
+
+			image {
+				margin-left: 40rpx;
+				width: 36rpx;
+				height: 36rpx;
+				display: block;
+				margin-right: 16rpx;
+			}
+		}
+
+		&__price {
+			margin-top: 10rpx;
+			padding-left: 40rpx;
+			font-size: 50rpx;
+			color: #222;
+			font-weight: 500;
+			position: relative;
+			width: 100%;
+			box-sizing: border-box;
+
+			.recharge {
+				width: 120rpx;
+				height: 50rpx;
+				border: 2rpx solid #FF0000;
+				border-radius: 25rpx;
+				color: #FF0000;
+				font-size: 28rpx;
+				font-weight: 500;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: 40rpx;
+				display: flex;
+				justify-content: center;
+				line-height: normal;
+				align-items: center;
+			}
+		}
+	}
+
+	&_menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 195rpx;
+		background-color: #fff;
+
+		&__item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			flex: 1;
+			color: #666;
+			font-size: 26rpx;
+			font-weight: 500;
+
+			image {
+				width: 50rpx;
+				height: auto;
+				display: block;
+				margin-bottom: 20rpx;
+			}
+		}
+	}
+
+	&_code {
+		background-color: #fff;
+		margin-top: 16rpx;
+		padding-bottom: 35rpx;
+		&__tit {
+			font-size: 28rpx;
+			color: #333;
+			font-weight: bold;
+			text-align: center;
+			padding-top: 35rpx;
+		}
+
+		image {
+			width: 270rpx;
+			height: auto;
+			display: block;
+			margin: 60rpx auto;
+		}
+
+		&__btn {
+			margin: 0 auto;
+			width: 492rpx;
+			height: 72rpx;
+			background: #E02433;
+			border-radius: 36rpx;
+			color: #fff;
+			font-size: 28rpx;
+			font-weight: bold;
+			text-align: center;
+			line-height: 72rpx;
+		}
+	}
+}

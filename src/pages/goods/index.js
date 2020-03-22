@@ -2,6 +2,7 @@ const app = getApp()
 Page({
 	data: {
 		id: '',
+		merId: '',
 		backgroundColorTop: 'transportant',
 		goodsDetails: '',
 		showLeaveMsg: false,
@@ -55,6 +56,35 @@ Page({
 			leaveMsg: value
 		})
 	},
+	async saveMsg(e) {
+		console.log('留言', )
+		if (!this.data.leaveMsg) {
+			wx.utils.Toast('请输入留言')
+		} else {
+			wx.utils.showLoading()
+			const res = await wx.utils.Http.post(
+				{
+					url: '/buyProduct/addProduct',
+					data: {
+						merId: this.data.merId,
+						msg: this.data.leaveMsg,
+						productId: this.data.id
+					}
+				}
+			)
+			wx.utils.hideLoading()
+			if (res.code ==0) {
+				wx.utils.Toast('已经留言给老板了')
+				this.setData({
+					leaveMsg: ''
+				})
+				this.changeLeaveMsg()
+			} else {
+				wx.utils.Toast('提交失败，请稍后重试')
+			}
+			console.log('res', res)
+		}
+	},
 	// onPageScroll(e) {
 	// 	console.log('s', e)
 	// 	let {
@@ -72,7 +102,8 @@ Page({
 	// },
 	async onLoad(query) {
 		this.setData({
-			id: query.id || ''
+			id: query.id || '',
+			merId: query.merId || 1
 		})
 		this.data.id && await this.getGoodsDetail(this.data.id)
 		wx.setNavigationBarTitle({

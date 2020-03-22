@@ -10,7 +10,7 @@
       <!-- <view class="user_info__bindphone" wx:if="{{isLogin && !phone }}" bindtap="goBindPhone"><image src="../../images/mobile.png" mode="widthFix"/>绑定手机号</view> -->
       <view class="hongbao">
         <image src="../../images/user/hongbao.png" mode="widthFix" />
-        <view bindtap="goHongBao">红包记录</view>
+        <view bindtap="goPage" data-name="redPacket" data-login="{{true}}">红包记录</view>
       </view>
     </view>
     <view class="user_money">
@@ -20,33 +20,35 @@
           <view class="price_tit">金额:</view>
           <view class="price_num">￥{{userInfo.balance}}</view>
         </view>
-        <button class="btn btntx" bindtap="goPage" data-type="recharge">提现</button>
-        <button class="btn btnhf" bindtap="goPage" data-type="recharge">充话费</button>
+        <button class="btn btntx" bindtap="goPage" data-name="recharge" data-params="option=0&money={{userInfo.balance}}">提现</button>
+        <button class="btn btnhf" bindtap="goPage" data-name="recharge" data-params="option=2&money={{userInfo.balance}}">充话费</button>
       </view>
     </view>
   </view>
   <view class="user_myshop">
-
     <view class="user_myshop__top">
       <image class="myshop" src="../../images/user/dianpu.png" mode="widthFix" />
       我的店铺
-      <image class="righticon" src="../../images/user/right.png" mode="widthFix" />
+      <image class="righticon" wx:if="{{merStatus==2 && shopInfo.shopName}}" bindtap="goPage" data-name="myShop" data-login="{{true}}" src="../../images/user/right.png" mode="widthFix" />
     </view>
-    <view class="user_myshop__content">
+    <view wx:if="{{merStatus==0}}" class="user_myshop__apply" bindtap="applyShop">申请店铺</view>
+    <view wx:if="{{merStatus==1}}" class="user_myshop__status">申请店铺审核中...</view>
+    <view wx:if="{{merStatus==2 && shopInfo && shopInfo.shopName}}" class="user_myshop__content" bindtap="goPage" data-name="myShop" data-login="{{true}}">
       <view class="pic">
-        <image src="../../images/empty.png" mode="widthFix" />
+        <image src="{{shopInfo.shopLogo}}" mode="widthFix" />
       </view>
       <view class="info">
-        <view class="title">美心西饼天河店</view>
+        <view class="title">{{shopInfo.shopName}}</view>
         <view class="address">
-          <image src="../../images/user/address.png" mode="widthFix" />广州市天河区群线路群贤酒店旁</view>
+          <image src="../../images/user/address.png" mode="widthFix" />{{shopInfo.shopAddress}}</view>
       </view>
     </view>
+    <view wx:if="{{merStatus==2 && (!shopInfo || !shopInfo.shopName)}}" class="user_myshop__apply" bindtap="goPage" data-name="shopSet">填写店铺资料</view>
   </view>
 
   <view class="user_server">
     <view class="user_server__tit">我的服务</view>
-    <view class="user_server__item" bindtap="goMyOrder" data-name="myOrder">
+    <view class="user_server__item" bindtap="goPage" data-name="myOrder">
       <image class="icon" src="../../images/user/msg.png" mode="widthFix" />
       我的订单
      <image class="righticon" src="../../images/user/right.png" mode="widthFix" />

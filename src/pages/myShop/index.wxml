@@ -1,0 +1,44 @@
+<view class="myShop">
+  <shopbar isEdit="{{true}}"></shopbar>
+  <view class="myShop_hongbao">
+    <view class="myShop_hongbao__tit">
+      <image src="../../images/myshop/money.png" mode="widthFix" />红包金额</view>
+    <view class="myShop_hongbao__price" bindtap="goPage" data-name="recharge" data-params="{{'option=1&money='+shopInfo.balance}}">￥{{shopInfo.balance}} <view class="recharge">
+        充值
+      </view>
+    </view>
+  </view>
+  <view class="myShop_menu">
+    <view class="myShop_menu__item" bindtap="goPage" data-name="orderList" >
+      <image src="../../images/myshop/1.png" mode="widthFix" />
+      <view>
+        客户订单
+      </view>
+    </view>
+    <view class="myShop_menu__item" bindtap="goPage" data-name="orderList" >
+      <image src="../../images/myshop/2.png" mode="widthFix" />
+      <view>
+        我的客户
+      </view>
+    </view>
+    <view class="myShop_menu__item" bindtap="goPage" data-name="clockUser" >
+      <image src="../../images/myshop/3.png" mode="widthFix" />
+      <view>
+        打卡客户
+      </view>
+    </view>
+    <view class="myShop_menu__item" bindtap="goPage" data-name="myGoods">
+      <image src="../../images/myshop/4.png" mode="widthFix" />
+      <view>
+        商品管理
+      </view>
+    </view>
+  </view>
+  <view class="myShop_code">
+    <view class="myShop_code__tit">店铺二维码</view>
+    <image src="../../images/empty.png" mode="widthFix" />
+    <view class="myShop_code__btn">
+      生成二维码名片
+    </view>
+  </view>
+</view>

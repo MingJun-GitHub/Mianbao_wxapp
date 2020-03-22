@@ -14,7 +14,10 @@
     "pages/shopCode/index",
     "pages/myOrder/index",
     "pages/orderList/index",
-    "pages/myGoods/index"
+    "pages/myShop/index",
+    "pages/redPacket/index",
+    "pages/postMsg/index",
+    "pages/clockUser/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

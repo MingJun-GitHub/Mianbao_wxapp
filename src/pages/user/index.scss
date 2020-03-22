@@ -170,7 +170,23 @@
 				margin-right: 27rpx;
 			}
 		}
-
+		&__apply{
+			color: #FF8A00;
+			font-size: 24rpx;
+			width: 210rpx;
+			height: 62rpx;
+			border-radius: 10rpx;
+			text-align: center;
+			line-height: 62rpx;
+			margin: 55rpx auto 0;
+			border: 2rpx solid #FF8A00;
+		}
+		&__status{
+			text-align: center;
+			margin: 65rpx auto 0;
+			color: #666;
+			font-size: 24rpx;
+		}
 		&__content {
 			display: flex;
 			margin-top: 35rpx;

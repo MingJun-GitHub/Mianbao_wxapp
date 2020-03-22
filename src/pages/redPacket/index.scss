@@ -1,0 +1,158 @@
+.redPacket {
+	width: 750rpx;
+	height: 100vh;
+	position: relative;
+	background: url(http://q77wqdcvr.bkt.clouddn.com/redpacket_bg_big.png) no-repeat center;
+	background-size: auto 100%;
+	box-sizing: border-box;
+	padding-top: 13vh;
+
+	&_info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		image {
+			width: 140rpx;
+			height: 140rpx;
+			margin: 0 auto;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+		&__nickname {
+			font-size: 30rpx;
+			color: #F2CFA5;
+			font-weight: 500;
+			margin: 25rpx auto 40rpx;
+		}
+
+		&__total {
+			font-size: 24rpx;
+			color: #AE1111;
+		}
+
+		&__money {
+			margin-top: 25rpx;
+			font-size: 90rpx;
+			color: #860202;
+			font-weight: 500;
+			line-height: 90rpx;
+
+			text {
+				font-size: 30rpx;
+				color: #F2CFA5;
+				line-height: .2;
+				margin-left: 10rpx;
+			}
+		}
+	}
+
+	&_content {
+		&__tit {
+			padding-left: 20rpx;
+			padding-bottom: 16rpx;
+			margin-top: 60rpx;
+			display: flex;
+			align-items: center;
+			font-size: 26rpx;
+			font-weight: 500;
+			color: #F3E0CA;
+
+			image {
+				width: 17rpx;
+				height: 21rpx;
+				display: block;
+				margin-right: 10rpx;
+			}
+
+		}
+
+		&__list {
+			margin: 0 auto;
+			width: 730rpx;
+			height: 663rpx;
+			background: url(http://q77wqdcvr.bkt.clouddn.com/redpacket_bg__content.png) no-repeat center/contain;
+			box-sizing: border-box;
+			padding: 20rpx 0;
+			.item {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: normal;
+				height: 178rpx;
+				border-bottom: 1rpx solid #EAD4BB;
+				position: relative;
+				margin: 0 30rpx;
+				// width: 100%;
+				position: relative;
+				.pic {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					overflow: hidden;
+					width: 105rpx;
+					height: 105rpx;
+					border-radius: 8rpx;
+
+					image {
+						width: 100%;
+						height: auto;
+					}
+				}
+
+				.desc {
+					height: 105rpx;
+					padding: 10rpx 20rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+					flex-direction: column;
+					flex:1;
+					.name {
+						color: #333333;
+						font-size: 28rpx;
+						font-weight: 500;
+					}
+
+					.address {
+						font-size: 24rpx;
+						color: #666;
+					}
+					.code{
+						color: #F55656;
+						font-size: 24rpx;
+						display: flex;
+						align-items: center;
+						line-height: normal;
+						image{
+							width: 22rpx;
+							height: 22rpx;
+							display: block;
+							margin-left: 12rpx;
+						}
+					}
+				}
+				.other{
+					position: absolute;
+					height: 105rpx;
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
+					align-items: flex-end;
+					right: 0;
+					.price{
+						color: #F24643;
+						font-size: 24rpx;
+					}
+					.time{
+					
+						font-size: 20rpx;
+						color: #666666;
+					}
+				}
+			}
+		}
+	}
+}

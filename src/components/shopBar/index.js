@@ -1,17 +1,31 @@
 Component({
 	properties: {
-		data: {
-			type: Object,
-			value: {},
+		openShare: {
+			type: Boolean,
+			value: false
+		},
+		openEdit: {
+			type: Boolean,
+			value: false
+		},
+		merId: {
+			type: String,
+			value: ''
 		}
 	},
 	data: {
-		shopInfo: ''
+		saleMer: '',
+		vistCount: ''
 	},
 	methods: {
+		goShopCode() {
+			wx.navigateTo({
+				url: '/pages/shopCode/index'
+			})
+		},
 		clipboardCode() {
 			wx.setClipboardData({
-				data: this.data.shopInfo.userName,
+				data: this.data.saleMer.userName,
 				success: (res) => {
 					wx.utils.Toast('复制成功')
 				}
@@ -25,19 +39,27 @@ Component({
 		},
 		async getShopInfo() {
 			const res = await wx.utils.Http.get({
-				url: '/merShop/findSaleMerByMerId/1'
+				url: this.data.merId?`/merShop/findSaleMerByMerId/${this.data.merId}`:`/merShop/findSaleMer`
 			})
 			console.log('店铺数据==>', res)
 			if (res.code == 0) {
-				this.setData({
-					shopInfo: res.data.data
-				})
+				if (this.data.merId) {
+					this.setData({
+						saleMer: res.data.saleMer,
+						vistCount: res.data.vistCount
+					})
+				} else {
+					this.setData({
+						saleMer: res.data
+					})
+				}
+				
 			}
 		}
 	},
 	lifetimes: {
 		async ready() {
-			// console.log('Ws', wx.utils)
+			console.log('this.data', this.data.merId)
 			await this.getShopInfo()
 		}
 	}

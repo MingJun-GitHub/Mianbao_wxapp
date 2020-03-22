@@ -1,27 +1,27 @@
 <view class="myGoods">
-  <view class="myGoods_item" wx:for="{{3}}">
+  <view class="myGoods_item" wx:for="{{goodsList}}" wx:key="index">
     <view class="myGoods_item__top">
-      <view class="time">2020.03.11 23:12:03</view>
-      <view class="more">查看客户下单
+      <view class="time">{{item.createTime}}</view>
+      <view class="more" bindtap="goOrderList">查看客户下单
       </view>
     </view>
     <view class="myGoods_item__content">
       <view class="pic">
-        <image src="" mode="widthFix" />
+        <image src="{{item.thumb}}" mode="widthFix" />
       </view>
       <view class="info">
-        <image class="edit" src="../../images/shop/edit.png" mode="widthFix" />
+        <image class="edit" src="../../images/shop/edit.png" bindtap="goEditGoods" data-id="{{item.id}}" mode="widthFix" />
         <view class="name">
-          我是面包名称面包名称面包名称面包名称
+          {{item.productName}}
         </view>
-        <view class="price">￥12.00<view class="price_del">￥16.00</view>
-          <view class="btn">发送短信</view>
+        <view class="price">￥{{item.price}}<view class="price_del">￥{{item.deletePrice}}</view>
+          <view class="btn" bindtap="postMsg">发送短信</view>
         </view>
       </view>
     </view>
   </view>
   <view class="myGoods_footer">
-    <view class="myGoods_footer__btn">发布商品</view>
+    <view class="myGoods_footer__btn" bindtap="goEditGoods" data-id="{{item.id}}">发布商品</view>
   </view>
     
 </view>

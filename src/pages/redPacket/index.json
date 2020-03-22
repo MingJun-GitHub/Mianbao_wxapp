@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "红包记录",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#FF4E00",
+  "usingComponents": {
+    "navbar": "../../components/navbar/index"
+  }
+}

@@ -1,5 +1,5 @@
 <view class="shop">
-  <shopbar></shopbar>
+  <shopbar merId="{{merId}}" openShare="{{true}}"></shopbar>
   <view class="shop_goods">
     <view class="shop_goods__item" wx:for="{{goodsList}}" wx:key="index">
       <view class="tops" wx:if="{{index==0}}">

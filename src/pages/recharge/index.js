@@ -1,75 +1,30 @@
 const app = getApp()
+const title = ['提现', '充值', '话费充值']
 Page({
 	data: {
 		userInfo: null,
-		isLogin: false,
-		hasPhone: ''
+		money: 0,
+		option: 0 // 0-提现， 1-充值  2-话费充值
 	},
-	goLogin() {
-		if (this.data.isLogin) {
-			return
-		}
-		wx.navigateTo({
-			url: '/pages/login/index'
-		})
+	// 充值话费
+	phoneCharge() {
+
 	},
-	goBindPhone() {
-		wx.navigateTo({
-			url: '/pages/login/index?opt=phone'
-		})
-	},
-	goLoginCall(cb) {
-		if (this.data.isLogin) {
-			cb()
-		} else {
-			wx.navigateTo({
-				url: '/pages/login/index'
-			})
-		}
-	},
-	goAddressList() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/address/index'
-			})
-		})
-	},
-	goMyCollect() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/collection/index'
-			})
-		})	
-	},
-	goOrderList(e) {
+	inputValue(e) {
 		const {
-			status
-		} = e.currentTarget.dataset
-
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: `/pages/order/index?status=${status}`
-			})
-		})
-
-	},
-	noOpen() {
-		wx.utils.Toast('暂无开通')
-	},
-	async init() {
-		wx.utils.showLoading()
-		await wx.utils.Login.initUserInfo()
+			value
+		} = e.detail
 		this.setData({
-			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
+			
 		})
-		wx.utils.hideLoading()
 	},
-	onUnload() {
-		wx.utils.Bus.off('loginSuc')
-	},
-	async onShow() {
-		// await this.init()
+	onLoad(query) {
+		this.setData({
+			money: parseInt(query.money || 0),
+			option: parseInt(query.option || 0)
+		})
+		wx.setNavigationBarTitle({
+			title: title[this.data.option]
+		})
 	}
 });
