@@ -1,10 +1,9 @@
-<view class="shopSetup">
-  <shopbar wx:if="{{true}}" openEdit></shopbar>
-  <view wx:else class="shopSetup_start">
+<view class="shopSetup" wx:if="{{true}}">
+  <view wx:if="{{!saleMer}}" class="shopSetup_start">
     店主，开店请先设置您的店铺信息
     <button bindtap="goSetup">去设置</button>
   </view>
-
+  <shopbar bindgetShopInfo="getShopInfo" openEdit></shopbar>
   <view class="shopSetup_hongbao">
     <view class="shopSetup_hongbao__tit">
       店铺红包
@@ -24,10 +23,10 @@
         </view>
       </view>
       <view class="inputcash">
-        <input type="text" />
+        <input value="{{saleMer.redBagAmount || ''}}" bindinput="setAmout" type="text" />
         <view>元</view>
       </view>
-      <view class="btn">
+      <view class="btn" bindtap="saveRedGagAmout">
         确定红包设置
       </view>
     </view>

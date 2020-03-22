@@ -1,20 +1,24 @@
 <view class="setup">
   <view class="setup_item">
     <label for="">店铺头像:</label>
-    <view class="pic">
-      <image src="../../images/empty.png" mode="widthFix" />
+    <view class="pic" bindtap="uploadThumb">
+      <image src="{{shopInfo.shopLogo || './../images/empty.png'}}" mode="widthFix" />
     </view>
   </view>
   <view class="setup_item">
     <label for="">店铺名:</label>
-    <input type="text" placeholder="请输入店铺店" />
+    <input type="text" value="{{shopInfo.shopName}}" data-name="shopName" bindinput="setInputValue" placeholder="请输入店铺店" />
   </view>
   <view class="setup_item">
     <label for="">店铺地址:</label>
-    <input type="text" placeholder="请输入店铺店" />
+    <input type="text" value="{{shopInfo.shopAddress}}" data-name="shopAddress" bindinput="setInputValue" placeholder="请输入店铺店" />
   </view>
   <view class="setup_item">
     <label for="">店主微信:</label>
-    <input type="text" placeholder="请输入店铺店" />
+    <input type="text" value="{{shopInfo.userName}}" data-name="userName" bindinput="setInputValue" placeholder="请输入店铺店" />
   </view>
+  <view class="setup_btn" bindtap="saveShopInfo">
+    确定
+  </view>
+    
 </view>

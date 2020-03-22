@@ -11,6 +11,10 @@ Component({
 		merId: {
 			type: String,
 			value: ''
+		},
+		shopSet: {
+			type: Boolean,
+			value: false
 		}
 	},
 	data: {
@@ -46,14 +50,30 @@ Component({
 				this.setData({
 					saleMer: res.data.saleMer,
 					vistCount: res.data.vistCount
-				})				
+				})			
+
+				this.triggerEvent('getShopInfo', res.data)	
 			}
+		},
+		goMerEdit() {
+			wx.setStorageSync('shopInfo', this.data.saleMer)
+			setTimeout(() => {
+				wx.navigateTo({
+					url: this.data.shopSet ? '/pages/shopSet/index':'/pages/setup/index'
+				})	
+			}, 10)	
 		}
 	},
-	lifetimes: {
-		async ready() {
-			console.log('this.data', this.data.merId)
+	pageLifetimes: {
+		async show() {
+			// console.log('this.data', this.data.merId)
 			await this.getShopInfo()
 		}
-	}
+	},
+	// lifetimes: {
+	// 	async reday() {
+	// 		console.log('this.data', this.data.merId)
+	// 		await this.getShopInfo()
+	// 	}
+	// }
 });

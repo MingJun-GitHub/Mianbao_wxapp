@@ -2,6 +2,7 @@ const app = getApp()
 Page({
 	data: {
 		shopInfo: '',
+		show: false
 	},
 	goPage(e) {
 		wx.utils.goPage(e)
@@ -11,17 +12,16 @@ Page({
 			url: '/myInfo/findUserInfo'
 		})
 	},
-	async getShopInfo() {
-		const res = await wx.utils.Http.get({
-			url: '/merShop/findSaleMer'
+	getShopInfo(e) {
+		const {
+			saleMer,
+			// vistCount
+		} = e.detail
+		this.setData({
+			 shopInfo: saleMer
 		})
-		if (res.code == 0) {
-			this.setData({
-				shopInfo: res.data
-			})
-		}
 	},
 	onLoad() {
-		this.getShopInfo()
+		// this.getShopInfo()
 	}
 });

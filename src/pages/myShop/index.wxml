@@ -1,5 +1,6 @@
 <view class="myShop">
-  <shopbar isEdit="{{true}}"></shopbar>
+  <shopbar isEdit="{{true}}" bindgetShopInfo="getShopInfo" openEdit shopSet></shopbar>
+
   <view class="myShop_hongbao">
     <view class="myShop_hongbao__tit">
       <image src="../../images/myshop/money.png" mode="widthFix" />红包金额</view>

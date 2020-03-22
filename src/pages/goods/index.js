@@ -99,7 +99,7 @@ Page({
 				isGetHb: true
 			})
 		} else {
-			wx.utils.Toast('领取失败，新重新领取~')
+			wx.utils.Toast(res.msg||'领取失败，新重新领取~')
 		}
 	},
 	changeHongBao() {

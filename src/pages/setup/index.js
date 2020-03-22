@@ -1,75 +1,77 @@
 const app = getApp()
 Page({
 	data: {
-		userInfo: null,
-		isLogin: false,
-		hasPhone: ''
+		shopInfo: {
+			balance: 0,
+			gErWeiMaLogo: '',
+			createTime: '',
+			erWeiMaLogo: '',
+			id: '',
+			isEnable: '',
+			redBagAmount: 0,
+			shopAddress: '',
+			shopLogo: '',
+			shopName: '',
+			userName: '',
+		}	
 	},
-	goLogin() {
-		if (this.data.isLogin) {
-			return
-		}
-		wx.navigateTo({
-			url: '/pages/login/index'
+	async uploadThumb() {
+		this.chooseImage(1, async res => {
+			wx.utils.showLoading('上传中...')
+			const imgurl = await wx.utils.Http.uploadFile(res[0])
+			this.setData({
+				'shopInfo.shopLogo': imgurl
+			})
+			wx.utils.hideLoading()
 		})
 	},
-	goBindPhone() {
-		wx.navigateTo({
-			url: '/pages/login/index?opt=phone'
+	// 选择图片
+	async chooseImage(count, callback) {
+		// saleapi/merShop/findSaleMerByMerId/1
+		wx.chooseImage({
+			count,
+			sizeType: ['original', 'compressed'],
+			sourceType: ['album', 'camera'],
+			success: async (res) => {
+				const tempFilePaths = res.tempFilePaths
+				await callback(tempFilePaths)
+			}
 		})
 	},
-	goLoginCall(cb) {
-		if (this.data.isLogin) {
-			cb()
-		} else {
-			wx.navigateTo({
-				url: '/pages/login/index'
-			})
-		}
-	},
-	goAddressList() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/address/index'
-			})
-		})
-	},
-	goMyCollect() {
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: '/pages/collection/index'
-			})
-		})	
-	},
-	goOrderList(e) {
+	setInputValue(e) {
 		const {
-			status
+			name
 		} = e.currentTarget.dataset
-
-		this.goLoginCall(() => {
-			wx.navigateTo({
-				url: `/pages/order/index?status=${status}`
-			})
-		})
-
-	},
-	noOpen() {
-		wx.utils.Toast('暂无开通')
-	},
-	async init() {
-		wx.utils.showLoading()
-		await wx.utils.Login.initUserInfo()
+		const {
+			value
+		} = e.detail
+		console.log('value', value, name)
 		this.setData({
-			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
+			['shopInfo.'+name]: value
+			// `shopInfo.${name}`: value
+		})
+	},
+	async saveShopInfo() {	
+		wx.utils.showLoading()
+		const res = await wx.utils.Http.post({
+			url: '/merShop/updateShop',
+			data: this.data.shopInfo
 		})
 		wx.utils.hideLoading()
+		if (res.code==0) {
+			wx.utils.Toast('保存成功')
+			setTimeout(() => {
+				wx.navigateBack()
+			}, 1500);
+		}
+		console.log('res', res)
+		console.log('this.shopDAta', this.data.shopInfo)
 	},
-	onUnload() {
-		wx.utils.Bus.off('loginSuc')
-	},
-	async onShow() {
-		// await this.init()
+	onLoad() {
+		const shopInfo = wx.getStorageSync('shopInfo')
+
+		shopInfo && this.setData({
+			shopInfo
+		})
 	}
 });

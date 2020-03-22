@@ -18,8 +18,8 @@ class Login {
 					const loginInifo = wx.getStorageSync('loginInfo')
 					if (loginInifo) {
 						//  loginInifo.token
-						// this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sKwyAQRP9lnyOs95i_0XYD9pIE16SB0n-vFvoynDnMvOFWM0wwe4UhxiiM83OLJMUY0Akb8Jr0xeikJQzAe2pj5Rpm5oZ1vdMimMpBpctYYZJ2NFZ7tH4AOrcmHKq_KOuD-nHn32Gj8uz1RfnMC3y-AAAA__8.2Q7mVLloq_J43oLqlaCIjSwruvTHnws9m_3rKUslSyd6lmgrsQqW3-BGtF-PyQ5dl9tvCeN30nzqtxbW__8EEA'//loginInifo.token
-						this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sOgyAQBf9ln90E2JWAfyO6TehFDWBr0vTfCya-zZmc-cK9RBjAs53mQB5vLIysjaAb-wn1bIIJQl45Cx3kPdSz8RVjzhXL-pAFs6S3pCbHAoPuHROR0tyBHFsVVplLpPUpLdzzGWySXm1-JB5xgd8fAAD__w.AHExtqRfk4bugyAe8T_XLaGbDhv8FGbMPvcW3pdC3zgc4n4cqYL_s7PCzyPCpagxiBq4UZlEqBhj5S2D-JKhag'
+						this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sKwyAQRP9lnyOs95i_0XYD9pIE16SB0n-vFvoynDnMvOFWM0wwe4UhxiiM83OLJMUY0Akb8Jr0xeikJQzAe2pj5Rpm5oZ1vdMimMpBpctYYZJ2NFZ7tH4AOrcmHKq_KOuD-nHn32Gj8uz1RfnMC3y-AAAA__8.2Q7mVLloq_J43oLqlaCIjSwruvTHnws9m_3rKUslSyd6lmgrsQqW3-BGtF-PyQ5dl9tvCeN30nzqtxbW__8EEA'//loginInifo.token
+						// this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sOgyAQBf9ln90E2JWAfyO6TehFDWBr0vTfCya-zZmc-cK9RBjAs53mQB5vLIysjaAb-wn1bIIJQl45Cx3kPdSz8RVjzhXL-pAFs6S3pCbHAoPuHROR0tyBHFsVVplLpPUpLdzzGWySXm1-JB5xgd8fAAD__w.AHExtqRfk4bugyAe8T_XLaGbDhv8FGbMPvcW3pdC3zgc4n4cqYL_s7PCzyPCpagxiBq4UZlEqBhj5S2D-JKhag'
 						this.sessionKey = loginInifo.sessionKey
 						await this.getUserInfo()
 						resolve(this.userInfo)

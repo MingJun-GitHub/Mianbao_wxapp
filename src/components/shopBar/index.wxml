@@ -1,4 +1,4 @@
-<view class="shopbar">
+<view class="shopbar" wx:if="{{saleMer}}">
   <view class="shopbar_pic">
     <image src="{{saleMer.shopLogo}}" mode="widthFix" />
   </view>
@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="shopbar_other">
-    <view wx:if="{{openEdit}}" class="shopbar_other__setup">
+    <view wx:if="{{openEdit}}" class="shopbar_other__setup" bindtap="goMerEdit">
       <image src="../../images/shop/setup.png" mode="widthFix" />
       <view>设置</view>
     </view>

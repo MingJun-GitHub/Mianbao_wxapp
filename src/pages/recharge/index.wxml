@@ -17,13 +17,13 @@
     <view class="recharge_item2">
       <label for="">提现金额</label>
       <view>
-        <text class="yuan">￥</text> <input type="number" bindinput="" placeholder="" />
+        <text class="yuan">￥</text> <input value="{{amout}}" type="number" bindinput="inputValue" placeholder="" />
       </view>
     </view>
     <view class="recharge_tips">
       提现到账时间预计2小时
     </view>
-    <view class="recharge_btn">
+    <view class="recharge_btn" bindtap="rechargeApply">
       确定提现
     </view>
   </block>
@@ -55,17 +55,23 @@
   </block>
   <!--话费充值-->
   <block wx:if="{{option==2}}">
+  <view class="recharge_money">
+      可充值余额(余额)：<view class="price">￥{{money}}</view>
+      <view class="more">
+        充值明细
+      </view>
+    </view>
     <view class="recharge_item">
       <label for="">手机号</label>
-      <input type="text" placeholder="请输入手机号码" />
+      <input type="text" value="{{phone}}" data-name="phone" bindinput="inputValue" placeholder="请输入手机号码" />
     </view>
     <view class="recharge_item2">
       <label for="">充值金额</label>
       <view>
-        <text class="yuan">￥</text> <input type="number" placeholder="" />
+        <text class="yuan">￥</text> <input type="number" data-name="amout" value="{{amout}}" bindinput="inputValue" placeholder="" />
       </view>
     </view>
-    <view class="recharge_btn">
+    <view class="recharge_btn" bindtap="phoneCharge">
       确定提交
     </view>
   </block>

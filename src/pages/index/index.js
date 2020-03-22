@@ -10,7 +10,7 @@ Page({
 			id
 		} = e.currentTarget.dataset
 		wx.navigateTo({
-			url: `/pages/goods/index?id=${id}`,
+			url: `/pages/goods/index?id=${id}&merId=${this.data.merId}`,
 		});
 	},
 	async getShopGoodsList() {
@@ -26,7 +26,7 @@ Page({
 	},
 	async onLoad(query) {
 		this.setData({
-			merId: query.merId
+			merId: query.merId || 1
 		})
 		this.getShopGoodsList()
 	}
