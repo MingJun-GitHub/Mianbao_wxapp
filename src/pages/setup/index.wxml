@@ -2,7 +2,8 @@
   <view class="setup_item">
     <label for="">店铺头像:</label>
     <view class="pic" bindtap="uploadThumb">
-      <image src="{{shopInfo.shopLogo || './../images/empty.png'}}" mode="widthFix" />
+      <image wx:if="{{shopInfo.shopLogo}}" src="{{shopInfo.shopLogo}}" mode="widthFix" />
+      <view class="upload" wx:else>上传头像</view>
     </view>
   </view>
   <view class="setup_item">

@@ -42,7 +42,7 @@ Page({
 		})
 		if (res.code == 0) {
 			this.setData({
-				shopInfo: res.data
+				shopInfo: res.data.saleMer
 			})
 		}
 	},
@@ -57,7 +57,6 @@ Page({
 		const res = await wx.utils.Http.get({
 			url: '/myInfo/getShop'
 		})
-		onsole.log('申请店铺--->', res)
 		wx.utils.hideLoading()
 		if (res.code == 0) {
 			wx.utils.Toast('申请成功，等待系统审核成功')
@@ -65,7 +64,6 @@ Page({
 		} else {
 			wx.utils.Toast(res.data || '操作失败，请重试')
 		}
-		console.log('申请店铺--->', res)
 	},
 	async init() {
 		wx.utils.showLoading()
@@ -74,9 +72,16 @@ Page({
 			userInfo: wx.utils.Login.userInfo,
 			isLogin: wx.utils.Login.isBind,
 			phone: wx.utils.Login.phone,
-			merStatus: wx.utils.Login.userInfo.merStatus
+			merStatus: wx.utils.Login.userInfo.merStatus || 0
 		})
+		if (wx.utils.Login.loginPromise) {
+			const res = await wx.utils.Login.getSaleMer()
+			this.setData({
+				['userInfo.balance']: res.balance
+			})
+		}
 		wx.utils.hideLoading()
+		
 	},
 	async onShow() {
 		await this.init()

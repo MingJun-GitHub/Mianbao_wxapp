@@ -24,12 +24,10 @@ Component({
 				}
 			})
 		},
-		toDeal(e) {
-			
+		toDeal(e) {		
 			const {
 				item
 			} = e.currentTarget.dataset
-			// console.log('e-->', item)
 			this.triggerEvent('todeal', item)	
 		}
 	},

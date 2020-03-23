@@ -17,7 +17,7 @@
     <view class="recharge_item2">
       <label for="">提现金额</label>
       <view>
-        <text class="yuan">￥</text> <input value="{{amout}}" type="number" bindinput="inputValue" placeholder="" />
+        <text class="yuan">￥</text> <input value="{{amount}}" type="number" data-name="amount" bindinput="inputValue" placeholder="" />
       </view>
     </view>
     <view class="recharge_tips">
@@ -68,7 +68,7 @@
     <view class="recharge_item2">
       <label for="">充值金额</label>
       <view>
-        <text class="yuan">￥</text> <input type="number" data-name="amout" value="{{amout}}" bindinput="inputValue" placeholder="" />
+        <text class="yuan">￥</text> <input type="number" data-name="amount" value="{{amount}}" bindinput="inputValue" placeholder="" />
       </view>
     </view>
     <view class="recharge_btn" bindtap="phoneCharge">

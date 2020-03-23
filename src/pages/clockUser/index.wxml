@@ -7,25 +7,30 @@
     <view class="orderUser_tag__item {{orderStatus==-1&&'cur'}}" bindtap="selectTab" data-index="-1">自定义</view>
   </view>
   <view class="orderUser_time" wx:if="{{orderStatus=='-1'}}">
-    选择时间段: <datepicker class="input" value="{{startTime}}" data-name="startTime" bindchange="handleChange">{{startTime||'请选择'}}</datepicker>--<datepicker class="input" value="{{endTime}}" data-name="endTime" bindchange="handleChange">{{endTime||'请选择'}}</datepicker> <view bindtap="goSearch">查看</view>
+    选择时间段: <datepicker class="input" value="{{startTime}}" data-name="startTime" bindchange="handleChange">
+      {{startTime||'请选择'}}</datepicker>--<datepicker class="input" value="{{endTime}}" data-name="endTime"
+      bindchange="handleChange">{{endTime||'请选择'}}</datepicker>
+    <view bindtap="goSearch">查看</view>
   </view>
-  
-  <view class="orderUser_item" wx:for="{{dataList}}" wx:key="index">
-    <view class="orderUser_item__details">
-      <view class="pic">
-        <image src="{{item.userLogo}}" mode="widthFix" />
+  <block wx:if="{{dataList && dataList.length}}">
+    <view class="orderUser_item" wx:for="{{dataList}}" wx:key="index">
+      <view class="orderUser_item__details">
+        <view class="pic">
+          <image src="{{item.userLogo}}" mode="widthFix" />
+        </view>
+        <view class="info">
+          <view class="tit">
+            {{item.nickName}}
+          </view>
+          <view>
+            {{item.createTime}}
+          </view>
+        </view>
       </view>
-      <view class="info">
-        <view class="tit">
-          {{item.nickName}}
-        </view>
-        <view>
-        {{item.createTime}}
-        </view>
+      <view class="orderUser_item__other">
+        {{item.phone}}
       </view>
     </view>
-    <view class="orderUser_item__other">
-      {{item.phone}}
-    </view>
-  </view>
+  </block>
+  <empty wx:else tips="暂无数据"></empty>
 </view>

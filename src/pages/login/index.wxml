@@ -1,6 +1,6 @@
 <view class="login">
   <image src="../../images/login/login.jpg" mode="widthFix" />
-  <button open-type="getUserInfo" wx:if="{{!isLogin}}" bindgetuserinfo="bindLogin" disabled="{{disabled}}">登录/注册</button>
+  <button open-type="getUserInfo" wx:if="{{!isLogin}}" bindgetuserinfo="bindUserInfo" disabled="{{disabled}}">登录/注册</button>
   <button open-type="getPhoneNumber" wx:else="{{isLogin}}" bindgetphonenumber="bindPhone">绑定手机号</button>
   <view class="tips">
     {{isLogin ? '绑定您的手机号，快捷登录更方便':'若您的微信号未注册，将为您注册登录'}}

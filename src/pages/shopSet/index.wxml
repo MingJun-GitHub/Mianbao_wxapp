@@ -1,5 +1,5 @@
 <view class="shopSetup" wx:if="{{true}}">
-  <view wx:if="{{!saleMer}}" class="shopSetup_start">
+  <view wx:if="{{!saleMer.shopName || !saleMer}}" class="shopSetup_start">
     店主，开店请先设置您的店铺信息
     <button bindtap="goSetup">去设置</button>
   </view>

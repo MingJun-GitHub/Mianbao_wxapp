@@ -1,4 +1,4 @@
-<view class="shopbar" wx:if="{{saleMer}}">
+<view class="shopbar" wx:if="{{saleMer && saleMer.shopName }}">
   <view class="shopbar_pic">
     <image src="{{saleMer.shopLogo}}" mode="widthFix" />
   </view>
@@ -7,8 +7,8 @@
       <image src="../../images/shop/code.png" catchtap="goShopCode"/>
     </view>
     <view class="address">{{saleMer.shopAddress}}</view>
-    <view class="wechat">微信号：<text>{{saleMer.userName}}</text>
-      <image catchtap="clipboardCode" src="../../images/shop/copy.png" />
+    <view class="wechat">微信号：<text>{{saleMer.userName || '暂无设置'}}</text>
+      <image wx:if="{{saleMer.userName}}" catchtap="clipboardCode" src="../../images/shop/copy.png" />
       <view class="vist" wx:if="{{vistCount!==''}}">
       <text>总人数</text>
       <text class="num">{{vistCount}}人</text>

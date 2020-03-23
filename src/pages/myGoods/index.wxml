@@ -1,4 +1,5 @@
 <view class="myGoods">
+  <block wx:if="{{goodsList&& goodsList.length}}">
   <view class="myGoods_item" wx:for="{{goodsList}}" wx:key="index">
     <view class="myGoods_item__top">
       <view class="time">{{item.createTime}}</view>
@@ -20,6 +21,8 @@
       </view>
     </view>
   </view>
+  </block>
+  <empty wx:else tips="暂无商品，快去发布商品"></empty>
   <view class="myGoods_footer">
     <view class="myGoods_footer__btn" bindtap="goEditGoods" data-id="{{item.id}}">发布商品</view>
   </view>

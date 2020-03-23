@@ -3,6 +3,7 @@
   "navigationBarTextStyle": "white",
   "navigationBarBackgroundColor": "#FF4E00",
   "usingComponents": {
-    "datepicker": "../..//components/datepicker/index"
+    "datepicker": "../..//components/datepicker/index",
+    "empty": "../../components/empty/index"
   }
 }

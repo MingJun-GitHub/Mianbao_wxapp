@@ -1,5 +1,8 @@
 {
 	"navigationBarTitleText": "我的商品",
 	"navigationBarTextStyle": "white",
-	"navigationBarBackgroundColor": "#FF4E00"
+	"navigationBarBackgroundColor": "#FF4E00",
+	"usingComponents": {
+		"empty": "../../components/empty/index"
+	  }
 }

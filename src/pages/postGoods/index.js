@@ -10,7 +10,7 @@ Page({
 		productDetails: [],
 		date: '',
 		time: '00:00',
-		effective_time: ''
+		effectiveTime: ''
 	},
 	inputInfo(e) {
 		var {
@@ -38,7 +38,7 @@ Page({
 	},
 	setEffectiveTime() {
 		this.setData({
-			effective_time: new Date(this.data.date + ' ' + this.data.time).getTime()
+			effectiveTime: new Date(this.data.date + ' ' + this.data.time).getTime()
 		})
 	},
 	filterData() {
@@ -64,7 +64,7 @@ Page({
 			wx.utils.Toast('请输入库存')
 			return
 		}
-		if (!this.data.effective_time) {
+		if (!this.data.effectiveTime) {
 			wx.utils.Toast('请选择商品截止时间')
 			return
 		}
@@ -82,14 +82,19 @@ Page({
 				price: this.data.price,
 				stockNum: this.data.stockNum,
 				thumb: this.data.thumb,
-				effective_time: this.data.effective_time,
+				effectiveTime: this.data.effectiveTime,
 				productDetails: this.data.productDetails,
 				deletePrice: this.data.deletePrice
 			}
 		})
 		// 
 		if(res.code==0) {
-
+			wx.utils.Toast(this.data.id?'编辑成功':'添加商品成功')
+			setTimeout(() => {
+				wx.navigateBack()
+			}, 1500)
+		} else {
+			wx.utils.Toast('操作失败，请重新尝试~')
 		}
 	},
 	async uploadThumb() {
@@ -173,7 +178,7 @@ Page({
 				deletePrice,
 				stockNum,
 				thumb,
-				effective_time: effectiveTime,
+				effectiveTime,
 				productDetails,
 				date,
 				time

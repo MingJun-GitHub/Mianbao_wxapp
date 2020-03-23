@@ -4,11 +4,12 @@ const app = getApp()
 Page({
 	// behaviors: [behaviors],
 	data: {
+		merId: '',
 		goodsList: []
 	},
 	async getMyGoods() {
 		const res = await wx.utils.Http.get({
-			url: '/productInfo/listProduct/1'
+			url: `/merShop/listmyProduct/${this.data.merId}`
 		})
 		if (res.code ==0 ) {
 			this.setData({
@@ -30,14 +31,20 @@ Page({
 		})
 	},
 	goEditGoods(e) {	
-		const {
+		let  {
 			id
 		} = e.currentTarget.dataset
+		id = id ? `?id=${id}` : ''
 		wx.navigateTo({
-			url: `/pages/postGoods/index?id=${id}`
+			url: `/pages/postGoods/index${id}`
 		})
 	},
-	async onLoad(query) {
+	onLoad(query) {
+		this.setData({
+			merId:query.merId
+		})
+	},
+	async onShow() {
 		this.getMyGoods()
 	}
 });

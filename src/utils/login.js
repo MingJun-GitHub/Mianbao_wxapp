@@ -48,7 +48,7 @@ class Login {
 		}
 		return this.loginPromise
 	}
-	async reloadLogin() {	
+	async reloadLogin() {
 		this.loginPromise = null
 		this.clearUserInfo()
 		await this.initUserInfo()
@@ -107,6 +107,16 @@ class Login {
 			return res.data
 		} else {
 			return null
+		}
+	}
+	async getSaleMer() {
+		const res = await wx.utils.Http.get({
+			url: '/wxUser/getUserInfoById'
+		})
+		if (res.code == 0) {
+			return res.data
+		} else {
+			return ''
 		}
 	}
 }

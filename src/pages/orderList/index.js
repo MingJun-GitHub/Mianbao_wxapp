@@ -39,7 +39,7 @@ Page({
 		} = e.currentTarget.dataset
 		if (index == this.data.orderStatus) {
 			return
-		} 
+		}
 		this.resetParams()
 		this.setData({
 			orderStatus: index
@@ -94,22 +94,26 @@ Page({
 	},
 	async saveMsg() {
 		wx.utils.showLoading()
-		const res= await wx.utils.Http.get({
+		const res = await wx.utils.Http.get({
 			url: '/merShop/updateOrderStatus',
 			data: {
-				id: this.data.curSelect.id,
+				// id: this.data.curSelect.id,
+				orderId: this.data.curSelect.orderId,
 				replymsg: this.data.leaveMsg,
 			}
 		})
 		wx.utils.hideLoading()
 		if (res.code == 0) {
-			wx.utils.Toast('处理成功')
-			this.changeLeaveMsg()
-			this.setData({
-				leaveMsg: ''
-			})
-			this.resetParams()
-			this.getOrderList()
+			wx.utils.Toast('处理成功, 为您切换到已处理订单')
+			setTimeout(() => {
+				this.changeLeaveMsg()
+				this.setData({
+					leaveMsg: '',
+					orderStatus: 1
+				})
+				this.resetParams()
+				this.getOrderList()
+			}, 1500)
 		} else {
 			wx.utils.Toast('处理失败，请重试')
 		}

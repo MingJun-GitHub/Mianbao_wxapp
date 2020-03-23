@@ -4,7 +4,7 @@
   <view class="myShop_hongbao">
     <view class="myShop_hongbao__tit">
       <image src="../../images/myshop/money.png" mode="widthFix" />红包金额</view>
-    <view class="myShop_hongbao__price" bindtap="goPage" data-name="recharge" data-params="{{'option=1&money='+shopInfo.balance}}">￥{{shopInfo.balance}} <view class="recharge">
+    <view class="myShop_hongbao__price" catchtap="goPage" data-name="recharge" data-params="{{'option=1&money='+shopInfo.balance}}">￥{{shopInfo.balance}} <view class="recharge">
         充值
       </view>
     </view>
@@ -16,7 +16,7 @@
         客户订单
       </view>
     </view>
-    <view class="myShop_menu__item" bindtap="goPage" data-name="orderList" >
+    <view class="myShop_menu__item" bindtap="goPage" data-name="myCustomer" >
       <image src="../../images/myshop/2.png" mode="widthFix" />
       <view>
         我的客户
@@ -28,7 +28,7 @@
         打卡客户
       </view>
     </view>
-    <view class="myShop_menu__item" bindtap="goPage" data-name="myGoods">
+    <view class="myShop_menu__item" bindtap="goPage" data-name="myGoods" data-params="merId={{shopInfo.id}}">
       <image src="../../images/myshop/4.png" mode="widthFix" />
       <view>
         商品管理
