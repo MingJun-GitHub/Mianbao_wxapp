@@ -3,7 +3,7 @@
      <!-- <image src="" /> -->
    </view>
    <view class="shopCode_footer">
-     <button>保存图片</button>
+     <button bindtap="saveCode">保存图片</button>
      <button class="shopCode_footer__share">分享店铺</button>
    </view>
 </view>
