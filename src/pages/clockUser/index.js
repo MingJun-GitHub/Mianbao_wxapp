@@ -1,7 +1,6 @@
 const app = getApp()
 Page({
 	data: {
-		timeType: 0, //
 		startTime: '',
 		endTime: '',
 		isEnd: false,
@@ -11,7 +10,7 @@ Page({
 		pageNo: 1,
 		pageSize: 20,
 		orderStatus: 0,
-		dataList: [],
+		dataList: []
 	},
 	async onReachBottom() {
 		if (this.data.isEnd && this.data.isIng) {
@@ -38,12 +37,12 @@ Page({
 		const {
 			index
 		} = e.currentTarget.dataset
-		if (index == this.data.timeType) {
+		if (index == this.data.orderStatus) {
 			return
 		}
 		this.resetParams()
 		this.setData({
-			timeType: index
+			orderStatus: index
 		})
 		await this.getDataList()
 	},
@@ -58,12 +57,12 @@ Page({
 		const res = await wx.utils.Http.get({
 			url: '/merShop/findMyConsumer',
 			data: {
-				currentpage: this.data.currentpage,
+				// currentpage: this.data.currentpage,
 				pageNo: this.data.pageNo,
 				pageSize: this.data.pageSize,
-				orderStatus: this.data.timeType,
-				startTime: this.data.startTime,
-				endTime: this.data.endTime
+				orderStatus: this.data.orderStatus == -1? '' : this.data.orderStatus,
+				startTime:  this.data.orderStatus == -1 ? this.data.startTime:'',
+				endTime:  this.data.orderStatus == -1? this.data.endTime: ''
 			}
 		})
 		this.setData({
@@ -78,6 +77,26 @@ Page({
 				dataList,
 				isEnd: this.data.total == dataList.length
 			})
+		}
+	},
+	handleChange(e) {
+		const {
+			name
+		} = e.currentTarget.dataset
+		this.setData({
+			[name]: e.detail.dateString
+		})
+	},
+	goSearch() {
+		if (!this.data.startTime || !this.data.endTime) {
+			wx.utils.Toast('请选择开始结束时间')
+			return
+		}
+		if (new Date(this.data.startTime) > new Date(this.data.endTime)) {
+			wx.utils.Toast('开始时间不能大于结束时间')
+		} else {
+			this.resetParams()
+			this.getDataList()
 		}
 	},
 	async onLoad(query) {

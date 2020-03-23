@@ -8,6 +8,9 @@ Page({
 		pageSize: 20,
 		orderStatus: 0,
 		orderList: [],
+		showLeaveMsg: false,
+		leaveMsg: '',
+		curSelect: ''
 	},
 	async onReachBottom() {
 		if (this.data.isEnd && this.data.isIng) {
@@ -71,6 +74,44 @@ Page({
 				orderList,
 				isEnd: this.data.total == orderList.length
 			})
+		}
+	},
+	toDeal(e) {
+		this.changeLeaveMsg()
+		this.setData({
+			curSelect: e.detail
+		})
+	},
+	changeLeaveMsg() {
+		this.setData({
+			showLeaveMsg: !this.data.showLeaveMsg
+		})
+	},
+	inputLeaveMsg(e) {
+		this.setData({
+			leaveMsg: e.detail.value
+		})
+	},
+	async saveMsg() {
+		wx.utils.showLoading()
+		const res= await wx.utils.Http.get({
+			url: '/merShop/updateOrderStatus',
+			data: {
+				id: this.data.curSelect.id,
+				replymsg: this.data.leaveMsg,
+			}
+		})
+		wx.utils.hideLoading()
+		if (res.code == 0) {
+			wx.utils.Toast('处理成功')
+			this.changeLeaveMsg()
+			this.setData({
+				leaveMsg: ''
+			})
+			this.resetParams()
+			this.getOrderList()
+		} else {
+			wx.utils.Toast('处理失败，请重试')
 		}
 	},
 	async onLoad(query) {

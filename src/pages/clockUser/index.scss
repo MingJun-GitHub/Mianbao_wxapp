@@ -42,11 +42,16 @@
 		font-weight: 500;
 		font-size: 22rpx;
 		color: #666;
-		input{
+		.input{
 			border:1rpx solid #666;
 			width: 160rpx;
 			height: 38rpx;
 			margin: 0 18rpx;
+			line-height: 38rpx;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			padding: 2rpx 8rpx;
 		}
 		view{
 			display: inline-flex;

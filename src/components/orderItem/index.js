@@ -23,6 +23,14 @@ Component({
 					wx.utils.Toast('复制成功')
 				}
 			})
+		},
+		toDeal(e) {
+			
+			const {
+				item
+			} = e.currentTarget.dataset
+			// console.log('e-->', item)
+			this.triggerEvent('todeal', item)	
 		}
 	},
 	lifetimes: {

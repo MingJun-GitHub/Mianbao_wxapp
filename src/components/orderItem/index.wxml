@@ -26,7 +26,7 @@
     <view class="opt">
       <view class="copy" bindtap="copyPhone" data-phone="{{item.phone}}">复制号码</view>
       <block wx:if="{{business}}">
-        <view class="deal" wx:if="{{item.orderStatus==0}}" bindtap="dealOrder" data-item="{{item}}">立即处理</view>
+        <view class="deal" wx:if="{{item.orderStatus==0}}" bindtap="dealOrder" data-item="{{item}}" bindtap="toDeal">立即处理</view>
         <view class="isdeal" wx:if="{{item.orderStatus==1}}" bindtap="dealOrder" data-item="{{item}}">已处理</view>
       </block>
     </view>

@@ -4,7 +4,17 @@
     <view class="order_tab__item {{orderStatus==1&& 'cur'}}" data-index="1" bindtap="changeTab">已处理</view>
   </view>
   <block wx:if="{{orderList && orderList.length}}">
-    <orderItem item="{{item}}" business="{{true}}" wx:key="index" wx:for="{{orderList}}"></orderItem>
+    <orderItem item="{{item}}" business="{{true}}" bindtodeal="toDeal" wx:key="index" wx:for="{{orderList}}"></orderItem>
   </block>
   <empty wx:else></empty>
+  <view class="order_leavemsg" wx:if="{{showLeaveMsg}}">
+    <view class="order_leavemsg__box">
+      <view class="tit">回复</view>
+      <textarea placeholder="请输入回复" value="{{leaveMsg}}" bindinput="inputLeaveMsg"></textarea>
+      <view class="btn" catchtap="saveMsg">确定回复</view>
+    </view>
+    <view class="order_leavemsg__close" catchtap="changeLeaveMsg">
+      <image src="../../images/goods/close.png" mode="widthFix" />
+    </view>
+  </view>
 </view>

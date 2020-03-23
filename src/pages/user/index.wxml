@@ -6,7 +6,7 @@
         <image wx:if="{{!isLogin}}" src="../../images/user/user.png" class="isLogin" mode="widthFix" />
         <image wx:else src="{{userInfo.userLogo}}" mode="widthFix" />
       </view>
-      <view>{{isLogin?userInfo.nickName:'登录/注册'}}</view>
+      <view bindtap="goPage" data-type="login" data-login="{{true}}">{{isLogin?userInfo.nickName:'登录/注册'}}</view>
       <!-- <view class="user_info__bindphone" wx:if="{{isLogin && !phone }}" bindtap="goBindPhone"><image src="../../images/mobile.png" mode="widthFix"/>绑定手机号</view> -->
       <view class="hongbao">
         <image src="../../images/user/hongbao.png" mode="widthFix" />
@@ -18,10 +18,10 @@
       <view class="user_money__box">
         <view class="price">
           <view class="price_tit">金额:</view>
-          <view class="price_num">￥{{userInfo.balance}}</view>
+          <view class="price_num">￥{{userInfo.balance || 0}}</view>
         </view>
-        <button class="btn btntx" bindtap="goPage" data-name="recharge" data-params="option=0&money={{userInfo.balance}}">提现</button>
-        <button class="btn btnhf" bindtap="goPage" data-name="recharge" data-params="option=2&money={{userInfo.balance}}">充话费</button>
+        <button class="btn btntx" bindtap="goPage" data-name="recharge" data-login="{{true}}" data-params="option=0&money={{userInfo.balance}}">提现</button>
+        <button class="btn btnhf" bindtap="goPage" data-name="recharge" data-login="{{true}}" data-params="option=2&money={{userInfo.balance}}">充话费</button>
       </view>
     </view>
   </view>
@@ -43,12 +43,12 @@
           <image src="../../images/user/address.png" mode="widthFix" />{{shopInfo.shopAddress}}</view>
       </view>
     </view>
-    <view wx:if="{{merStatus==2 && (!shopInfo || !shopInfo.shopName)}}" class="user_myshop__apply" bindtap="goPage" data-name="shopSet">填写店铺资料</view>
+    <view wx:if="{{merStatus==2 && (!shopInfo || !shopInfo.shopName)}}" class="user_myshop__apply" bindtap="goPage" data-login="{{true}}" data-name="shopSet">填写店铺资料</view>
   </view>
 
   <view class="user_server">
     <view class="user_server__tit">我的服务</view>
-    <view class="user_server__item" bindtap="goPage" data-name="myOrder">
+    <view class="user_server__item" bindtap="goPage" data-name="myOrder" data-login="{{true}}">
       <image class="icon" src="../../images/user/msg.png" mode="widthFix" />
       我的订单
      <image class="righticon" src="../../images/user/right.png" mode="widthFix" />

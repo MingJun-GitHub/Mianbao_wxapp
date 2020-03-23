@@ -47,6 +47,12 @@ Page({
 		}
 	},
 	async applyShop() {
+		if (!this.data.isLogin) {
+			wx.navigateTo({
+				url: '/pages/login/index'
+			})
+			return
+		}
 		wx.utils.showLoading()
 		const res = await wx.utils.Http.get({
 			url: '/myInfo/getShop'

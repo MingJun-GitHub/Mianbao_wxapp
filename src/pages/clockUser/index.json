@@ -1,5 +1,8 @@
 {
-	"navigationBarTitleText": "打卡客户",
-	"navigationBarTextStyle": "white",
-	"navigationBarBackgroundColor": "#FF4E00"
+  "navigationBarTitleText": "打卡客户",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#FF4E00",
+  "usingComponents": {
+    "datepicker": "../..//components/datepicker/index"
+  }
 }
