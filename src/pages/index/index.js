@@ -26,7 +26,7 @@ Page({
 	},
 	async onLoad(query) {
 		this.setData({
-			merId: query.merId || 1
+			merId: query.merId || 3
 		})
 		this.getShopGoodsList()
 	}

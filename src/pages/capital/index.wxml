@@ -1,5 +1,27 @@
 <view class="capital">
-  <view class="capital_item">
-    
-  </view>
+  <block wx:if="{{dataList && dataList.length}}">
+    <view class="capital_item" wx:for="{{dataList}}" wx:key="index">
+      <view class="capital_item__detail">
+        <view class="tit" wx:if="{{option==0}}">{{item.getType==0||item.getType==null?'微信':'支付宝'}}提现</view>
+        <view class="tit" wx:if="{{option==2}}">手机号:{{item.phone}}</view>
+        <view class="time">{{item.createTime}}</view>
+      </view>
+      <view class="capital_item__amout">
+        <block wx:if="{{option==0}}">
+          <view class="price">
+            +{{item.account}}
+          </view>
+          <view>{{getStatus[item.getStatus]}}</view>
+        </block>
+        <block wx:if="{{option==2}}">
+          <view class="price">
+            +{{item.amount}}
+          </view>
+          <view>{{chargeOrderStatus[item.chargeOrderStatus]}}</view>
+        </block>
+
+      </view>
+    </view>
+  </block>
+  <empty wx:else tips="{{'暂无'+title[option]}}"></empty>
 </view>

@@ -153,6 +153,21 @@
 					}
 				}
 			}
+			.empty{
+				font-size: 28rpx;
+				font-weight: 500;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: normal;
+				margin-top: 240rpx;
+				color: #F2CFA5;
+				image{
+					width: 60rpx;
+					height: auto;
+				}
+			}
 		}
 	}
+	
 }

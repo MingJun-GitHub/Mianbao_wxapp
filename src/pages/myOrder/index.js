@@ -13,7 +13,7 @@ Page({
 		if (this.data.isEnd && this.data.isIng) {
 			return
 		}
-		if (this.data.searchList.length < this.data.total) {
+		if (this.data.orderList.length < this.data.total) {
 			this.setData({
 				pageNo: this.data.pageNo + 1
 			})
