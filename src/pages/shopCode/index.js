@@ -3,7 +3,7 @@ Page({
 	data: {},
 	saveCode() {
 		wx.downloadFile({
-			url: 'http://q77wqdcvr.bkt.clouddn.com/shopCode.png', //仅为示例，并非真实的资源
+			url: 'http://pic.gtqad.com/shopCode.png', //仅为示例，并非真实的资源
 			success: (res) => {
 				if (res.statusCode === 200) {
 					wx.saveImageToPhotosAlbum({

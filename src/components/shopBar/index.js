@@ -15,6 +15,10 @@ Component({
 		shopSet: {
 			type: Boolean,
 			value: false
+		},
+		openUpdate: {
+			type: Boolean,
+			value: true
 		}
 	},
 	data: {
@@ -66,14 +70,12 @@ Component({
 	},
 	pageLifetimes: {
 		async show() {
-			// console.log('this.data', this.data.merId)
-			await this.getShopInfo()
+			this.data.openUpdate && await this.getShopInfo()
 		}
 	},
-	// lifetimes: {
-	// 	async reday() {
-	// 		console.log('this.data', this.data.merId)
-	// 		await this.getShopInfo()
-	// 	}
-	// }
+	lifetimes: {
+		async ready() {
+			!this.data.openUpdate && await this.getShopInfo()
+		}
+	}
 });

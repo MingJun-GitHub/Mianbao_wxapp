@@ -1,3 +1,4 @@
+@import '../../styles/mixins';
 .goods {
 	background-color: #efefef;
 	width: 100%;
@@ -44,16 +45,24 @@
 		justify-content: space-between;
 		align-items: center;
 		line-height: normal;
-		height: 106rpx;
-		background: url(http://q77wqdcvr.bkt.clouddn.com/goodsbar.png) no-repeat center/cover;
+		height: 136rpx;
+		background: url(http://pic.gtqad.com/goodsbar.png) no-repeat center/cover;
 		color: #fff;
 		box-sizing: border-box;
 		padding: 0 20rpx;
-
 		&__details {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: flex-start;
+			padding:16rpx 0 10rpx;
+			box-sizing: border-box;
 			.name {
 				font-size: 28rpx;
 				font-weight: 500;
+				@include multi-ellipsis(2);
+				width: 400rpx;
+				// line-height: 1;
 			}
 
 			.price {
@@ -66,7 +75,7 @@
 				.yuan {
 					font-size: 22rpx;
 					position: relative;
-					top: -3rpx;
+					top: -5rpx;
 				}
 
 				&_del {

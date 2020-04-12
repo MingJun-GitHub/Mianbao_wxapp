@@ -5,7 +5,16 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
-
+@mixin multi-ellipsis($line-number: 2) {
+	display: -webkit-box;
+	overflow: hidden;
+	white-space: normal;
+	text-overflow: ellipsis;
+	/* autoprefixer: off */
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $line-number;
+	/* autoprefixer: on */
+}
 @mixin ellipsis-multi(
 	$font-size: 14px,
 	$line-height: 1.3,

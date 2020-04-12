@@ -1,9 +1,10 @@
+@import '../../styles/mixins';
 .shop {
 	width: 750rpx;
 	min-height: 100vh;
 	box-sizing: border-box;
 	padding-bottom: 30rpx;
-	background-color: #e8e8e8;
+	background-color: #FAFAFA;
 
 	&_top {
 		height: 211rpx;
@@ -162,7 +163,7 @@
 
 			.info {
 				width: 100%;
-				height: 343rpx;
+				min-height: 343rpx;
 				box-shadow: 0rpx 6rpx 13rpx 1rpx rgba(172, 172, 172, 0.2);
 				// border-radius: 20rpx;
 				border-radius: 0rpx 0rpx 20rpx 20rpx;
@@ -172,11 +173,12 @@
 				box-sizing: border-box;
 				overflow: hidden;
 				margin-bottom: 20rpx;
-				&2{
+
+				&2 {
 					border-radius: 20rpx !important;
 				}
+
 				.detail {
-					height: 100rpx;
 					background-color: #fff;
 					display: flex;
 					flex-direction: column;
@@ -184,16 +186,18 @@
 					justify-content: center;
 					position: relative;
 					width: 100%;
-					padding: 0 24rpx;
+					padding: 0 24rpx 20rpx;
 					box-sizing: border-box;
-
 					.name {
 						height: 25rpx;
 						font-size: 26rpx;
 						font-weight: bold;
 						color: #000;
-						margin-top: 5rpx;
+						margin-top: 10rpx;
 						margin-bottom: 10rpx;
+						@include ellipsis();
+						height: 40rpx;
+						width: 100%;
 					}
 
 					.price {
@@ -205,7 +209,6 @@
 						font-weight: 800;
 						color: #FF0000;
 						font-size: 30rpx;
-
 						&_del {
 							font-weight: 500;
 							color: rgb(117, 108, 108);
@@ -253,6 +256,10 @@
 			}
 
 			.thumb {
+				image{
+					width: 100%;
+					height: auto;
+				}
 				width: 100%;
 				height: 240rpx;
 				background-color: #fff;
@@ -265,5 +272,165 @@
 
 		}
 
+	}
+
+	&_list {
+		padding-top: 22rpx;
+		&__item {
+			margin: 0 auto 22rpx;
+			width: 690rpx;
+			// height: 232rpx;
+			overflow: hidden;
+			border-radius: 10rpx 10rpx 0 0;
+			background-color: #fff;
+
+			.top {
+				height: 140rpx;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				width: 100%;
+				background: linear-gradient(90deg, rgba(252, 78, 58, 1), rgba(255, 168, 154, 1));
+				color: #fff;
+
+				.pic {
+					width: 92rpx;
+					height: 92rpx;
+					border-radius: 50%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					overflow: hidden;
+
+					image {
+						max-width: 100%
+					}
+				}
+
+				.desc {
+					width: 350rpx;
+					display: flex;
+					justify-content: center;
+					align-items: flex-start;
+					flex-direction: column;
+
+					.name {
+						font-size: 28rpx;
+						font-weight: bold;
+					}
+
+					.address {
+						margin: 5rpx 0;
+						font-size: 30rpx;
+						color: #F23A3A;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						font-size: 22rpx;
+						color: #fff;
+
+
+					}
+
+					.wechat {
+						display: flex;
+						align-items: center;
+						line-height: normal;
+						justify-content: flex-start;
+						text{
+							display: inline-flex;
+							height: 28rpx;
+							line-height: 28rpx;
+							line-height: normal;
+							background-color: #FE867D;
+							border-radius: 14rpx;
+							color: #fff;
+							font-size: 20rpx;
+							padding: 0 22rpx;
+						}
+						image{
+							width: 22rpx;
+							height: 22rpx;
+							margin-left: 8rpx;
+						}
+					}
+				}
+
+				.btn {
+					width: 140rpx;
+					height: 48rpx;
+					line-height: 48rpx;
+					font-size: 24rpx;
+					border-radius: 24rpx;
+					background-color: #FC4E41;
+					color: #fff;
+					text-align: center;
+				}
+			}
+
+		}
+
+		.goods {
+			height: 230rpx;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 100%;
+			box-sizing: border-box;
+			.pic {
+				width: 170rpx;
+				height: 170rpx;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				margin: 0 28rpx;
+				image {
+					max-width: 100%
+				}
+			}
+
+			.info {
+				width: 420rpx;
+				height: auto;
+				height: 170rpx;
+				display: flex;
+				justify-content: space-around;
+				align-items: flex-start;
+				flex-direction: column;
+				.name {
+					font-size: 28rpx;
+					font-weight: 500;
+					line-height: 1.2;
+					@include multi-ellipsis(2);
+				}
+
+				.price {
+					font-size: 30rpx;
+					font-weight: bold;
+					color: #F23A3A;
+
+					text {
+						margin-left: 5rpx;
+						font-size: 22rpx;
+						color: #999999;
+						font-weight: 500;
+						text-decoration: line-through;
+					}
+				}
+				.time{
+					color: #FF7300;
+					font-size: 18rpx;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 28rpx;
+					border-radius: 14rpx;
+					border: 1.2rpx solid #FF7300;
+					padding: 0 12rpx;
+				}
+			}
+		}
 	}
 }

@@ -1,17 +1,32 @@
 // 全局
+@mixin multi-ellipsis($line-number: 2) {
+	display: -webkit-box;
+	overflow: hidden;
+	white-space: normal;
+	text-overflow: ellipsis;
+	/* autoprefixer: off */
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $line-number;
+	/* autoprefixer: on */
+}
+
 $padding: 200rpx;
-button{
+
+button {
 	border: none;
 	margin: 0;
 	padding: 0;
 	border-radius: 0;
-	&::after{
+
+	&::after {
 		display: none;
 	}
 }
-.phoneStyle{
-	padding-bottom: 60rpx;		
+
+.phoneStyle {
+	padding-bottom: 60rpx;
 }
+
 .container {
 	height: 100%;
 	display: flex;

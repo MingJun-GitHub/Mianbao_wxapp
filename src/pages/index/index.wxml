@@ -1,37 +1,67 @@
-<view class="shop">
-  <shopbar merId="{{merId}}" openShare="{{true}}"></shopbar>
-  <view class="shop_goods">
-    <view class="shop_goods__item" wx:for="{{goodsList}}" wx:key="index">
-      <view class="tops" wx:if="{{index==0}}">
-        <image src="../../images/shop/topbg.png" class="tops_bg" mode="widthFix" />
-        <view class="tops_tit">
-          <image src="../../images/shop/icon.png" class="tops_icon" mode="widthFix" />
-          <text>特价商品</text></view>
-        <button>领红包 ></button>
-      </view>
-      <view class="info {{index>0&&'info2'}}" bindtap="goGoods" data-id="{{item.id}}">
-        <view class="thumb">
-          <image src="{{item.thumb}}" mode="widthFix" />
+<view class="shop" wx:if="{{isLoaded}}">
+  <view class="shop_list" wx:if="{{shopList && shopList.length && !merId}}">
+    <view class="shop_list__item" wx:for="{{shopList}}" wx:key="index" bindtap="lookShop" data-merid="{{item.id}}">
+      <view class="top">
+        <view class="pic">
+          <image src="{{item.shopLogo}}" mode="widthFix" />
         </view>
-        <view class="detail">
-          <view class="name">{{item.productName}}
+        <view class="desc">
+          <view class="name">{{item.shopName}}</view>
+          <view class="address">{{item.shopAddress}}</view>
+          <view class="wechat" wx:if="{{false}}"><text>微信：{{item.userName}}</text>
+            <image src="../../images/other/copy.png" mode="widthFix" />
           </view>
-          <view class="price">
-            ￥{{item.price}}
-            <view class="price_del">
-              ￥{{item.deletePrice}}
+        </view>
+        <view class="btn">查看详情</view>
+      </view>
+      <view class="goods">
+        <view class="pic">
+          <image src="{{item.contentProduct.thumb}}" mode="widthFix" />
+        </view>
+        <view class="info">
+          <view class="name">{{item.contentProduct.productName}}</view>
+          <view class="price">￥{{item.contentProduct.price}} <text>￥{{item.contentProduct.deletePrice}}</text></view>
+          <view class="time">截止时间：{{item.contentProduct.effectiveTime}} </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:else>
+    <shopbar wx:if="{{merId}}" merId="{{merId}}" openShare="{{true}}" openUpdate="{{false}}"></shopbar>
+    <view class="shop_goods">
+      <view class="shop_goods__item" wx:for="{{goodsList}}" wx:key="index">
+        <view class="tops" wx:if="{{index==0}}">
+          <image src="../../images/shop/topbg.png" class="tops_bg" mode="widthFix" />
+          <view class="tops_tit">
+            <image src="../../images/shop/icon.png" class="tops_icon" mode="widthFix" />
+            <text>特价商品</text></view>
+          <button>领红包 ></button>
+        </view>
+        <view class="info {{index>0&&'info2'}}" bindtap="goGoods" data-id="{{item.id}}">
+          <view class="thumb">
+            <image src="{{item.thumb}}" mode="widthFix" />
+          </view>
+          <view class="detail">
+            <view class="name">{{item.productName}}
             </view>
-            <view class="time">
-              <view class="time_tips">
-                截止时间
+            <view class="price">
+              ￥{{item.price}}
+              <view class="price_del">
+                ￥{{item.deletePrice}}
               </view>
-              <view class="time_box">
-                {{item.createTime}}
+              <view class="time">
+                <view class="time_tips">
+                  截止时间
+                </view>
+                <view class="time_box">
+                  {{item.createTime}}
+                </view>
               </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
+  </block>
+
 </view>
