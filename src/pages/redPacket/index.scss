@@ -103,7 +103,7 @@
 				}
 
 				.desc {
-					height: 105rpx;
+					height: 125rpx;
 					padding: 10rpx 20rpx;
 					display: flex;
 					justify-content: space-between;
@@ -119,6 +119,10 @@
 					.address {
 						font-size: 24rpx;
 						color: #666;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						width: 330rpx;
 					}
 					.code{
 						color: #F55656;
