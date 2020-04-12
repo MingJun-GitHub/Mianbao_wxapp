@@ -96,7 +96,7 @@ page {
   opacity: 0.5;
 }
 .lxy-nav-bar__inner .lxy-nav-bar__center {
-  font-size: 17px;
+  font-size: 15px;// 17px;
   line-height: 17px;
   text-align: center;
   position: relative;
@@ -107,6 +107,13 @@ page {
   align-items: center;
   justify-content: center;
   padding-left: 10px;
+  color: #fff;
+}
+.lxy-nav-bar-center__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 350rpx;
 }
 .lxy-nav-bar__inner .lxy-nav-bar__center .lxy-nav-bar__center-title {
   margin-top: -2px;

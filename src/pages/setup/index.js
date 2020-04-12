@@ -1,6 +1,8 @@
 const app = getApp()
+import _ from 'lodash'
 Page({
 	data: {
+		hasPromise: false,
 		shopInfo: {
 			balance: 0,
 			gErWeiMaLogo: '',
@@ -51,6 +53,72 @@ Page({
 			// `shopInfo.${name}`: value
 		})
 	},
+	// 选择定位
+	selectLocation() {
+		wx.chooseLocation({
+			success: (res) => {
+				if (!res.name) {
+					wx.utils.Toast('请选择位置')
+					return
+				}
+				console.log('选择地址---》', res)
+				this.setData({
+					'shopInfo.shopAddress': res.name
+				})
+			},
+			fail: (res) => {
+				if (res.errMsg.indexOf('cancel') > -1) {
+					console.log('用户没有手动选择新的定位')
+				}
+			}
+		})
+	},
+	checkPromise() {
+		return new Promise(resolve => {
+			wx.getSetting({
+				success: (res) => {
+					if (_.isEmpty(res.authSetting, 'scope.userLocation') || res.authSetting[
+							'scope.userLocation'] ===
+						false) {
+						this.setData({
+							hasPromise: false
+						})
+
+						resolve()
+					} else {
+						this.setData({
+							hasPromise: true
+						})
+						resolve()
+					}
+				},
+				fail: () => {
+					resolve()
+				}
+			})
+		})
+	},
+	async openSetting(e) {
+		await this.checkPromise()
+	},
+	async getLocation(ischeck = false, callback) {
+		ischeck && await this.checkPromise()
+		wx.getLocation({
+			type: 'gcj02',
+			success: (e) => {
+				console.log('e', e)
+				this.setData({
+					hasPromise: true
+				})
+				
+				typeof callback == 'function' && callback()
+			},
+			fail: async () => {
+				await this.checkPromise()
+				// wx.utils.Toast('授权失败，请重新授权')
+			}
+		})
+	},
 	async saveShopInfo() {	
 		wx.utils.showLoading()
 		const res = await wx.utils.Http.post({
@@ -67,11 +135,11 @@ Page({
 		console.log('res', res)
 		console.log('this.shopDAta', this.data.shopInfo)
 	},
-	onLoad() {
+	async onLoad() {
 		const shopInfo = wx.getStorageSync('shopInfo')
-
 		shopInfo && this.setData({
 			shopInfo
 		})
+		await this.getLocation()
 	}
 });

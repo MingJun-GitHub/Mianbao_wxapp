@@ -19,11 +19,11 @@
     </view>
     <view class="postGoods_form__item">
       <label for="">促销价</label>
-      <input type="number" value="{{price}}" bindinput="inputInfo" data-tag="price" placeholder="请输入促销价（单位元）" />
+      <input type="text" value="{{price}}" bindinput="inputInfo" data-tag="price" placeholder="请输入促销价（单位元）" />
     </view>
     <view class="postGoods_form__item">
       <label for="">划线价</label>
-      <input type="number" value="{{deletePrice}}" bindinput="inputInfo" data-tag="deletePrice"
+      <input type="text" value="{{deletePrice}}" bindinput="inputInfo" data-tag="deletePrice"
         placeholder="请输入划线价（单位元）" />
     </view>
     <view class="postGoods_form__item">

@@ -37,9 +37,11 @@ Page({
 		this.setEffectiveTime()
 	},
 	setEffectiveTime() {
+		var date = this.data.date.replace(/-/ig, '/') + ' ' + this.data.time
 		this.setData({
-			effectiveTime: new Date(this.data.date + ' ' + this.data.time).getTime()
+			effectiveTime: new Date(date).getTime()
 		})
+		console.log('effectiveTime', this.data.effectiveTime)
 	},
 	filterData() {
 		if (!this.data.thumb) {

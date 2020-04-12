@@ -1,6 +1,5 @@
 <view class="myShop">
   <shopbar isEdit="{{true}}" bindgetShopInfo="getShopInfo" openEdit shopSet></shopbar>
-
   <view class="myShop_hongbao">
     <view class="myShop_hongbao__tit">
       <image src="../../images/myshop/money.png" mode="widthFix" />红包金额</view>
@@ -37,8 +36,8 @@
   </view>
   <view class="myShop_code">
     <view class="myShop_code__tit">店铺二维码</view>
-    <image src="../../images/empty.png" mode="widthFix" />
-    <view class="myShop_code__btn">
+    <image src="{{shopInfo.erWeiMaLogo}}" mode="widthFix" />
+    <view class="myShop_code__btn" wx:if="{{false}}">
       生成二维码名片
     </view>
   </view>

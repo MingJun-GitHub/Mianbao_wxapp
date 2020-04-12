@@ -10,7 +10,7 @@ Page({
 		dataList: [],
 		getStatus: ['提现中', '提现成功', '提现失败'],
 		chargeOrderStatus: ['充值中', '充值成功', '充值失败'],
-		title: ['提现记录', '提现记录', '充值话费记录'],
+		title: ['提现记录', '提现记录', '兑换明细'],
 		option: 0,
 		phone: '',
 		amout: ''

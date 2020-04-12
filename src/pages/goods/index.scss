@@ -3,7 +3,10 @@
 	background-color: #efefef;
 	width: 100%;
 	min-height: 100vh;
-
+	padding-top: 180rpx;
+	&_bar{
+		color: #fff;
+	}
 	&_thumb {
 		width: 100%;
 		height: auto;
@@ -302,11 +305,11 @@
 
 			.price {
 				color: #EB4638;
-				font-size: 123rpx;
+				font-size: 95rpx;
 				font-weight: 800;
 				position: absolute;
-				top: 21%;
-				left: 25%;
+				top: 24%;
+				left: 22%;
 				width: 200rpx;
 				// background-color:rgba(0, 0, 0, .5);
 				text-align: right;

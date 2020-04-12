@@ -1,0 +1,65 @@
+.hongbao {
+    position: fixed;
+    z-index: 20;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__box {
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        margin-top: -35%;
+
+        .close {
+            display: block;
+            position: absolute;
+            right: 5%;
+            top: 3%;
+            width: 60rpx;
+            z-index: 2;
+        }
+
+        .get, .look {
+            position: absolute;
+            width: 300rpx;
+            height: 60rpx;
+            background-color: transparent;
+            position: absolute;
+            bottom: 110rpx;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .noopen {
+            width: 655rpx;
+        }
+
+        .open {
+            width: 590rpx;
+        }
+
+        .price {
+            color: #EB4638;
+            font-size: 95rpx;
+            font-weight: 800;
+            position: absolute;
+            top: 24%;
+            left: 22%;
+            width: 200rpx;
+            // background-color:rgba(0, 0, 0, .5);
+            text-align: right;
+            padding-right: 20rpx;
+        }
+        .look{
+            bottom: 85rpx;
+        }
+    }
+}

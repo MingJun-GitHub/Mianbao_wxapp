@@ -28,7 +28,7 @@ Component({
 	methods: {
 		goShopCode() {
 			wx.navigateTo({
-				url: '/pages/shopCode/index'
+				url: `/pages/shopCode/index?wxcode=${encodeURIComponent(this.data.saleMer.bgErWeiMaLogo || '')}`
 			})
 		},
 		clipboardCode() {

@@ -1,8 +1,8 @@
 <view class="goods" wx:if="{{goodsDetails}}">
   <!-- // "navigationStyle": "custom", -->
-  <!-- <navbar searchBar="{{false}}" bindback="goBack" bindhome="goHome" iconTheme="white"
-    background="{{backgroundColorTop}}" backgroundColorTop="{{backgroundColorTop}}" ext-class="index_bar"
-    back="{{true}}" home="{{true}}"></navbar> -->
+  <navbar searchBar="{{false}}" bindback="goBack" iconTheme="white"
+    background="#ef3621" backgroundColorTop="#ef3621" ext-class="goods_bar"
+    back="{{true}}" title="{{goodsDetails.contentProduct.productName}}"></navbar>
   <view class="goods_thumb">
     <image src="{{goodsDetails.contentProduct.thumb}}" class="goods_thumb__img" mode="widthFix" />
     <button class="goods_thumb__share" open-type="share">

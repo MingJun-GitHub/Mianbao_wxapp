@@ -22,7 +22,7 @@
   </view>
   <view class="order_item__contact">
     <view class="phone">
-      <image src="../../images/shop/phone.png" />{{item.phone}}</view>
+      <image src="../../images/shop/phone.png" />{{item.phone || ''}}</view>
     <view class="opt">
       <view class="copy" bindtap="copyPhone" data-phone="{{item.phone}}">复制号码</view>
       <block wx:if="{{business}}">

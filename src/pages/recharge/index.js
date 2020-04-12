@@ -1,5 +1,5 @@
 const app = getApp()
-const title = ['提现', '充值', '话费充值']
+const title = ['提现', '充值', '积分兑换']
 Page({
 	data: {
 		userInfo: null,

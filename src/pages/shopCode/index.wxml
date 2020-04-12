@@ -1,9 +1,10 @@
-<view class="shopCode">
+<view class="shopCode" style="{{'background-image:url('+wxcode+')'}}">
    <view class="shopCode_pic">
      <!-- <image src="" /> -->
    </view>
    <view class="shopCode_footer">
-     <button bindtap="saveCode">保存图片</button>
+     <button wx:if="{{!hasPromise}}" open-type="openSetting" bindopensetting="openSetting">保存图片</button>
+     <button wx:else bindtap="saveCode">保存图片</button>
      <button class="shopCode_footer__share">分享店铺</button>
    </view>
 </view>

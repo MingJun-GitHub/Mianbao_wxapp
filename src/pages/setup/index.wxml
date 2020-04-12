@@ -12,11 +12,13 @@
   </view>
   <view class="setup_item">
     <label for="">店铺地址:</label>
-    <input type="text" value="{{shopInfo.shopAddress}}" data-name="shopAddress" bindinput="setInputValue" placeholder="请输入店铺店" />
+    <input type="text" value="{{shopInfo.shopAddress}}" data-name="shopAddress" bindinput="setInputValue" placeholder="请输入店铺地址" />
+    <button class="map" wx:if="{{!hasPromise}}" open-type="openSetting" bindopensetting="openSetting"><image src="../../images/other/map.png" class="map" mode="widthFix" /></button>
+    <image wx:else bindtap="selectLocation" src="../../images/other/map.png" class="map" mode="widthFix" />
   </view>
   <view class="setup_item">
     <label for="">店主微信:</label>
-    <input type="text" value="{{shopInfo.userName}}" data-name="userName" bindinput="setInputValue" placeholder="请输入店铺店" />
+    <input type="text" value="{{shopInfo.userName}}" data-name="userName" bindinput="setInputValue" placeholder="请输入微信号" />
   </view>
   <view class="setup_btn" bindtap="saveShopInfo">
     确定

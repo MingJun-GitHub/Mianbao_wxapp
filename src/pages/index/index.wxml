@@ -27,7 +27,7 @@
     </view>
   </view>
   <block wx:else>
-    <shopbar wx:if="{{merId}}" merId="{{merId}}" openShare="{{true}}" openUpdate="{{false}}"></shopbar>
+    <shopbar wx:if="{{merId}}" bindgetShopInfo="returnGetShopInfo" merId="{{merId}}" openShare="{{true}}" openUpdate="{{false}}"></shopbar>
     <view class="shop_goods">
       <view class="shop_goods__item" wx:for="{{goodsList}}" wx:key="index">
         <view class="tops" wx:if="{{index==0}}">
@@ -35,7 +35,7 @@
           <view class="tops_tit">
             <image src="../../images/shop/icon.png" class="tops_icon" mode="widthFix" />
             <text>特价商品</text></view>
-          <button>领红包 ></button>
+          <button bindtap="changeHongbao">领红包 ></button>
         </view>
         <view class="info {{index>0&&'info2'}}" bindtap="goGoods" data-id="{{item.id}}">
           <view class="thumb">
@@ -54,7 +54,7 @@
                   截止时间
                 </view>
                 <view class="time_box">
-                  {{item.createTime}}
+                  {{item.effectiveTime}}
                 </view>
               </view>
             </view>
@@ -62,6 +62,7 @@
         </view>
       </view>
     </view>
+    <hongbao merId="{{merId}}" money="{{shopInfo.redBagAmount}}" showHongBao="{{showHongBao}}" bindclose="changeHongbao"></hongbao>
   </block>
 
 </view>

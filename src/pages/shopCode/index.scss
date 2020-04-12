@@ -1,8 +1,11 @@
 .shopCode {
 	width: 100vw;
 	height: 100vh;
-	background: url(http://pic.gtqad.com/shopCode.png) no-repeat center;
-	background-size: auto 100%;
+	// background: url(http://pic.gtqad.com/shopCode.png) no-repeat center;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 110% auto;
 	position: relative;
 
 	&_footer {

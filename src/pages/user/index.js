@@ -1,11 +1,17 @@
 const app = getApp()
 Page({
 	data: {
+		isLoaded: false,
 		userInfo: null,
 		isLogin: false,
 		hasPhone: '',
 		shopInfo: '',
 		merStatus: 0, // '0待申请,1待审批,2审批通过,3审批拒绝
+	},
+	goHome() {
+		wx.reLaunch({
+			url: '/pages/index/index?merId='+this.data.shopInfo.id
+		})
 	},
 	goLogin() {
 		if (this.data.isLogin) {
@@ -34,6 +40,11 @@ Page({
 		const res = await wx.utils.Http.get({
 			url: '/myInfo/findUserInfo'
 		})
+		if (res.code == 0) {
+			this.setData({
+				merStatus: res.data.merStatus || 0
+			})
+		}
 		console.log('获取用户个人信息', res)
 	},
 	async getShopInfo() {
@@ -60,6 +71,7 @@ Page({
 		wx.utils.hideLoading()
 		if (res.code == 0) {
 			wx.utils.Toast('申请成功，等待系统审核成功')
+			await this.findUserInfo()
 			await this.getShopInfo()
 		} else {
 			wx.utils.Toast(res.data || '操作失败，请重试')
@@ -71,8 +83,8 @@ Page({
 		this.setData({
 			userInfo: wx.utils.Login.userInfo,
 			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone,
-			merStatus: wx.utils.Login.userInfo.merStatus || 0
+			phone: wx.utils.Login.phone
+			// merStatus: wx.utils.Login.userInfo.merStatus || 0
 		})
 		if (wx.utils.Login.loginPromise) {
 			const res = await wx.utils.Login.getSaleMer()
@@ -86,5 +98,9 @@ Page({
 	async onShow() {
 		await this.init()
 		await this.getShopInfo()
+		await this.findUserInfo()
+		this.setData({
+			isLoaded: true
+		})
 	}
 });

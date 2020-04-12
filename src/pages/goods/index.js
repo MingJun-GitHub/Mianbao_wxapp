@@ -39,8 +39,8 @@ Page({
 		}
 	},
 	goHome() {
-		wx.switchTab({
-			url: '/pages/index/index'
+		wx.reLaunch({
+			url: '/pages/index/index?merId='+this.data.merId
 		})
 	},
 	changeLeaveMsg() {
@@ -99,7 +99,7 @@ Page({
 				isGetHb: true
 			})
 		} else {
-			wx.utils.Toast(res.msg||'领取失败，新重新领取~')
+			wx.utils.Toast(res.msg || '领取失败，新重新领取~')
 		}
 	},
 	changeHongBao() {
@@ -111,7 +111,7 @@ Page({
 		const res = await wx.utils.Http.get({
 			url: `/merShop/findSaleMerByMerId/${this.data.merId}`
 		})
-		if (res.code ==0) {
+		if (res.code == 0) {
 			this.setData({
 				money: res.data.saleMer.redBagAmount
 			})
@@ -132,11 +132,26 @@ Page({
 	// 		})
 	// 	}
 	// },
+	onShareAppMessage(options) {
+		return {
+			title: this.data.goodsDetails.contentProduct.productName,
+			path: `/pages/goods/index?merId=${this.data.merId}&id=${this.data.id}`,
+			imageUrl: this.data.goodsDetails.contentProduct.thumb || ''
+		}
+	},
 	async onLoad(query) {
 		this.setData({
 			id: query.id || '',
-			merId: query.merId || 1
+			merId: query.merId || ''
 		})
+		if (!this.data.id || !this.data.merId) {
+			wx.utils.Toast('非法访问，回到店铺列表')
+			setTimeout(() => {
+				wx.reLaunch({
+					url: '/pages/index/index'
+				})
+			}, 1500)
+		}
 		this.data.id && await this.getGoodsDetail(this.data.id)
 		this.data.merId && await this.getHongBaoMoney()
 		wx.setNavigationBarTitle({

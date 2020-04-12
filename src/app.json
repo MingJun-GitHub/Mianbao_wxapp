@@ -43,7 +43,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "面包"
+      "desc": "给力品小程序"
     }
   }
 }

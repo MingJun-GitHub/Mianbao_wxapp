@@ -12,7 +12,7 @@
 		line-height: normal;
 		border-bottom: 1rpx solid #EAEAEA;
 		position: relative;
-
+		position: relative;
 		label {
 			font-size: 28rpx;
 			font-weight: 500;
@@ -51,6 +51,14 @@
 				line-height: normal;
 				align-items: center;
 			}
+		}
+		.map{
+			width: 42rpx;
+			height: 42rpx;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 30rpx;
 		}
 	}
 

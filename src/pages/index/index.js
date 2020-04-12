@@ -2,9 +2,11 @@
 const app = getApp(); //  eslint-disable-line no-undef
 Page({
 	data: {
+		shopInfo: {},
 		shopList: [],
 		goodsList: [],
 		merId: '',
+		showHongBao: false,
 		isLoaded: false
 	},
 	goGoods(e) {
@@ -37,18 +39,32 @@ Page({
 		}
 	},
 	lookShop(e) {
-		// console.log('e', e)
 		const {
 			merid
 		} = e.currentTarget.dataset
-		console.log('merDi', merid)
 		this.setData({
 			merId: merid
 		})
 		wx.reLaunch({
 			url: `/pages/index/index?merId=${this.data.merId}`
 		})
-		// this.getShopGoodsList()
+	},
+	onShareAppMessage(options){
+		return {
+			title: this.data.merId ? this.data.shopInfo.shopName : '福利大派送，红包你也一起来领',
+			path: '/pages/index/index' + (this.data.merId ? `?merId=${this.data.merId}`:''),
+			imageUrl: this.data.merId ? (this.data.shopInfo.shopLogo || '') : ''
+		}
+	},
+	returnGetShopInfo(e) {
+		this.setData({
+			shopInfo: e.detail.saleMer
+		})
+	},
+	changeHongbao() {
+		this.setData({
+			showHongBao: !this.data.showHongBao
+		})
 	},
 	async onLoad(query) {
 		wx.utils.showLoading()
@@ -69,7 +85,5 @@ Page({
 			})
 			wx.utils.hideLoading()
 		}, 0)
-
-		// this.getShopGoodsList()
 	}
 });
