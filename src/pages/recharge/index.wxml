@@ -12,7 +12,9 @@
       <picker bindchange="bindPickerPay" value="{{getType}}" range="{{payName}}">
         <view class="getpay">
           <!-- <image src="../../images/shop/alipay.png" mode="widthFix" /> -->
-          <image src="{{getType==0?'../../images/shop/wechat.png':'../../images/shop/alipay.png'}}" />{{payName[getType]}}
+          <image wx:if="{{getType==0}}" src="../../images/shop/wechat.png" />
+          <image wx:else src="../../images/shop/alipay.png"  />
+          {{payName[getType]}}
          </view>
       </picker>
       <!-- <view class="wechat">
