@@ -33,7 +33,7 @@
   </view>
   <view class="goods_footer">
     <view class="goods_footer__ly" bindtap="changeLeaveMsg">
-      <image src="../../images/goods/tongzhi.png" mode="widthFix" />通知老板预留</view>
+      <image src="../../images/goods/tongzhi.png" mode="widthFix" />下单</view>
     <view class="goods_footer__hb" bindtap="changeHongBao">
       <image src="../../images/goods/hongbao.png" mode="widthFix" />领红包</view>
   </view>

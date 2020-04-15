@@ -37,8 +37,8 @@
   <view class="myShop_code">
     <view class="myShop_code__tit">店铺二维码</view>
     <image src="{{shopInfo.erWeiMaLogo}}" mode="widthFix" />
-    <view class="myShop_code__btn" wx:if="{{false}}">
-      生成二维码名片
+    <view class="myShop_code__btn" bindtap="goShopCode">
+      二维码名片
     </view>
   </view>
 </view>

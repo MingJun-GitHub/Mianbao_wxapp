@@ -14,11 +14,16 @@ Page({
 	},
 	getShopInfo(e) {
 		const {
-			saleMer,
-			// vistCount
+			saleMer
 		} = e.detail
 		this.setData({
-			 shopInfo: saleMer
+			shopInfo: saleMer
+		})
+	},
+	async goShopCode() {
+		wx.utils.shopInfo = this.data.shopInfo
+		wx.navigateTo({
+			url: `/pages/shopCode/index`
 		})
 	},
 	onLoad() {

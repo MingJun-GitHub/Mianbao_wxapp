@@ -3,7 +3,8 @@ import _ from 'lodash'
 Page({
 	data: {
 		wxcode: 'http://pic.gtqad.com/shopCode.png',
-		hasPromise: true
+		hasPromise: true,
+		shopInfo: ''
 	},
 	saveCode() {
 		wx.downloadFile({
@@ -31,6 +32,13 @@ Page({
 				}
 			}
 		})
+	},
+	onShareAppMessage(options){
+		return {
+			title: this.data.merId ? this.data.shopInfo.shopName : '福利大派送，红包你也一起来领',
+			path: '/pages/index/index' + (this.data.merId ? `?merId=${this.data.merId}`:''),
+			imageUrl: this.data.merId ? (this.data.shopInfo.shopLogo || '') : ''
+		}
 	},
 	checkPromise() {
 		return new Promise(resolve => {
@@ -61,9 +69,12 @@ Page({
 		await this.checkPromise()
 	},
 	async onLoad(query) {
-		// await this.checkPromise()
+		const shopInfo = wx.utils.shopInfo || ''
+		console.log('shopInfo', shopInfo)
 		this.setData({
-			wxcode: decodeURIComponent(query.wxcode || this.data.wxcode)
+			shopInfo,
+			merId: shopInfo.id,
+			wxcode: decodeURIComponent(shopInfo.bgErWeiMaLogo || this.data.wxcode)
 		})
 	}
 });

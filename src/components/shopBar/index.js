@@ -27,8 +27,9 @@ Component({
 	},
 	methods: {
 		goShopCode() {
+			wx.utils.shopInfo = this.data.saleMer
 			wx.navigateTo({
-				url: `/pages/shopCode/index?wxcode=${encodeURIComponent(this.data.saleMer.bgErWeiMaLogo || '')}`
+				url: `/pages/shopCode/index`
 			})
 		},
 		clipboardCode() {
@@ -54,8 +55,7 @@ Component({
 				this.setData({
 					saleMer: res.data.saleMer,
 					vistCount: res.data.vistCount
-				})			
-
+				})
 				this.triggerEvent('getShopInfo', res.data)	
 			}
 		},

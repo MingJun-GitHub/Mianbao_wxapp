@@ -5,6 +5,6 @@
    <view class="shopCode_footer">
      <button wx:if="{{!hasPromise}}" open-type="openSetting" bindopensetting="openSetting">保存图片</button>
      <button wx:else bindtap="saveCode">保存图片</button>
-     <button class="shopCode_footer__share">分享店铺</button>
+     <button class="shopCode_footer__share" open-type="share">分享店铺</button>
    </view>
 </view>

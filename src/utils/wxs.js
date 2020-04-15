@@ -21,7 +21,7 @@ function Loading(title = '请稍后...', mask = false) {
 }
 
 var baseObj = {}
-var promisifyArr = ['showLoading', 'hideLoading']
+var promisifyArr = ['showLoading', 'hideLoading', 'setStorage', 'getStorage', 'removeStorage']
 promisifyArr.forEach(item => {
 	baseObj[item] = promisify(wx[item])
 })
