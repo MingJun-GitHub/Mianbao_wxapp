@@ -1,189 +1,110 @@
 const app = getApp()
 Page({
 	data: {
-		id: '',
-		productName: '',
-		stockNum: '',
-		thumb: '',
-		price: '',
-		deletePrice: '',
-		productDetails: [],
-		date: '',
-		time: '00:00',
-		effective_time: ''
+		pageNo: 1,
+		pageSize: 100,
+		userList: [],
+		hasCheckedList: [],
+		allCheckedStauts: false,
+		content: ''
 	},
-	inputInfo(e) {
-		var {
-			tag
-		} = e.currentTarget.dataset
-		var {
-			value
-		} = e.detail
+	inputContent(e) {
 		this.setData({
-			[`${tag}`]: value
+			content: e.detail.value
 		})
-		console.log('this.', this.data)
 	},
-	bindDateChange(e) {
+	filterHasChecked() {
+		var hasCheckedList = [...this.data.userList]
+		// 过滤
+		hasCheckedList = hasCheckedList.filter(item => {
+			return item.is_checked
+		})
 		this.setData({
-			date: e.detail.value
-		})
-		this.setEffectiveTime()
-	},
-	bindTimeChange(e) {
-		this.setData({
-			time: e.detail.value
-		})
-		this.setEffectiveTime()
-	},
-	setEffectiveTime() {
-		this.setData({
-			effective_time: new Date(this.data.date + ' ' + this.data.time).getTime()
+			hasCheckedList,
+			allCheckedStauts: hasCheckedList.length === this.data.userList.length
 		})
 	},
-	filterData() {
-		if (!this.data.thumb) {
-			wx.utils.Toast('请上传商品主题图')
-			return
-		}
-		if (!this.data.productName) {
-			wx.utils.Toast('请输入商品名称')
-			return
-		}
-		if (this.data.price == '') {
-			wx.utils.Toast('请输入促销价')
-			return
-		}
-
-		if (this.data.deletePrice == '') {
-			wx.utils.Toast('请输入划线价')
-			return
-		}
-
-		if (this.data.stockNum == '') {
-			wx.utils.Toast('请输入库存')
-			return
-		}
-		if (!this.data.effective_time) {
-			wx.utils.Toast('请选择商品截止时间')
-			return
-		}
-		return true
-	},
-	async saveGoods() {
-		if (!this.filterData()) {
-			return
-		}
-		const res = await wx.utils.Http.post({
-			url: this.data.id ? '/productInfo/updateProduct' : '/productInfo/addProduct',
-			data: {
-				id: this.data.id,
-				productName: this.data.productName,
-				price: this.data.price,
-				stockNum: this.data.stockNum,
-				thumb: this.data.thumb,
-				effective_time: this.data.effective_time,
-				productDetails: this.data.productDetails,
-				deletePrice: this.data.deletePrice
-			}
-		})
-		// 
-		if(res.code==0) {
-
-		}
-	},
-	async uploadThumb() {
-		this.chooseImage(1, async res => {
-			wx.utils.showLoading('上传中...')
-			const imgurl = await wx.utils.Http.uploadFile(res[0])
-			this.setData({
-				thumb: imgurl
-			})
-			wx.utils.hideLoading()
-		})
-	},
-	async uploadList() {
-		let length = 10 // 上传十张
-		if (this.data.productDetails.length == length) {
-			wx.utils.Toast('只能上传10张商品详情图')
-			return
-		}
-		this.chooseImage(length - this.data.productDetails.length, async res => {
-			wx.utils.showLoading('上传中...')
-			var goods = [...this.data.productDetails]
-			for (let i = 0; i < res.length; i++) {
-				var imgurl = await wx.utils.Http.uploadFile(res[i])
-				goods.push({
-					imgurl,
-					productId: this.data.id || ''
-				})
-			}
-			console.log('goods', goods)
-			this.setData({
-				productDetails: goods
-			})
-			wx.utils.hideLoading()
-		})
-	},
-	// 选择图片
-	async chooseImage(count, callback) {
-		// saleapi/merShop/findSaleMerByMerId/1
-		wx.chooseImage({
-			count,
-			sizeType: ['original', 'compressed'],
-			sourceType: ['album', 'camera'],
-			success: async (res) => {
-				const tempFilePaths = res.tempFilePaths
-				await callback(tempFilePaths)
-			}
-		})
-	},
-	deletePic(e) {
+	selectSku(e) {
 		const {
 			index
 		} = e.currentTarget.dataset
-		console.log('e', e, index)
-		const productDetails = [...this.data.productDetails]
-		productDetails.splice(index, 1)
 		this.setData({
-			productDetails
+			[`userList[${index}].is_checked`]: !this.data.userList[index].is_checked
 		})
+		this.filterHasChecked()
 	},
-	async getGoodsDetail(productId) {
+	async findMyConsumer() {
+		wx.utils.showLoading()
 		const res = await wx.utils.Http.get({
-			url: `/productInfo/productDetail/${productId}`
+			url: '/merShop/findMyConsumer',
+			data: {
+				pageNo: this.data.pageNo,
+				pageSize: this.data.pageSize
+			}
 		})
+		wx.utils.hideLoading()
 		if (res.code == 0) {
-			const {
-				productName,
-				price,
-				deletePrice,
-				stockNum,
-				thumb,
-				effectiveTime
-			} = res.data.contentProduct
-
-			let productDetails = res.data.productDetail
-			let splitDate = effectiveTime.split(' ')
-			let date = splitDate[0]
-			let time = splitDate[1].substr(0, 5)
+			res.data.records.map(item => {
+				item.is_checked = false
+			})
 			this.setData({
-				productName,
-				price,
-				deletePrice,
-				stockNum,
-				thumb,
-				effective_time: effectiveTime,
-				productDetails,
-				date,
-				time
+				userList: res.data.records
 			})
 		}
+		this.filterHasChecked()
+	},
+	checkedAll(e) {
+		var userList = [...this.data.userList]
+		userList.map(item => {
+			item.is_checked = !this.data.allCheckedStauts
+		})
+		this.setData({
+			userList,
+			allCheckedStauts: !this.data.allCheckedStauts
+		})
+		this.filterHasChecked()
+	},
+	async sendMsg() {
+		if (!this.data.content) {
+			wx.utils.Toast('请输入短信内容')
+			return
+		}
+		wx.utils.showLoading()
+		var msgLogs = []
+		this.data.hasCheckedList.forEach(item => {
+			if (item.phone) {
+				msgLogs.push({
+					id: item.id,
+					toMoblie: item.phone
+				})
+			}
+		})
+		const res = await wx.utils.Http.post({
+			url: '/merShop/sendMsg',
+			data: {
+				msg: this.data.content,
+				msgLogs
+			}
+		})
+		wx.utils.hideLoading()
+		if (res.code == 0) {
+			wx.utils.Toast('发送成功')
+		} else {
+			wx.utils.Toast(res.msg || '发送失败，请重新尝试~')
+		}
+	},
+	scanCode() {
+		wx.scanCode({
+			onlyFromCamera: false,
+			scanType: ['qrCode', 'barCode', 'datamatrix', 'pdf417'],
+			success: (result) => {
+				console.log('res-->', result)
+			},
+			fail: () => {},
+			complete: () => {}
+		});
 	},
 	async onLoad(query) {
-		this.setData({
-			id: query.id || ''
-		})
-		this.data.id && this.getGoodsDetail(this.data.id)
+		await this.findMyConsumer()
 	}
 });

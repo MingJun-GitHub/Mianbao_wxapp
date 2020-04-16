@@ -1,36 +1,44 @@
 <view class="postMsg">
-  <textarea value="" placeholder="请输入短信内容" class="postMsg_area">
+  <!-- <button bindtap="scanCode">打开</button> -->
+  <textarea value="{{content}}" bindinput="inputContent" placeholder="请输入短信内容" class="postMsg_area">
  </textarea>
   <view class="postMsg_tips">短信费0.1元/条</view>
   <view class="postMsg_khlist">
-    <view class="postMsg_khlist__tit">
-      我的客户
-    </view>
-    <view class="postMsg_khlist__item" wx:for="{{20}}" wx:key="index">
-      <view class="radio">
-        <radio class="radio" checked="{{true}}" color="#FF4E00">
-        </radio>
+    <block wx:if="{{userList && userList.length}}">
+      <view class="postMsg_khlist__tit">
+        我的客户
       </view>
-      <view class="pic">
-        <image src="../../images/empty.png" mode="widthFix" />
-      </view>
-      <view class="info">
-        <view class="nickname">
-          小可爱
+      <view class="postMsg_khlist__item" wx:for="{{userList}}" wx:key="index">
+        <view class="radio">
+          <radio class="radio" color="#ef3621" checked="{{item.is_checked}}" data-index="{{index}}" bindtap="selectSku">
+          </radio>
         </view>
-        <view class="time">
-          20220-06-23 15:59:31
+        <view class="pic">
+          <image src="{{item.userLogo}}" mode="widthFix" />
+        </view>
+        <view class="info">
+          <view class="nickname">
+            {{item.nickName || '普通用户'}}
+          </view>
+          <view class="time">
+            {{item.createTime || ''}}
+          </view>
+        </view>
+        <view class="orderid">
+          {{item.phone || ''}}
         </view>
       </view>
-      <view class="orderid">
-        12345678954
-      </view>
+    </block>
+    <view class="postMsg_khlist__empty">
+      暂无客户
     </view>
   </view>
-  <view class="postMsg_footer">
-      <radio class="radio" checked="{{true}}" color="#FF4E00">
-          <view>全选</view>
-      </radio>
-      <view class="postMsg_footer__btn">发送短信</view>
+  <view class="postMsg_footer" wx:if="{{userList && userList.length}}">
+    <radio class="radio" data-stauts="{{allCheckedStauts}}" checked="{{allCheckedStauts}}" bindtap="checkedAll"
+      color="#ef3621">
+      <view>全选</view>
+    </radio>
+    <button disabled="{{!hasCheckedList.length}}" class="postMsg_footer__btn"
+      bindtap="sendMsg">发送短信({{hasCheckedList.length}})</button>
   </view>
 </view>

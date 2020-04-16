@@ -69,7 +69,7 @@ Page({
 	async onLoad(query) {
 		wx.utils.showLoading()
 		this.setData({
-			merId: query.merId || ''
+			merId: query.merId || query.scene || ''
 		})
 		if (this.data.merId) {
 			await this.getShopGoodsList()
