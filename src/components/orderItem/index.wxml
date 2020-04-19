@@ -7,7 +7,7 @@
     <view class="time">{{item.createTime}}</view>
   </view>
   <view class="order_item__content">
-    <view class="pic">
+    <view class="pic" bindtap="goProduct" data-item="{{item}}">
       <image src="{{item.thumb || '../../images/empty.png'}}" mode="widthFix" />
       <view class="gname">{{item.productName}}</view>
     </view>

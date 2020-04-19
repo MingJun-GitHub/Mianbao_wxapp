@@ -10,7 +10,8 @@ Page({
 		dataList: [],
 		getStatus: ['提现中', '提现成功', '提现失败'],
 		chargeOrderStatus: ['充值中', '充值成功', '充值失败'],
-		title: ['提现记录', '提现记录', '兑换明细'],
+		chargeRecordStatus: ['充值失败', '充值成功'],
+		title: ['提现记录', '充值记录', '兑换明细'],
 		option: 0,
 		phone: '',
 		amout: ''
@@ -57,7 +58,7 @@ Page({
 			isIng: true
 		})
 		wx.utils.showLoading()
-		let url = ['/myInfo/findGetMoneyRecord', '', '/myInfo/findPhoneChargeRecord'][this.data.option]
+		let url = ['/myInfo/findGetMoneyRecord', '/merShop/findChargeRecord', '/myInfo/findPhoneChargeRecord'][this.data.option]
 		let params = this.data.option == 0 ? {
 			getType: this.data.getType
 		} : (this.data.getType == 1 ? {} : {

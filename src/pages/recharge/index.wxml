@@ -9,12 +9,11 @@
     </view>
     <view class="recharge_pay">
       提现方式
-      <picker bindchange="bindPickerPay" value="{{getType}}" range="{{payName}}">
+      <picker bindchange="bindPickerPay" value="{{getTypeIndex}}" range="{{payName}}">
         <view class="getpay">
           <!-- <image src="../../images/shop/alipay.png" mode="widthFix" /> -->
-          <image wx:if="{{getType==0}}" src="../../images/shop/wechat.png" />
-          <image wx:else src="../../images/shop/alipay.png"  />
-          {{payName[getType]}}
+          <image src="{{payData[getTypeIndex].payUrl}}" />
+          {{payName[getTypeIndex]}}
          </view>
       </picker>
       <!-- <view class="wechat">
@@ -25,12 +24,12 @@
     <view class="recharge_item2">
       <label for="">提现金额</label>
       <view>
-        <text class="yuan">￥</text> <input value="{{amount}}" type="number" data-name="amount" bindinput="inputValue" bindblur="blurValue"
+        <text class="yuan">￥</text> <input value="{{amount}}" type="digit" data-name="amount" bindinput="inputValue" bindblur="blurValue"
           placeholder="" />
       </view>
     </view>
     <view class="recharge_tips">
-      提现到账时间预计2小时
+      {{getType==0? '提现到账时间预计2小时': '手机号作为支付宝账户提现'}}
     </view>
     <view class="recharge_btn" bindtap="rechargeApply">
       确定提现
@@ -41,6 +40,9 @@
   <block wx:if="{{option==1}}">
     <view class="recharge_money">
       <image src="../../images/shop/money.png" mode="widthFix" /> 红包余额：<view class="price">￥{{money}}</view>
+      <view class="more" bindtap="goPage" data-name="capital" data-params="option=1">
+        充值明细
+      </view>
     </view>
     <view class="recharge_pay">
       充值方式
@@ -52,13 +54,13 @@
     <view class="recharge_item2">
       <label for="">充值金额</label>
       <view>
-        <text class="yuan">￥</text> <input type="number" placeholder="" />
+        <text class="yuan">￥</text> <input type="digit" placeholder="" data-name="amount" value="{{amount}}" bindinput="inputValue" bindblur="blurValue"/>
       </view>
     </view>
     <view class="recharge_tips">
       充值到账时间预计2小时
     </view>
-    <view class="recharge_btn">
+    <view class="recharge_btn" bindtap="saveMoney">
       确定充值
     </view>
   </block>
@@ -72,12 +74,12 @@
     </view>
     <view class="recharge_item">
       <label for="">手机号</label>
-      <input type="text" value="{{phone}}" data-name="phone" bindinput="inputValue" placeholder="请输入手机号码" />
+      <input type="number" value="{{phone}}" data-name="phone" bindinput="inputValue" placeholder="请输入手机号码" />
     </view>
     <view class="recharge_item2">
       <label for="">兑换金额</label>
       <view>
-        <text class="yuan">￥</text> <input type="number" data-name="amount" value="{{amount}}" bindinput="inputValue" bindblur="blurValue"
+        <text class="yuan">￥</text> <input type="digit" data-name="amount" value="{{amount}}" bindinput="inputValue" bindblur="blurValue"
           placeholder="" />
       </view>
     </view>

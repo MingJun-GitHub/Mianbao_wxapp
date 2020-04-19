@@ -48,9 +48,6 @@ Page({
 			showLeaveMsg: !this.data.showLeaveMsg
 		})
 	},
-	saveMsg() {
-
-	},
 	inputLeaveMsg(e) {
 		const {
 			value
@@ -60,7 +57,12 @@ Page({
 		})
 	},
 	async saveMsg(e) {
-		console.log('留言', )
+		if (!wx.utils.Login.isBind || !await wx.utils.Login.getPhone()) {
+			wx.navigateTo({
+				url: '/pages/login/index'
+			})
+			return
+		}
 		if (!this.data.leaveMsg) {
 			wx.utils.Toast('请输入留言')
 		} else {
@@ -88,6 +90,12 @@ Page({
 	},
 	// 领红包
 	async getHongBao() {
+		if (!wx.utils.Login.isBind || !await wx.utils.Login.getPhone()) {
+			wx.navigateTo({
+				url: '/pages/login/index'
+			})
+			return
+		}
 		wx.utils.showLoading()
 		const res = await wx.utils.Http.get({
 			url: `/buyProduct/getRedBag/${this.data.merId}`

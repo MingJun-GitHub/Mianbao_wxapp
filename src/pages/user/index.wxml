@@ -31,15 +31,15 @@
     <view class="user_myshop__top">
       <image class="myshop" src="../../images/user/dianpu.png" mode="widthFix" />
       我的店铺
-      <view class="myshopbtn" wx:if="{{merStatus==2 && shopInfo.shopName}}" bindtap="goPage" data-name="myShop"
-          data-login="{{true}}">
+      <view class="myshopbtn" wx:if="{{merStatus==2 && shopInfo.shopName}}" bindtap="goHome"
+      data-name="myShop" data-login="{{true}}">
         <image class="righticon"  src="../../images/user/right.png" mode="widthFix" />
       </view>
     </view>
     <view wx:if="{{merStatus==0}}" class="user_myshop__apply" bindtap="applyShop">申请店铺</view>
     <view wx:if="{{merStatus==1}}" class="user_myshop__status">申请店铺审核中...</view>
-    <view wx:if="{{merStatus==2 && shopInfo && shopInfo.shopName}}" class="user_myshop__content" bindtap="goHome"
-      data-name="myShop" data-login="{{true}}">
+    <view wx:if="{{merStatus==2 && shopInfo && shopInfo.shopName}}" class="user_myshop__content" bindtap="goPage" data-name="myShop"
+          data-login="{{true}}">
       <view class="pic">
         <image src="{{shopInfo.shopLogo}}" mode="widthFix" />
       </view>

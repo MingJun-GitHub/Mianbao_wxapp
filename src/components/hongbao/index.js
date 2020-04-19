@@ -19,6 +19,12 @@ Component({
 	methods: {
 		// 领红包
 		async getHongBao() {
+			if (!wx.utils.Login.isBind || !wx.utils.Login.getPhone()) {
+				wx.navigateTo({
+					url: '/pages/login/index'
+				})
+				return
+			}
 			wx.utils.showLoading()
 			const res = await wx.utils.Http.get({
 				url: `/buyProduct/getRedBag/${this.data.merId}`

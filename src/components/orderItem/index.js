@@ -29,6 +29,14 @@ Component({
 				item
 			} = e.currentTarget.dataset
 			this.triggerEvent('todeal', item)	
+		},
+		goProduct(e) {
+			const {
+				merId,
+				productId
+			} = e.currentTarget.dataset.item
+			console.log('merId', productId, merId)
+			wx.navigateTo({url: `/pages/goods/index?merId=${merId}&id=${productId}`})
 		}
 	},
 	lifetimes: {

@@ -63,9 +63,10 @@ Page({
 		if (res.code == 0) {
 			wx.utils.Toast('绑定成功')
 			await wx.utils.Login.simpleLogin()
+			
 			setTimeout(() => {
 				wx.navigateBack()
-			}, 2000)
+			}, 1500)
 		}
 	},
 	async init() {

@@ -8,10 +8,13 @@
 		color: #fff;
 	}
 	&_thumb {
-		width: 100%;
-		height: auto;
+		width:750rpx;
+		max-height: 750rpx;
 		position: relative;
-
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
 		&__img {
 			width: 100%;
 			height: auto;

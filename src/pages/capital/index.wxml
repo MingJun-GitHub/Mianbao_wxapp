@@ -3,6 +3,7 @@
     <view class="capital_item" wx:for="{{dataList}}" wx:key="index">
       <view class="capital_item__detail">
         <view class="tit" wx:if="{{option==0}}">{{item.getType==0||item.getType==null?'微信':'支付宝'}}提现</view>
+        <view class="tit" wx:if="{{option==1}}">订单号:{{item.chargeOrderId}}</view>
         <view class="tit" wx:if="{{option==2}}">手机号:{{item.phone}}</view>
         <view class="time">{{item.createTime}}</view>
       </view>
@@ -13,13 +14,18 @@
           </view>
           <view>{{getStatus[item.getStatus]}}</view>
         </block>
+        <block wx:if="{{option==1}}">
+          <view class="price">
+            +{{item.amount}}
+          </view>
+          <view>{{chargeRecordStatus[item.chargeStatus]}}</view>
+        </block>
         <block wx:if="{{option==2}}">
           <view class="price">
             +{{item.amount}}
           </view>
           <view>{{chargeOrderStatus[item.chargeOrderStatus]}}</view>
-        </block>
-
+        </block>  
       </view>
     </view>
   </block>
