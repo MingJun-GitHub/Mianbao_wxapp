@@ -9,9 +9,19 @@ Page({
 		merStatus: 0, // '0待申请,1待审批,2审批通过,3审批拒绝
 	},
 	goHome() {
-		wx.reLaunch({
-			url: '/pages/index/index?merId='+this.data.shopInfo.id
+		
+		wx.switchTab({
+			url: '/pages/index/index?merId='+this.data.shopInfo.id,
+			success: () => {
+				var page = getCurrentPages().pop()
+				wx.utils.merId = this.data.shopInfo.id
+				if(page == undefined || page == null) return
+				page.onLoad()
+			}
 		})
+		// wx.reLaunch({
+		// 	url: '/pages/index/index?merId='+this.data.shopInfo.id
+		// })
 	},
 	goLogin() {
 		if (this.data.isLogin) {

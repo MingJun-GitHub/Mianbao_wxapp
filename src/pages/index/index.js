@@ -68,9 +68,15 @@ Page({
 	},
 	async onLoad(query) {
 		wx.utils.showLoading()
-		this.setData({
-			merId: query.merId || query.scene || ''
-		})
+		if (query) {
+			this.setData({
+				merId: query.merId || query.scene  || ''
+			})
+		} else {
+			this.setData({
+				merId: wx.utils.merId || ''
+			})
+		}
 		if (this.data.merId) {
 			await this.getShopGoodsList()
 		} else {

@@ -10,7 +10,12 @@ Component({
 		},
 		merId: {
 			type: String,
-			value: ''
+			value: '',
+			observer: function(oldValue, newValue){
+				if(oldValue !== newValue) {
+					this.getShopInfo()
+				}
+			}
 		},
 		shopSet: {
 			type: Boolean,
