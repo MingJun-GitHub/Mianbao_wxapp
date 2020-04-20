@@ -23,8 +23,8 @@
         </view>
       </view>
       <view class="inputcash">
-        <input value="{{saleMer.redBagAmount || ''}}" bindinput="setAmout" type="text" />
-        <view>分</view>
+        <input value="{{saleMer.redBagAmount || ''}}" bindinput="setAmout" type="digit" />
+        <view>元</view>
       </view>
       <view class="btn" bindtap="saveRedGagAmout">
         确定红包设置

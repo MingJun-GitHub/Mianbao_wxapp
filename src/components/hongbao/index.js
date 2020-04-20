@@ -19,7 +19,8 @@ Component({
 	methods: {
 		// 领红包
 		async getHongBao() {
-			if (!wx.utils.Login.isBind || !wx.utils.Login.getPhone()) {
+			console.log('!wx.utils.Login.isBind', !wx.utils.Login.isBind, !await wx.utils.Login.getPhone())
+			if (!wx.utils.Login.isBind || !await wx.utils.Login.getPhone()) {
 				wx.navigateTo({
 					url: '/pages/login/index'
 				})

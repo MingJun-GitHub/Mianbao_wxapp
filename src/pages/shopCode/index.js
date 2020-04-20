@@ -37,7 +37,7 @@ Page({
 		return {
 			title: this.data.merId ? this.data.shopInfo.shopName : '福利大派送，红包你也一起来领',
 			path: '/pages/index/index' + (this.data.merId ? `?merId=${this.data.merId}`:''),
-			imageUrl: this.data.merId ? (this.data.shopInfo.shopLogo || '') : ''
+			imageUrl: this.data.merId ? (this.data.shopInfo.bgErWeiMaLogo || '') : ''
 		}
 	},
 	checkPromise() {
