@@ -47,18 +47,5 @@
       <image src="../../images/goods/close.png" mode="widthFix" />
     </view>
   </view>
-  <view class="goods_hongbao" wx:if="{{showHongHao}}">
-    <view class="goods_hongbao__box">
-      <image bindtap="changeHongBao" src="../../images/goods/delete.png" class="close" mode="widthFix" />
-      <block wx:if="{{!isGetHb}}">
-        <image src="../../images/goods/hb_noopen.png" class="noopen" mode="widthFix" />
-        <view class="get" bindtap="getHongBao"></view>
-      </block>
-      <block wx:else>
-        <image src="../../images/goods/hb_open.png" class="open" mode="widthFix" />
-        <view class="price">{{money}}</view>
-        <!-- <view class="look" bindtap=""></view> -->
-      </block>
-    </view>
-  </view>
+  <hongbao merId="{{merId}}" money="{{money}}" showHongBao="{{showHongHao}}" bindclose="changeHongBao"></hongbao>
 </view>

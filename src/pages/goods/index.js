@@ -57,7 +57,7 @@ Page({
 		})
 	},
 	async saveMsg(e) {
-		if (!wx.utils.Login.isBind || !await wx.utils.Login.getPhone()) {
+		if (!wx.utils.Login.getMobilePhone()) {
 			wx.navigateTo({
 				url: '/pages/login/index'
 			})
@@ -86,28 +86,6 @@ Page({
 				wx.utils.Toast('提交失败，请稍后重试')
 			}
 			console.log('res', res)
-		}
-	},
-	// 领红包
-	async getHongBao() {
-		if (!wx.utils.Login.isBind || !await wx.utils.Login.getPhone()) {
-			wx.navigateTo({
-				url: '/pages/login/index'
-			})
-			return
-		}
-		wx.utils.showLoading()
-		const res = await wx.utils.Http.get({
-			url: `/buyProduct/getRedBag/${this.data.merId}`
-		})
-		console.log('领取红包状态', res)
-		wx.utils.hideLoading()
-		if (res.code == 0) {
-			this.setData({
-				isGetHb: true
-			})
-		} else {
-			wx.utils.Toast(res.msg || '领取失败，新重新领取~')
 		}
 	},
 	changeHongBao() {

@@ -1,19 +1,22 @@
 const app = getApp()
-// import behaviors from '../../behaviors/lazyImg'
-
 Page({
-	// behaviors: [behaviors],
 	data: {
 		merId: '',
-		goodsList: []
+		goodsList: [],
+		openDelete: false,
+		startX: 0,
+		startY: 0
 	},
 	async getMyGoods() {
 		const res = await wx.utils.Http.get({
 			url: `/merShop/listmyProduct/${this.data.merId}`
 		})
 		if (res.code ==0 ) {
+			res.data.map(item => {
+				item.isTouchMove = false
+			})
 			this.setData({
-				goodsList: res.data
+				goodsList: res.data,
 			})
 		}
 	},
@@ -41,23 +44,23 @@ Page({
 	},
 	//手指触摸动作开始 记录起点X坐标
 	touchstart(e) {
-		if (this.data.position != 0) {
+		if (!this.data.openDelete) {
 			return
 		}
 		//开始触摸时 重置所有删除
-		this.data.items.forEach((v, i) => {
+		this.data.goodsList.forEach(v => {
 			if (v.isTouchMove)
 				v.isTouchMove = false
 		})
 		this.setData({
 			startX: e.changedTouches[0].clientX,
 			startY: e.changedTouches[0].clientY,
-			items: this.data.items
+			goodsList: this.data.goodsList
 		})
 	},
 	//滑动事件处理
 	touchmove(e) {
-		if (this.data.position != 0) {
+		if (!this.data.openDelete) {
 			return
 		}
 		var index = e.currentTarget.dataset.index, //当前索引
@@ -73,7 +76,7 @@ Page({
 				X: touchMoveX,
 				Y: touchMoveY
 			})
-		this.data.items.forEach((v, i) => {
+		this.data.goodsList.forEach((v,i) => {
 			v.isTouchMove = false
 			//滑动超过30度角 return
 			if (Math.abs(angle) > 30) return
@@ -86,7 +89,7 @@ Page({
 		})
 		//更新数据
 		this.setData({
-			items: this.data.items
+			goodsList: this.data.goodsList
 		})
 	},
 	/**
@@ -95,63 +98,40 @@ Page({
 	 * @param {Object} end 终点坐标
 	 */
 	angle(start, end) {
-		if (this.data.position != 0) {
-			return
-		}
 		var _X = end.X - start.X,
 			_Y = end.Y - start.Y
 		//返回角度 /Math.atan()返回数字的反正切值
 		return 360 * Math.atan(_Y / _X) / (2 * Math.PI)
 	},
 	//删除事件
-	delMember(e) {
-		if (this.data.position != 0) {
-			return
-		}
+	delGoods(e) {
 		const {
-			index,
 			item
 		} = e.currentTarget.dataset
-		console.log('item', item)
+		console.log('item-->', item)
 		wx.showModal({
-			title: '提示',
-			content: '你确定要删除该负责人吗？',
+			title: '温馨提示',
+			content: '你确定要删除该商品吗？',
 			showCancel: true,
 			cancelText: '取消',
 			cancelColor: '#99999',
 			confirmText: '确定',
-			confirmColor: '#217BC9',
+			// confirmColor: '#217BC9',
 			success: async (e) => {
 				if (e.cancel) {
 					return
 				}
-				wx.showLoading({
-					title: '请稍等...',
-					mask: true
+				wx.utils.showLoading()
+				const res = await wx.utils.Http.get({
+					url: 'xxx',
+					data: {}
 				})
-				const res = await app.http.post({
-					url: '/merchant/editMerchantPersonnel',
-					data: {
-						merchantPersonnelId: item.merchantPersonnelId,
-						isDelete: 1,
-						updatorId: app.data.userInfo.merchantPersonnelId
-					}
-				})
-				wx.hideLoading()
+				wx.utils.hideLoading()
 				if (res.code == 200) {
-					wx.showToast({
-						title: '删除成功',
-						icon: 'none'
-					})
-					this.data.items.splice(index, 1)
-					this.setData({
-						items: this.data.items
-					})
+					wx.utils.Toast('删除成功')
+					await this.getMyGoods()
 				} else {
-					wx.showToast({
-						title: '删除失败',
-						icon: 'none'
-					})
+					wx.utils.Toast('删除失败，请重新尝试')
 				}
 			}
 		})

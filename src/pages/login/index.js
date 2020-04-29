@@ -33,7 +33,7 @@ Page({
 				phone: '',
 				province,
 				realName: '',
-				sessionKey: wx.getStorageSync('loginInfo').sessionKey,
+				sessionKey: wx.getStorageSync('loginInfo').sessionKey || wx.utils.Login.sessionKey,
 				unionid: '',
 				userLogo: avatarUrl,
 			}
@@ -42,10 +42,10 @@ Page({
 		if (res.code == 0) {
 			wx.utils.Toast('注册登录成功，请绑定您的手机号，快捷登录更方便')
 			this.setPageTitle()
-			await wx.utils.Login.simpleLogin()
+			await wx.utils.Login.simpleLogin() // 简单登录
 			this.setData({
 				userInfo: wx.utils.Login.userInfo,
-				isLogin: wx.utils.Login.isBind
+				isLogin: wx.utils.Login.isLogin
 			})
 		}
 	},
@@ -63,10 +63,9 @@ Page({
 		if (res.code == 0) {
 			wx.utils.Toast('绑定成功')
 			await wx.utils.Login.simpleLogin()
-			
 			setTimeout(() => {
 				wx.navigateBack()
-			}, 1500)
+			}, 1200)
 		}
 	},
 	async init() {
@@ -74,8 +73,8 @@ Page({
 		await wx.utils.Login.initUserInfo()
 		this.setData({
 			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.phone
+			isLogin: wx.utils.Login.isLogin,
+			phone: wx.utils.mobilePhone
 		})
 		wx.utils.hideLoading()
 	},

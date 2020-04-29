@@ -41,7 +41,7 @@ Component({
 			wx.setClipboardData({
 				data: this.data.saleMer.userName,
 				success: (res) => {
-					wx.utils.Toast('复制成功')
+					wx.utils.Toast('复制成功,快去微信搜索添加店家噢~')
 				}
 			})
 		},

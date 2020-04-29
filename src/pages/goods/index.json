@@ -4,6 +4,7 @@
   "navigationBarTextStyle": "white",
   "navigationBarBackgroundColor": "#ef3621",
   "usingComponents": {
-    "navbar": "../../components/navbar/index"
+    "navbar": "../../components/navbar/index",
+    "hongbao": "../../components/hongbao/index"
   }
 }

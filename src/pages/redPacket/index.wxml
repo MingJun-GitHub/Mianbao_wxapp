@@ -16,13 +16,13 @@
       <scroll-view scroll-y="true" style="width:100%;height: 100%;" wx:if="{{redPacketList && redPacketList.length}}">
         <view class="item" wx:for="{{redPacketList}}" wx:key="index">
           <view class="pic">
-            <image src="{{item.thumb || '../../images/empty.png'}}" mode="widthFix" />
+            <image src="{{item.shopLogo || '../../images/empty.png'}}" mode="widthFix" />
           </view>
           <view class="desc">
             <view class="name">{{item.shopName}}</view>
             <view class="address">{{item.shopAddress}}</view>
             <view class="code">微信号：{{item.userName}}
-              <image src="../../images/other/rp_copy.png" mode="widthFix" />
+              <image src="../../images/other/rp_copy.png" mode="widthFix" bindtap="clipboardCode" data-item="{{item}}"  />
             </view>
           </view>
           <view class="other">

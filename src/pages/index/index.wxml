@@ -28,7 +28,7 @@
   </view>
   <block wx:else>
     <shopbar wx:if="{{merId}}" bindgetShopInfo="returnGetShopInfo" merId="{{merId}}" openShare="{{true}}" openUpdate="{{false}}"></shopbar>
-    <view class="shop_hongbao" bindtap="changeHongbao"><image src="../../images/shop/index_hongbao.png" mode="widthFix" /></view>
+    <view class="shop_hongbao" bindtap="changeHongBao"><image src="../../images/shop/index_hongbao.png" mode="widthFix" /></view>
     <view class="shop_goods">
       <view class="shop_goods__item" wx:for="{{goodsList}}" wx:key="index">
         <view class="tops" wx:if="{{index==0}}">
@@ -63,7 +63,7 @@
         </view>
       </view>
     </view>
-    <hongbao merId="{{merId}}" money="{{shopInfo.redBagAmount}}" showHongBao="{{showHongBao}}" bindclose="changeHongbao"></hongbao>
+    <hongbao merId="{{merId}}" money="{{shopInfo.redBagAmount}}" showHongBao="{{showHongBao}}" bindclose="changeHongBao"></hongbao>
   </block>
 
 </view>

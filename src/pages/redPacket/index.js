@@ -8,16 +8,6 @@ Page({
 		allMoney: 0,
 		backgroundColorTop: 'transportant'
 	},
-	async init() {
-		wx.utils.showLoading()
-		await wx.utils.Login.initUserInfo()
-		this.setData({
-			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
-		})
-		wx.utils.hideLoading()
-	},
 	async getRedPacket() {
 		const res = await wx.utils.Http.get({
 			url: '/myInfo/findRedBagRecord'
@@ -31,11 +21,21 @@ Page({
 		console.log('this.data', this.data.redPacketList)
 		
 	},
+	clipboardCode(e) {
+		const {
+			item
+		} = e.currentTarget.dataset
+		wx.setClipboardData({
+			data: item.userName,
+			success: (res) => {
+				wx.utils.Toast('复制成功,快去微信搜索添加店家噢~')
+			}
+		})
+	},
 	goBack() {
 		wx.navigateBack()
 	},
 	async onLoad() {
-		await this.init()
 		await this.getRedPacket()
 	}
 });

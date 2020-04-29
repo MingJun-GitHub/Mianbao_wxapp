@@ -1,13 +1,17 @@
 class Login {
 	// 初始化
 	constructor() {
-		this.loginPromise = ''
-		this.isBind = false
-		this.phone = '' // 是否有电话 
+		this.loginPromise = null
+		this.isLogin = false
+		this.isBindPhone = false // 是否绑定电话
+		this.mobilePhone = '' 
 		this.token = ''
 		this.sessionKey = ''
 		this.userInfo = null
 	}
+	/**
+	 * 登录初始化
+	 */
 	async initUserInfo(cb) {
 		if (!this.loginPromise) {
 			this.loginPromise = new Promise(async resolve => {
@@ -17,8 +21,7 @@ class Login {
 				} else {
 					const loginInifo = wx.getStorageSync('loginInfo')
 					if (loginInifo) {
-						this.token = loginInifo.token //'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sKwyAQRP9lnyOs95i_0XYD9pIE16SB0n-vFvoynDnMvOFWM0wwe4UhxiiM83OLJMUY0Akb8Jr0xeikJQzAe2pj5Rpm5oZ1vdMimMpBpctYYZJ2NFZ7tH4AOrcmHKq_KOuD-nHn32Gj8uz1RfnMC3y-AAAA__8.2Q7mVLloq_J43oLqlaCIjSwruvTHnws9m_3rKUslSyd6lmgrsQqW3-BGtF-PyQ5dl9tvCeN30nzqtxbW__8EEA'//loginInifo.token
-						// this.token = 'eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNo0i9sOgyAQBf9ln90E2JWAfyO6TehFDWBr0vTfCya-zZmc-cK9RBjAs53mQB5vLIysjaAb-wn1bIIJQl45Cx3kPdSz8RVjzhXL-pAFs6S3pCbHAoPuHROR0tyBHFsVVplLpPUpLdzzGWySXm1-JB5xgd8fAAD__w.AHExtqRfk4bugyAe8T_XLaGbDhv8FGbMPvcW3pdC3zgc4n4cqYL_s7PCzyPCpagxiBq4UZlEqBhj5S2D-JKhag'
+						this.token = loginInifo.token
 						this.sessionKey = loginInifo.sessionKey
 						await this.getUserInfo()
 						resolve(this.userInfo)
@@ -37,6 +40,7 @@ class Login {
 								this.token = result.data.token
 								this.sessionKey = result.data.sessionKey
 							} else {
+								console.log('系统出错了', res)
 								this.clearUserInfo()
 							}
 							await this.getUserInfo()
@@ -48,26 +52,47 @@ class Login {
 		}
 		return this.loginPromise
 	}
+	/**
+	 * 重新登录
+	 */
 	async reloadLogin() {
-		this.loginPromise = null
 		this.clearUserInfo()
 		await this.initUserInfo()
 	}
-	async getPhone() {
-		return this.phone
-	}
+	/**
+	 * 简单登录，会重置loginPromise拦截
+	 */
 	async simpleLogin() {
 		this.loginPromise = null
 		await this.getUserInfo()
 	}
+	/**
+	 * 清除登录信息，重置
+	 */
 	clearUserInfo() {
-		// wx.clearStorageSync('loginInfo')
-		this.userInfo = ''
-		this.isBind = false
-		this.phone = ''
+		wx.removeStorageSync('loginInfo')
+		this.loginPromise = null
+		this.userInfo = null
+		this.isBindPhone = false
+		this.mobilePhone = ''
+		this.isLogin = false
 	}
-	async checkBind() {
-		console.log('检查bind')
+	/**
+	 * 获取电话
+	 */
+	getMobilePhone() {
+		return this.mobilePhone
+	}
+	/**
+	 * 是否登录（不包含是否绑定手机号） 
+	 */
+	checkLogin() {
+		return this.isLogin
+	}
+	/**
+	 * 检查是否绑定手机号
+	 */
+	async checkBindMobile() {
 		const res = await wx.utils.Http.get({
 			url: '/wxUser/isGetUserInfo',
 			header: {
@@ -75,22 +100,16 @@ class Login {
 			}
 		})
 		if (res.code == 0) {
-			this.isBind = res.data
+			this.isBindPhone = res.data
 			return res.data
 		} else {
-			this.isBind = false
 			return false
 		}
 	}
-	// 获取用户信息
+	/**
+	 * 获取用户悠 信息
+	 */
 	async getUserInfo(filter = false) {
-		await this.checkBind()
-		if (!this.isBind && this.filter) {
-			wx.navigateTo({
-				url: '/pages/login/index'
-			})
-			return
-		}
 		const res = await wx.utils.Http.get({
 			url: '/wxUser/getUserInfoById',
 			header: {
@@ -98,17 +117,21 @@ class Login {
 			}
 		})
 		if (res.code == 0) {
-			if (this.isBind) {
-				this.userInfo = res.data
-				this.phone = this.userInfo.phone
-			} else {
-				this.clearUserInfo()
-			}
+			this.userInfo = res.data
+			this.mobilePhone = this.userInfo.phone
+			this.isBindPhone = !!this.mobilePhone
+			this.isLogin = !!this.userInfo.nickName // 有头像昵称才算登录
 			return res.data
 		} else {
-			return null
+			if (res.status == 500) { // 登录态过期，重新登录
+				await this.reloadLogin()
+			}
+			return this.userInfo || null
 		}
 	}
+	/**
+	 * 这个只有给力点用的上，保留着
+	 */
 	async getSaleMer() {
 		const res = await wx.utils.Http.get({
 			url: '/wxUser/getUserInfoById'

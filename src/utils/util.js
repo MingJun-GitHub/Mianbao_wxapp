@@ -63,7 +63,7 @@ export function goPage(e) {
 		params,
 		login
 	} = e.currentTarget.dataset
-	if (login && !wx.utils.Login.isBind) {
+	if (login && !wx.utils.Login.isBindPhone) {
 		wx.navigateTo({
 			url: '/pages/login/index'
 		})
@@ -74,32 +74,6 @@ export function goPage(e) {
 	console.log('跳转的链接', url)
 	wx.navigateTo({
 		url
-	})
-
-}
-
-export function addCollect(productId) {
-	return new Promise(async (resolve) => {
-		if (!wx.utils.Login.isBind) {
-			wx.navigateTo({
-				url: `/pages/login/index`
-			})
-			return
-		}
-		wx.utils.showLoading()
-		const res = await wx.utils.Http.post({
-			url: '/myStore/addMyStore',
-			data: {
-				productId
-			}
-		})
-		wx.utils.hideLoading()
-		if (res.code == 0) {
-			wx.utils.Toast('收藏成功')
-		} else {
-			wx.utils.Toast('收藏失败')
-		}
-		resolve(res.code)
 	})
 
 }

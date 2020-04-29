@@ -1,43 +1,32 @@
 <view class="myGoods">
   <block wx:if="{{goodsList&& goodsList.length}}">
-  <view class="myGoods_item" wx:for="{{goodsList}}" wx:key="index">
-    <view class="myGoods_item__top">
-      <view class="time">{{item.createTime}}</view>
-      <view class="more" bindtap="goOrderList">查看客户下单
-      </view>
-    </view>
-    <view class="myGoods_item__content">
-      <view class="pic">
-        <image src="{{item.thumb}}" mode="widthFix" />
-      </view>
-      <view class="info">
-        <image class="edit" src="../../images/shop/edit.png" bindtap="goEditGoods" data-id="{{item.id}}" mode="widthFix" />
-        <view class="name">
-          {{item.productName}}
-        </view>
-        <view class="price">￥{{item.price}}<view class="price_del">￥{{item.deletePrice}}</view>
-          <view class="btn" bindtap="postMsg">发送短信</view>
+    <view class="myGoods_item {{item.isTouchMove ? 'myGoods_itemon' : ''}}" data-index="{{index}}"
+      bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{goodsList}}" wx:key="index">
+      <view class="myGoods_item__top">
+        <view class="time">{{item.createTime}}</view>
+        <view class="more" bindtap="goOrderList">查看客户下单
         </view>
       </view>
+      <view class="myGoods_item__content">
+        <view class="pic">
+          <image src="{{item.thumb}}" mode="widthFix" />
+        </view>
+        <view class="info">
+          <image class="edit" src="../../images/shop/edit.png" bindtap="goEditGoods" data-id="{{item.id}}"
+            mode="widthFix" />
+          <view class="name">
+            {{item.productName}}
+          </view>
+          <view class="price">￥{{item.price}}<view class="price_del">￥{{item.deletePrice}}</view>
+            <view class="btn" bindtap="postMsg">发送短信</view>
+          </view>
+        </view>
+      </view>
+      <view class="myGoods_item__del" catchtap="delGoods" data-index="{{index}}" data-item="{{item}}">删除</view>
     </view>
-  </view>
   </block>
   <empty wx:else tips="暂无商品，快去发布商品"></empty>
-  <!-- <view class="myGoods_footer">
+  <view class="myGoods_footer">
     <view class="myGoods_footer__btn" bindtap="goEditGoods" data-id="{{item.id}}">发布商品</view>
   </view>
-   <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart"
-      bindtouchmove="touchmove" wx:for="{{items}}" wx:key="index" wx:for-item="item" wx:for-index="index">
-      <view class="people" data-id="{{item.merchantPersonnelId}}" data-item="{{item}}" bindtap="goEditMember">
-        <view class="name">
-          <view class="header">
-            <image src="{{item.imageUrl?item.imageUrl:'/images/member/headers.jpg'}}" mode="widthFix" />
-          </view>
-          <text>{{item.merchantPersonalName}}</text>
-        </view>
-        <view class="job" wx:if="{{item.positionName}}">{{item.positionName}}</view>
-      </view>
-      <view class="del" catchtap="delMember" data-index="{{index}}" data-item="{{item}}">删除</view>
-    </view>
-  -->
 </view>

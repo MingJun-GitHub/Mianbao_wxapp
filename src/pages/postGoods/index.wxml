@@ -28,7 +28,7 @@
     </view>
     <view class="postGoods_form__item">
       <label for="">库存</label>
-      <input style="width: 160rpx;" type="number" value="{{stockNum}}" bindinput="inputInfo" placeholder="请输入库存(单位件)" data-tag="stockNum" />
+      <input type="number" value="{{stockNum}}" bindinput="inputInfo" placeholder="请输入库存(单位件)" data-tag="stockNum" />
     </view>
     <view class="postGoods_form__item">
       <label for="">截止时间</label>

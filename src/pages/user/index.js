@@ -9,7 +9,6 @@ Page({
 		merStatus: 0, // '0待申请,1待审批,2审批通过,3审批拒绝
 	},
 	goHome() {
-		
 		wx.switchTab({
 			url: '/pages/index/index?merId='+this.data.shopInfo.id,
 			success: () => {
@@ -92,8 +91,8 @@ Page({
 		await wx.utils.Login.initUserInfo()
 		this.setData({
 			userInfo: wx.utils.Login.userInfo,
-			isLogin: wx.utils.Login.isBind,
-			phone: wx.utils.Login.phone
+			isLogin: wx.utils.Login.isLogin,
+			phone: wx.utils.Login.mobilePhone
 			// merStatus: wx.utils.Login.userInfo.merStatus || 0
 		})
 		if (wx.utils.Login.loginPromise) {

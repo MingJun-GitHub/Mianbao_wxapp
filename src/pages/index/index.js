@@ -61,7 +61,7 @@ Page({
 			shopInfo: e.detail.saleMer
 		})
 	},
-	changeHongbao() {
+	changeHongBao() {
 		this.setData({
 			showHongBao: !this.data.showHongBao
 		})
