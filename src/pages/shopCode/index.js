@@ -2,7 +2,7 @@ const app = getApp()
 import _ from 'lodash'
 Page({
 	data: {
-		wxcode: 'http://pic.gtqad.com/shopCode.png',
+		wxcode: 'https://img.geilet.com/shopCode.png',
 		hasPromise: true,
 		shopInfo: ''
 	},
